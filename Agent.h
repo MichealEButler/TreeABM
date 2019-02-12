@@ -1,8 +1,8 @@
 #ifndef AGENT_H
 #define AGENT_H
 
-#include "Object.h"
 #include "World.h"
+#include "Object.h"
 #include "DrawFunctions.h"
 #include "Display.h"
 #include <iostream>
@@ -13,7 +13,7 @@ class Agent : public Object
 {
 protected:
   // interal reference to world array
-  World *_world;
+  World _world;
 
   // allow agents to locate each within simulation space
   Agent **_agents;
@@ -33,7 +33,7 @@ public:
 
   // need drawing functions for SDL
 
-  void getWorld(World *world);
+  void getWorld(const World &world);
   // get access to all agents in the world
   void getAgents(Agent **agents, int size);
 private:

@@ -18,7 +18,7 @@ Agent::Agent(int _id, int x, int y) : Object(_id)
 
 Agent::~Agent()
 {
-  _world = NULL;
+  //_world = NULL;
   _agents = NULL;
   cout << "Agent destroyed! " << endl; //add ID to this function
 }
@@ -35,7 +35,7 @@ void Agent::renderAgent()
   drawFunctionsAgent->fillCircle(Display::renderer,_x,_y,10);
 }
 
-void Agent::getWorld(World *world)
+void Agent::getWorld(const World &world)
 {
   _world = world;
 }

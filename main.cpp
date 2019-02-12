@@ -13,53 +13,19 @@
 // ##################################################################
 
 #include <iostream>
-#include "Display.h"
-#include "World.h"
-#include "Agent.h"
-#include "Tree.h"
+#include "Simulation.h"
 
 using namespace std;
 
-const int NUM_AGENTS = 100;
-
-Display *display = nullptr;
-//World *world;
-Tree *tree;
+Simulation * simulation;
 
 int main(int argc, char** argv)
 {
-  int agentNo = NUM_AGENTS;
-  Agent **agents = new Agent*[agentNo];
-  for(int i=0; i<agentNo; i++)
-    agents[i] = new Agent(1, 0, 0);
+  simulation = new Simulation();
 
-  display = new Display();
-  tree = new Tree();
-
-  tree->update(tree->getDBH());
-
-  display->initDisplay("Test Display",0,0,1000,1000,true);
-
-  while (display->running()) {
-    for(int i=0; i<agentNo; i++){
-      agents[i]->renderAgent();
-      display->handleEvents();
-    }
-    //world->renderWorld();
-    display->updateDisplay();
-    display->renderDisplay();
-
-  }
-
-  display->cleanDisplay();
-
-//  delete world;
-
-  for(int i = 0; i < agentNo; i++)
-    delete agents[i]; // calls each ~Agent()
-
-  delete tree;
-
+  simulation->initSimulation();
+  simulation->renderSimulation();
+  simulation->cleanSimulation();
 
   return 0;
 }

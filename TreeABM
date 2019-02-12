@@ -1,1 +1,1 @@
- sudo g++ main.cpp Display.cpp DrawFunctions.cpp World.cpp Agent.cpp TreeFunctions.cpp Tree.cpp -o main -lSDL2 -std=gnu++0x
+ sudo g++ main.cpp Agent.cpp World.cpp Simulation.cpp Display.cpp DrawFunctions.cpp TreeFunctions.cpp Tree.cpp -o main -lSDL2 -std=gnu++0x
