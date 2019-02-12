@@ -22,6 +22,7 @@ public:
 
   int agentNo;
   int agentNoSplit;
+  int tick;
 
 private:
   Display * display;

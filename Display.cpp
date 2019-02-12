@@ -73,10 +73,15 @@ void Display::updateDisplay()
 //  SDL_RenderPresent(renderer);
 }
 
+void Display::clearRenderer()
+{
+  SDL_RenderClear(renderer);
+}
+
 void Display::renderDisplay()
 {
 
-//  SDL_RenderClear(renderer); // this was removed as display was recoloring everytime agents were being drawn
+  //SDL_RenderClear(renderer); // this was removed as display was recoloring everytime agents were being drawn
 /*  for (int i = 0; i < 1000; i++){
     for (int j = 0; j < 1000; j++){
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -85,7 +90,12 @@ void Display::renderDisplay()
   }
 */
   world->renderWorld();
-  drawFunctions->fillCircle(renderer, 500,500,10);
+  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+}
+
+void Display::renderPresent()
+{
   SDL_RenderPresent(renderer);
 }
 

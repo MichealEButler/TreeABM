@@ -13,7 +13,7 @@ class Agent : public Object
 {
 protected:
   // interal reference to world array
-  World _world;
+  //World _world;
 
   // allow agents to locate each within simulation space
   Agent **_agents;
@@ -21,6 +21,7 @@ protected:
 
   int _x;
   int _y;
+  int _size;
 
 public:
   Agent();
@@ -33,7 +34,7 @@ public:
 
   // need drawing functions for SDL
 
-  void getWorld(const World &world);
+  //void getWorld(const World &world);
   // get access to all agents in the world
   void getAgents(Agent **agents, int size);
 private:

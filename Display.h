@@ -17,6 +17,8 @@ public:
   void handleEvents();
   void updateDisplay();
   void renderDisplay();
+  void renderPresent();
+  void clearRenderer();
   void cleanDisplay();
 
   bool running();

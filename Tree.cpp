@@ -1,24 +1,37 @@
 #include "Tree.h"
-#include "TreeFunctions.h"
 
-Tree::Tree()
+DrawFunctions * drawFunctionsTree = nullptr;
+
+Tree::Tree(int _id, int x, int y) : Agent(_id, x, y)
 {
-  _DBH = 5;
-  cout << "Tree Created! " << endl;
+  _DBH = rand() % 10;
+
+  x = _x;
+  y = _y;
+
+  tf = new TreeFunctions();
+  //cout << "Tree Created! " << endl;
+  //cout << "x = " << x << endl;
+  //cout << "y = " << y << endl;
 }
 
 Tree::~Tree()
 {
-  cout << "Tree Destroyed! " << endl;
+  //cout << "Tree Destroyed! " << endl;
 }
 
 void Tree::update(float DBH)
 {
-  TreeFunctions* tf;
-  tf = new TreeFunctions();
+  setDBH(DBH);
 
-  float height = tf->getHeight(DBH);
-  cout << "Height = " << height << endl;
+  _Height = tf->getHeight(DBH);
+  setDBH(tf->growth(DBH));
+  _radius = (tf->crownRadius(DBH));
+
+  drawFunctionsTree = new DrawFunctions();
+
+  drawFunctionsTree->fillCircle(Display::renderer,_x,_y,_radius);
+
 }
 
 void Tree::setDBH(float DBH)

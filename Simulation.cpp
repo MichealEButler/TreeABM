@@ -2,7 +2,7 @@
 
 Simulation::Simulation()
 {
-  agentNo = 10;
+  agentNo = 100000;
   agentNoSplit = 1;
   cout << endl << "Simulation class agents created " << endl;
 }
@@ -20,12 +20,12 @@ void Simulation::initSimulation()
 
   for(int i=0; i<agentNo; i++)
   {
-    trees[i] = new Tree();
+    trees[i] = new Tree(1,0,0);
   }
 
   display = new Display();
 
-  display->initDisplay("Test Display",0,0,1000,1000,true);
+  display->initDisplay("Test Display",500,0,1000,1000,true);
 
   cout << endl << "Simulation class agents created " << endl;
   //create world
@@ -38,16 +38,22 @@ void Simulation::updateSimulation()
 
 void Simulation::renderSimulation()
 {
+  tick = 0;
+
   while (display->running())
   {
+    display->clearRenderer();
+    display->renderDisplay();
     for(int i=0; i<agentNo; i++)
     {
-      trees[i]->renderAgent();
+      trees[i]->update(trees[i]->getDBH());
       display->handleEvents();
     }
     //world->renderWorld();
     display->updateDisplay();
-    display->renderDisplay();
+    display->renderPresent();
+    tick++;
+    cout << "Tick = " << tick << endl;
   }
 }
 
