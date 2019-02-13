@@ -7,6 +7,7 @@
 #include "Tree.h"
 #include "Agent.h"
 #include "TreeFunctions.h"
+#include "Output.h"
 
 using namespace std;
 
@@ -30,6 +31,7 @@ private:
   Agent ** agents;
   TreeFunctions * treeFunctions;
   Tree ** trees;
+  Output * output;
 };
 
 #endif

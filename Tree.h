@@ -21,12 +21,14 @@ public:
 
   TreeFunctions* tf;
   // need a functions which inputs species data from file perhaps use enum classes to extend Tree class
-private:
+
   float _startDBH;
   float _DBH;
   float _Height;
   float _radius;
   float _age;
+private:
+
 };
 
 #endif

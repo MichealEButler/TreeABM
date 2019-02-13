@@ -19,8 +19,7 @@ protected:
   Agent **_agents;
   int _noOfAgents;
 
-  int _x;
-  int _y;
+
   int _size;
 
 public:
@@ -37,6 +36,9 @@ public:
   //void getWorld(const World &world);
   // get access to all agents in the world
   void getAgents(Agent **agents, int size);
+
+  int _x;
+  int _y;
 private:
 
 };
