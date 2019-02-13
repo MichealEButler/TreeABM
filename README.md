@@ -16,7 +16,7 @@ A suitable text editor eg. Atom, notepad++ etc….
 
 Can be compiled using a linux distro with g++, and prior install of SDL2 libraries.
 
-or using 'TreeABM' file
+or using [TreeABM](https://github.com/MichealEButler/TreeABM/blob/master/TreeABM) file
 
 **HAS ONLY BEEN TESTED USING LINUX**
 
