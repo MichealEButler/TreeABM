@@ -42,27 +42,27 @@ void Simulation::renderSimulation()
 {
   tick = 0;
 
-  const string part1 = "Output/tick";
+  const string part1 = "Output/tick"; // you must create a folder called Output in src dirctory
   const string part2 = ".txt";
 
   while (display->running())
   {
     tick++;
-    //const string all = ((part1 + to_string(tick))+ part2);
-    //output->openFile(all);
+    const string all = ((part1 + to_string(tick))+ part2);
+    output->openFile(all);
     display->clearRenderer();
     display->renderDisplay();
     for(int i=0; i<agentNo; i++)
     {
       trees[i]->update(trees[i]->getDBH());
       display->handleEvents();
-      //output->runOutput("ID ","Tree ",trees[i]->_x,trees[i]->_y,trees[i]->_DBH,trees[i]->_Height,trees[i]->_radius);
+      output->runOutput("ID ","Tree ",trees[i]->_x,trees[i]->_y,trees[i]->_DBH,trees[i]->_Height,trees[i]->_radius);
     }
     //world->renderWorld();
     display->updateDisplay();
     display->renderPresent();
     cout << "Tick = " << tick << endl;
-    //output->closeFile();
+    output->closeFile();
   }
 
 }
