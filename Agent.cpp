@@ -23,9 +23,24 @@ Agent::~Agent()
   //cout << "Agent destroyed! " << endl; //add ID to this function
 }
 
-void Agent::setPosition()
+void Agent::setX(int x)
 {
+  _x = x;
+}
 
+void Agent::setY(int y)
+{
+  _y = y;
+}
+
+int Agent::getX()
+{
+    return _x;
+}
+
+int Agent::getY()
+{
+  return _y;
 }
 
 void Agent::renderAgent()

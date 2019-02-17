@@ -21,13 +21,19 @@ protected:
 
 
   int _size;
+  int _x;
+  int _y;
 
 public:
   Agent();
   Agent(int _id, int x, int y);
   ~Agent();
 
-  void setPosition();
+  void setX(int x);
+  void setY(int y);
+
+  int getX();
+  int getY();
 
   void renderAgent();
 
@@ -37,8 +43,7 @@ public:
   // get access to all agents in the world
   void getAgents(Agent **agents, int size);
 
-  int _x;
-  int _y;
+
 private:
 
 };

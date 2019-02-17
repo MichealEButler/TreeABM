@@ -16,19 +16,25 @@ public:
   Tree(int _id, int x, int y);
   ~Tree();
   void setDBH(float DBH);
+  void setHeight(float height);
+  void setRadius(float radius);
+  void setAge(float age);
+
   float getDBH();
+  float getHeight();
+  float getRadius();
+  float getAge();
+
   void update(float DBH);
 
+private:
   TreeFunctions* tf;
-  // need a functions which inputs species data from file perhaps use enum classes to extend Tree class
 
   float _startDBH;
   float _DBH;
-  float _Height;
+  float _height;
   float _radius;
   float _age;
-private:
-
 };
 
 #endif

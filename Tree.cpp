@@ -24,7 +24,7 @@ void Tree::update(float DBH)
 {
   setDBH(DBH);
 
-  _Height = tf->getHeight(DBH);
+  _height = tf->getHeight(DBH);
   setDBH(tf->growth(DBH));
   _radius = (tf->crownRadius(DBH));
 
@@ -39,7 +39,37 @@ void Tree::setDBH(float DBH)
   _DBH = DBH;
 }
 
+void Tree::setHeight(float height)
+{
+  _height = height;
+}
+
+void Tree::setRadius(float radius)
+{
+  _radius = radius;
+}
+
+void Tree::setAge(float age)
+{
+  _age = age;
+}
+
 float Tree::getDBH()
 {
   return _DBH;
+}
+
+float Tree::getHeight()
+{
+  return _height;
+}
+
+float Tree::getRadius()
+{
+  return _radius;
+}
+
+float Tree::getAge()
+{
+  return _age;
 }

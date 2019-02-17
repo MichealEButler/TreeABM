@@ -56,7 +56,7 @@ void Simulation::renderSimulation()
     {
       trees[i]->update(trees[i]->getDBH());
       display->handleEvents();
-      output->runOutput("ID ","Tree ",trees[i]->_x,trees[i]->_y,trees[i]->_DBH,trees[i]->_Height,trees[i]->_radius);
+      output->runOutput("ID ","Tree ",trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius());
     }
     //world->renderWorld();
     display->updateDisplay();
