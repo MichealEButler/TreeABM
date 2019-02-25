@@ -14,7 +14,7 @@ void Output::openFile(string title)
   file.open(title);
 }
 
-void Output::runOutput(const char* agentID, const char* species, int x, int y, float DBH, float height, float radius)
+void Output::runOutput(int agentID, const char* species, int x, int y, float DBH, float height, float radius)
 {
   //cout << "agentID = " << agentID << endl;
   file << agentID << " ";

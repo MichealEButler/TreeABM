@@ -24,12 +24,16 @@ public:
   float getHeight();
   float getRadius();
   float getAge();
-
+  bool getAlive();
+  
   void update(float DBH);
+
+  void isAlive(bool alive);
 
 private:
   TreeFunctions* tf;
 
+  bool _alive;
   float _startDBH;
   float _DBH;
   float _height;

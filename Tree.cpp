@@ -13,6 +13,8 @@ Tree::Tree(int _id, int x, int y) : Agent(_id, x, y)
   //cout << "Tree Created! " << endl;
   //cout << "x = " << x << endl;
   //cout << "y = " << y << endl;
+  _alive = true;
+
 }
 
 Tree::~Tree()
@@ -72,4 +74,20 @@ float Tree::getRadius()
 float Tree::getAge()
 {
   return _age;
+}
+
+bool Tree::getAlive()
+{
+  return _alive;
+}
+
+void Tree::isAlive(bool alive)
+{
+  int chance = rand() % 1000;
+
+  if (chance <= 300)
+  {
+    alive = false;
+    cout << "Tree " << getID() << " has died! " << endl;
+  }
 }

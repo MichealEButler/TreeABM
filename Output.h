@@ -13,7 +13,7 @@ public:
   Output();
   ~Output();
   void openFile(string title);
-  void runOutput(const char* agentID, const char* species, int x, int y, float DBH, float height, float radius);
+  void runOutput(int agentID, const char* species, int x, int y, float DBH, float height, float radius);
   void closeFile();
 
   void displayOutput();
