@@ -2,6 +2,7 @@
 #define SIMULATION_H
 
 #include <iostream>
+#include <vector>
 #include "World.h"
 #include "Display.h"
 #include "Tree.h"
@@ -30,7 +31,8 @@ private:
   World * world;
   Agent ** agents;
   TreeFunctions * treeFunctions;
-  Tree ** trees;
+  vector<Tree*> trees; // = vector<Tree*>(10);
+  //Tree ** trees;
   Output * output;
 };
 

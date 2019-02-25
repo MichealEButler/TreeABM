@@ -3,7 +3,7 @@
 
 Simulation::Simulation()
 {
-  agentNo = 10;
+  agentNo = 10000;
   agentNoSplit = 1;
   cout << endl << "Simulation class agents created " << endl;
 }
@@ -17,7 +17,10 @@ void Simulation::initSimulation()
 {
   //create agents
   agents = new Agent*[agentNo];
-  trees = new Tree*[agentNo/agentNoSplit];
+
+//  vector<Tree*> trees(agentNo/agentNoSplit);
+  trees = vector<Tree*>(agentNo/agentNoSplit);
+
   output = new Output();
 
   for(int i=0; i<agentNo; i++)
@@ -55,7 +58,7 @@ void Simulation::renderSimulation()
     for(int i=0; i<agentNo; i++)
     {
       trees[i]->update(trees[i]->getDBH());
-      trees[i]->isAlive(trees[i]->getAlive());
+      //trees[i]->isAlive(trees[i]->getAlive());
       display->handleEvents();
       output->runOutput(trees[i]->getID(),"Tree ",trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius());
     }
