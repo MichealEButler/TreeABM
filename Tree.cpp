@@ -85,9 +85,20 @@ void Tree::isAlive(bool alive)
 {
   int chance = rand() % 1000;
 
-  if (chance <= 300)
+  if (chance <= 50)
   {
     alive = false;
     cout << "Tree " << getID() << " has died! " << endl;
+  }
+}
+
+bool Tree::removeTree()
+{
+  int chance = rand() % 1000;
+
+  if (chance <= 50){
+    return true;
+  } else {
+    return false;
   }
 }

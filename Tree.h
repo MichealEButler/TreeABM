@@ -25,10 +25,11 @@ public:
   float getRadius();
   float getAge();
   bool getAlive();
-  
+
   void update(float DBH);
 
   void isAlive(bool alive);
+  bool removeTree();
 
 private:
   TreeFunctions* tf;

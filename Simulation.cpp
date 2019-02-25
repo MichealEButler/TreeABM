@@ -44,6 +44,8 @@ void Simulation::updateSimulation()
 void Simulation::renderSimulation()
 {
   tick = 0;
+  char input;
+  int newAgents = 1000;
 
   const string part1 = "Output/tick"; // you must create a folder called Output in src dirctory
   const string part2 = ".txt";
@@ -55,18 +57,37 @@ void Simulation::renderSimulation()
     output->openFile(all);
     display->clearRenderer();
     display->renderDisplay();
-    for(int i=0; i<agentNo; i++)
+
+    for(int i=0; i<trees.size(); i++)
     {
       trees[i]->update(trees[i]->getDBH());
       //trees[i]->isAlive(trees[i]->getAlive());
-      display->handleEvents();
+
+      if(trees[i]->removeTree() == true)
+      {
+        trees.erase(trees.begin() + i);
+        //cout << "Agent deleted! " << endl;
+      }
+    }
+
+    for(int i=0; i<trees.size(); i++)
+    {
+      //cout << "Agent deleted " << endl;
       output->runOutput(trees[i]->getID(),"Tree ",trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius());
     }
     //world->renderWorld();
+    int recruit = agentNo+((newAgents*tick)-1000); // for id's
+
+    for (int i = 0; i < newAgents; i++)
+    {
+      trees.push_back(new Tree(recruit+i, 0,0));
+    }
+
     display->updateDisplay();
     display->renderPresent();
     cout << "Tick = " << tick << endl;
     output->closeFile();
+    display->handleEvents();
   }
 }
 
@@ -79,7 +100,7 @@ void Simulation::cleanSimulation()
     delete agents[i]; // calls each ~Agent()
   }
 
-  for(int i = 0; i < agentNo; i++)
+  for(int i = 0; i < trees.size(); i++)
   {
     delete trees[i]; // calls each ~Agent()
   }
