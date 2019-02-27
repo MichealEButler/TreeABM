@@ -35,7 +35,7 @@ void Agent::setY(int y)
 
 int Agent::getX()
 {
-    return _x;
+  return _x;
 }
 
 int Agent::getY()
@@ -47,7 +47,7 @@ void Agent::renderAgent()
 {
   drawFunctionsAgent = new DrawFunctions();
 
-  drawFunctionsAgent->fillCircle(Display::renderer,_x,_y,10);
+  drawFunctionsAgent->fillCircle(Display::renderer,_x,_y,10,1);
 }
 /*
 void Agent::getWorld(const World &world)
