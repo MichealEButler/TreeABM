@@ -26,6 +26,10 @@ public:
   int agentNoSplit;
   int tick;
 
+  int elmNo;
+  int pineNo;
+  int alderNo;
+  
 private:
   Display * display;
   World * world;

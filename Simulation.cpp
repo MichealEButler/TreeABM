@@ -3,7 +3,10 @@
 
 Simulation::Simulation()
 {
-  agentNo = 10000;
+  agentNo = 9000;
+  elmNo = 3000;
+  pineNo = 3000;
+  alderNo = 3000;
   agentNoSplit = 1;
   cout << endl << "Simulation class agents created " << endl;
 }
@@ -25,7 +28,18 @@ void Simulation::initSimulation()
 
   for(int i=0; i<agentNo; i++)
   {
-    trees[i] = new Tree(i,0,0);
+    if (i<elmNo)
+    {
+      trees[i] = new Tree(i,0,0,1);
+    }
+    else if (i>=elmNo&&i<elmNo+pineNo)
+    {
+      trees[i] = new Tree(i,0,0,2);
+    }
+    else if (i>=elmNo+pineNo && i<agentNo)
+    {
+      trees[i] = new Tree(i,0,0,3);
+    }
   }
 
   display = new Display();
@@ -80,7 +94,7 @@ void Simulation::renderSimulation()
 
     for (int i = 0; i < newAgents; i++)
     {
-      trees.push_back(new Tree(recruit+i, 0,0));
+      trees.push_back(new Tree(recruit+i, 0,0,1));
     }
 
     display->updateDisplay();
