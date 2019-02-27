@@ -2,12 +2,13 @@
 
 DrawFunctions * drawFunctionsTree = nullptr;
 
-Tree::Tree(int _id, int x, int y) : Agent(_id, x, y)
+Tree::Tree(int _id, int x, int y, int color) : Agent(_id, x, y)
 {
   _DBH = rand() % 10;
 
   x = _x;
   y = _y;
+  _color = color;
 
   tf = new TreeFunctions();
   //cout << "Tree Created! " << endl;
@@ -32,7 +33,7 @@ void Tree::update(float DBH)
 
   drawFunctionsTree = new DrawFunctions();
 
-  drawFunctionsTree->fillCircle(Display::renderer,_x,_y,_radius);
+  drawFunctionsTree->fillCircle(Display::renderer,_x,_y,_radius,_color);
 
 }
 
@@ -54,6 +55,11 @@ void Tree::setRadius(float radius)
 void Tree::setAge(float age)
 {
   _age = age;
+}
+
+void Tree::setColor(int color)
+{
+  _color = color;
 }
 
 float Tree::getDBH()
@@ -79,6 +85,11 @@ float Tree::getAge()
 bool Tree::getAlive()
 {
   return _alive;
+}
+
+int Tree::getColor()
+{
+  return _color;
 }
 
 void Tree::isAlive(bool alive)
