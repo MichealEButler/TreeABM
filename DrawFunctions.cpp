@@ -32,14 +32,27 @@ void DrawFunctions::drawCircle(SDL_Renderer * renderer, int x, int y, int radius
   }
 }
 
-void DrawFunctions::fillCircle(SDL_Renderer * renderer, int x, int y, int radius)
+void DrawFunctions::fillCircle(SDL_Renderer * renderer, int x, int y, int radius, int color)
 {
+  int _color = color;
   int x0 = 0;
   int y0 = radius;
   int d = 3 - 2 * radius;
   if(!radius) return;
 
-  SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+  switch(_color){
+    case 1:
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+      break;
+    case 2:
+      SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+      break;
+    case 3:
+      SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+      break;
+    default:
+      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+  }
 
   auto drawline = [&](int sx, int ex, int ny)
   {
