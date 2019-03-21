@@ -145,10 +145,10 @@ void Chunk::storeNeighbours()
   S = getID() + 1;
   E = getID() + 10;
   W = getID() - 10;
-  NE = getID() + (N + 10);
-  NW = getID() + (N - 10);
-  SE = getID() + (S + 10);
-  SW = getID() + (S - 10);
+  NE = N + 10;
+  NW = N - 10;
+  SE = S + 10;
+  SW = S - 10;
 
   nChunks[0] = N;
   nChunks[1] = N;
