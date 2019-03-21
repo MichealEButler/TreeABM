@@ -1,5 +1,6 @@
 #include "Display.h"
 #include "DrawFunctions.h"
+#include "World.h"
 
 using namespace std;
 
@@ -12,7 +13,9 @@ Display::Display()
     world = new World();
     drawFunctions = new DrawFunctions();
 
-    world->loadWorld("testDEM.txt");
+    //world->loadWorld("Input/testDEM.txt");
+    //world->loadWorld("Input/slope_7204.txt");
+    world->loadWorld("Input/nz7204_DTM_1M.txt");
 }
 
 Display::~Display()
@@ -22,6 +25,8 @@ Display::~Display()
 
 void Display::initDisplay(const char* title, int x, int y, int w, int h, bool isShown)
 {
+
+  isCPressed = false;
 
   if(SDL_Init(SDL_INIT_EVERYTHING) == 0)
   {
@@ -33,7 +38,7 @@ void Display::initDisplay(const char* title, int x, int y, int w, int h, bool is
       cout << "Window created . . . " << endl;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if(renderer)
     {
       SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -58,6 +63,16 @@ void Display::handleEvents()
     if (e.key.keysym.sym == SDLK_RETURN)
     {
       isRunning = false;
+    }
+
+    if (e.key.keysym.sym == SDLK_c)
+    {
+      isCPressed = true;
+    }
+
+    if (e.key.keysym.sym == SDLK_x)
+    {
+      isCPressed = false;
     }
   }
 
@@ -89,7 +104,7 @@ void Display::renderDisplay()
     }
   }
 */
-  world->renderWorld();
+  world->renderWorld(renderer);
   SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
 }
@@ -113,4 +128,9 @@ void Display::cleanDisplay()
 bool Display::running()
 {
   return isRunning;
+}
+
+bool Display::cPressed()
+{
+  return isCPressed;
 }

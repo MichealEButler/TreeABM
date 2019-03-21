@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <SDL2/SDL.h>
-#include "World.h"
 #include "Agent.h"
 
 class Display
@@ -22,12 +21,14 @@ public:
   void cleanDisplay();
 
   bool running();
+  bool cPressed();
 
   static SDL_Renderer* renderer;
 private:
   SDL_Window* window;
   SDL_RendererInfo rendererInfo;
 
+  bool isCPressed;
   bool isRunning;
 
 };

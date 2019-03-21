@@ -14,6 +14,7 @@ public:
   ~DrawFunctions();
   void drawCircle(SDL_Renderer * renderer, int x, int y, int radius);
   void fillCircle(SDL_Renderer * renderer, int x, int y, int radius, int color);
+  void drawRect(SDL_Renderer * renderer, int x, int y, int width, int height);
 
 private:
 };

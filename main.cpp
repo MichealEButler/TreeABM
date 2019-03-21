@@ -13,6 +13,8 @@
 // ##################################################################
 
 #include <iostream>
+#include <ctime>
+#include <time.h>
 #include "Simulation.h"
 
 using namespace std;
@@ -21,11 +23,18 @@ Simulation * simulation;
 
 int main(int argc, char** argv)
 {
+  srand(time(NULL));
+  unsigned long seconds = 10;
+  unsigned long begTime = clock();
+
   simulation = new Simulation();
 
   simulation->initSimulation();
   simulation->renderSimulation();
   simulation->cleanSimulation();
+
+  unsigned long elapsedTime = ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
+  cout << "Elapsed time: " << elapsedTime << " secs." << endl;
 
   return 0;
 }

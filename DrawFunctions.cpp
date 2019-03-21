@@ -70,3 +70,12 @@ void DrawFunctions::fillCircle(SDL_Renderer * renderer, int x, int y, int radius
     else d+= 4 * (x0++ - y0--) + 10;
   }
 }
+
+void DrawFunctions::drawRect(SDL_Renderer * renderer, int x, int y, int width, int height)
+{
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+  SDL_RenderDrawLine(renderer, x, y, x+width, y);
+  SDL_RenderDrawLine(renderer, x+width, y, x+width, y+height);
+  SDL_RenderDrawLine(renderer, x+width, y+height, x, y+height);
+  SDL_RenderDrawLine(renderer, x, y+height, x, y);
+}

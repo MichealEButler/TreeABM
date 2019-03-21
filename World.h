@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "Display.h"
+#include <SDL2/SDL.h>
 
 using namespace std;
 
@@ -14,12 +14,21 @@ public:
   World();
   ~World();
   void loadWorld(const char* fileName);
-  void renderWorld();
+  void renderWorld(SDL_Renderer* renderer);
+
+  void setColor(int color);
+
+  int getColor();
+  float getLNum();
+  float getSmNum();
   // function to update pixels in window to reference output from humpol (ui console)
   // function to update pixels to create a height map (ui console)
 
 private:
   float world[1000][1000];
+  int _color;
+  float _lNum; // largest number within the world import array (i.e elevation, slope etc)
+  float _smNum; // smallest number
 };
 
 #endif

@@ -49,12 +49,12 @@ void Agent::renderAgent()
 
   drawFunctionsAgent->fillCircle(Display::renderer,_x,_y,10,1);
 }
-/*
-void Agent::getWorld(const World &world)
+
+void Agent::getWorld(World *world)
 {
   _world = world;
 }
-*/
+
 void Agent::getAgents(Agent **agents, int size)
 {
   _noOfAgents = size;
