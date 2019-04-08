@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -15,6 +17,9 @@ public:
   void loadDEGD(string filename);
   void closeFile(string filename);
   void readDEGD(string filename);
+
+  vector<int> _year;
+  vector<float> _DEGD;
 
 private:
 
