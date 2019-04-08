@@ -9,11 +9,13 @@ Agent::Agent(): Object(-1)
 
 Agent::Agent(int _id, int x, int y) : Object(_id)
 {
+
   x = _x = rand() % 1000;
   y = _y = rand() % 1000;
   //cout << "Agent created! " << endl;
   //cout << "x = " << x << ", y = " << y << endl;
   //cout << "x = " << _x << ", y = " << _y << endl;
+
 }
 
 Agent::~Agent()
@@ -48,11 +50,6 @@ void Agent::renderAgent()
   drawFunctionsAgent = new DrawFunctions();
 
   drawFunctionsAgent->fillCircle(Display::renderer,_x,_y,10,1);
-}
-
-void Agent::getWorld(World *world)
-{
-  _world = world;
 }
 
 void Agent::getAgents(Agent **agents, int size)

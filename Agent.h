@@ -12,8 +12,6 @@ using namespace std;
 class Agent : public Object
 {
 protected:
-  // interal reference to world array
-  World *_world;
 
   // allow agents to locate each within simulation space
   Agent **_agents;
@@ -39,7 +37,6 @@ public:
 
   // need drawing functions for SDL
 
-  void getWorld(World *world);
   // get access to all agents in the world
   void getAgents(Agent **agents, int size);
 
