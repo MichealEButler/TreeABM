@@ -39,6 +39,7 @@ public:
   void deleteTrees();
   void renderChunk();
   void storeNeighbours();
+  void outNeighbours();
 
 private:
   int _id;

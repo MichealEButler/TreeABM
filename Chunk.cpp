@@ -108,12 +108,12 @@ void Chunk::storeTrees(vector <Tree*> trees, int tick)
   //takes in the vector of trees from the simulation class
   //iterates through the chunk variable of all the trees
   // if chunk is equal to the id, store this tree in a vector here
-  for(int i= 0 ; i < trees.size(); i++)
+  for(int i= 0; i < trees.size(); i++)
   {
     if(trees[i]->getChunk() == getID())
     {
       chunkTrees.push_back(trees[i]);
-      output->chunkOutput(trees[i]->getID(), trees[i]->getX(), trees[i]->getY(), trees[i]->getChunk());
+      output->chunkOutput(trees[i]->getID(), trees[i]->getSpecies(), trees[i]->getX(), trees[i]->getY(), trees[i]->getChunk(), trees[i]->getDBH(), trees[i]->getHeight(), trees[i]->getRadius(), trees[i]->getElevation());
     }
   }
   output->closeFile();
@@ -140,22 +140,85 @@ void Chunk::renderChunk()
 void Chunk::storeNeighbours()
 {
   // get id of 8 neighbouring Chunks
+  int origin = getID();
   int N, S, E, W, NE, NW, SE, SW;
-  N = getID() - 1;
-  S = getID() + 1;
-  E = getID() + 10;
-  W = getID() - 10;
-  NE = N + 10;
-  NW = N - 10;
-  SE = S + 10;
-  SW = S - 10;
+
+  if((origin - 1) % 10 == 0)
+  {
+    N = -1;
+    NE = -1;
+    NW = -1;
+  } else {
+    N = origin - 1;
+    NE = N + 10;
+    NW = N - 10;
+  }
+
+  if(origin % 10 == 0)
+  {
+    S = -1;
+    SE = -1;
+    SW = -1;
+  } else {
+    S = origin + 1;
+    SE = S + 10;
+    SW = S - 10;
+  }
+
+  E = origin + 10;
+  W = origin - 10;
+
+  if(origin == 1)
+  {
+    SW = -1;
+    W = -1;
+    N = -1;
+    NE = -1;
+    NW = -1;
+  }
+
+  if(origin == 91)
+  {
+    SE = -1;
+    E = -1;
+    N = -1;
+    NE = -1;
+    NW = -1;
+  }
+
+  if(origin == 100)
+  {
+    NE = -1;
+    E = -1;
+    S = -1;
+    SE = -1;
+    SW = -1;
+  }
+
+  if(origin == 10)
+  {
+    NW = -1;
+    W = -1;
+    S = -1;
+    SE = -1;
+    SW = -1;
+  }
 
   nChunks[0] = N;
-  nChunks[1] = N;
-  nChunks[2] = N;
-  nChunks[3] = N;
-  nChunks[4] = N;
-  nChunks[5] = N;
-  nChunks[6] = N;
-  nChunks[7] = N;
+  nChunks[1] = S;
+  nChunks[2] = E;
+  nChunks[3] = W;
+  nChunks[4] = NE;
+  nChunks[5] = NW;
+  nChunks[6] = SE;
+  nChunks[7] = SW;
+}
+
+void Chunk::outNeighbours()
+{
+  for(int i = 0; i < 8; i++)
+  {
+    cout << nChunks[i] << " ";
+  }
+  cout << endl;
 }
