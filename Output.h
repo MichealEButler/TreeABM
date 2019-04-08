@@ -16,9 +16,9 @@ public:
   ~Output();
   void openFile(string title);
   void createDirectories();
-  void runOutput(int agentID, string species, int x, int y, float DBH, float height, float radius, int chunk);
-  void blenderOutput(int agentID, string species, int x, int y,float DBH, float height, float radius);
-  void chunkOutput(int agentID, int x, int y, int chunk);
+  void runOutput(int agentID, string species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk);
+  void blenderOutput(int agentID, int species, int x, int y,float DBH, float height, float radius, float elevation);
+  void chunkOutput(int agentID, int species, int x, int y, int chunk, float DBH, float height, float radius, float elevation);
   void closeFile();
 
   void displayOutput();
