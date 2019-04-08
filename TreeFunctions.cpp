@@ -3,7 +3,7 @@
 TreeFunctions::TreeFunctions()
 {
 
-  tick = 0;
+  _mortality = false;
 }
 
 TreeFunctions::~TreeFunctions()
@@ -19,36 +19,130 @@ void TreeFunctions::setConstants(int species)
       _b3 = 1.07;
       _hmax = 40;
       _dmax = 60;
+      _agemx = 400;
       _s = 1;
       _g = 70;
       _crate = 0.1;
+      _DDmin = 830;
+      _DDmax = 4890;
+      _bio0 = 0.13;
+      _bio1 = 2.49;
       break;
     case 2 : //Pine
       _b2 = 67.26;
       _b3 = 0.34;
       _hmax = 35;
       _dmax = 100;
+      _agemx = 450;
       _s = 1;
       _g = 140;
       _crate = 0.1;
+      _DDmin = 450;
+      _DDmax = 2350;
+      _bio0 = 0.3;
+      _bio1 = 2.22;
       break;
     case 3 : //Oak
       _b2 = 38.63;
       _b3 = 0.096;
       _hmax = 40;
       _dmax = 200;
+      _agemx = 500;
       _s = 0.7;
       _g = 70;
       _crate = 0.1;
+      _DDmin = 810;
+      _DDmax = 4330;
+      _bio0 = 0.23;
+      _bio1 = 2.28;
+      break;
+    case 4 : //Alder
+      _b2 = 128.76;
+      _b3 = 1.07;
+      _hmax = 30;
+      _dmax = 50;
+      _agemx = 300;
+      _s = 1.2;
+      _g = 200;
+      _crate = 0.1;
+      _DDmin = 1100;
+      _DDmax = 4890;
+      _bio0 = 0.3;
+      _bio1 = 2.22;
+      break;
+    case 5 : //Hazel
+      _b2 = 67.26;
+      _b3 = 0.34;
+      _hmax = 12;
+      _dmax = 200;
+      _agemx = 60;
+      _s = 1;
+      _g = 200;
+      _crate = 0.3;
+      _DDmin = 410;
+      _DDmax = 4300;
+      _bio0 = 0.2;
+      _bio1 = 2.19;
+      break;
+    case 6 : //Ash
+      _b2 = 38.63;
+      _b3 = 0.096;
+      _hmax = 35;
+      _dmax = 170;
+      _agemx = 250;
+      _s = 0.4;
+      _g = 120;
+      _crate = 0.1;
+      _DDmin = 750;
+      _DDmax = 4170;
+      _bio0 = 0.13;
+      _bio1 = 2.52;
+      break;
+    case 7 : //lime
+      _b2 = 128.76;
+      _b3 = 1.07;
+      _hmax = 25;
+      _dmax = 30; //??
+      _agemx = 400;
+      _s = 0.2;
+      _g = 60;
+      _crate = 0.1;
+      _DDmin = 1100;
+      _DDmax = 4170;
+      _bio0 = 0.13; // not correct
+      _bio1 = 2.49; // not correct
+      break;
+    case 8 : //Birch
+      _b2 = 67.26;
+      _b3 = 0.34;
+      _hmax = 30;
+      _dmax = 60;
+      _agemx = 120;
+      _s = 1;
+      _g = 220;
+      _crate = 0.1;
+      _DDmin = 410;
+      _DDmax = 2300;
+      _bio0 = 0.13;
+      _bio1 = 2.43;
       break;
     default:
       cout << "No species found " << endl;
   }
 }
 
-void TreeFunctions::setAge(int age)
+void TreeFunctions::initAge(float DBH)
 {
-  _age = age;
+  //called once at the start of the simulation
+  // linear function taken from the netlogo version of the model
+  if (DBH > 0)
+  {
+    float a1 = _dmax / DBH;
+    float a2 = 1 / a1;
+    float a3 = float(_agemx) * a2;
+
+    _age = (int)a3;
+  }
 }
 
 void TreeFunctions::setSpecies(int species)
@@ -89,6 +183,16 @@ void TreeFunctions::setG(float g)
 void TreeFunctions::setCRATE(float crate)
 {
   _crate = crate;
+}
+
+void TreeFunctions::setDDmin(float DDmin)
+{
+  _DDmin = DDmin;
+}
+
+void TreeFunctions::setDDmax(float DDmax)
+{
+  _DDmax = DDmax;
 }
 
 int TreeFunctions::getAge()
@@ -136,9 +240,29 @@ float TreeFunctions::getCRATE()
   return _crate;
 }
 
-float TreeFunctions::initAge(float DBH)
+float TreeFunctions::getDDmin()
 {
+  return _DDmin;
+}
 
+float TreeFunctions::getDDmax()
+{
+  return _DDmax;
+}
+
+float TreeFunctions::getTEffect()
+{
+  return _tEffect;
+}
+
+float TreeFunctions::getBiomass()
+{
+  return _biomass;
+}
+
+bool TreeFunctions::getMortality()
+{
+  return _mortality;
 }
 
 float TreeFunctions::getHeight(float DBH)
@@ -160,7 +284,7 @@ float TreeFunctions::expHeight(float DBH)
 
 }
 
-float TreeFunctions::growth(float DBH)
+float TreeFunctions::growth(float DBH, float tEffect)
 {
   float _dbh = DBH;
 
@@ -177,10 +301,12 @@ float TreeFunctions::growth(float DBH)
   float part10 = 274 + part8 - part9;
 
   // optimal growth
-  float part11 = part7 / part10;
+  _optimalG = part7 / part10;
+  _realG = (part7 / part10) * tEffect;
 
-  float currentDBH = _dbh + part11;
+  float currentDBH = _dbh + _realG;
 
+  //cout << "DBH = " << currentDBH << endl;
   return currentDBH;
 }
 
@@ -193,6 +319,12 @@ float TreeFunctions::crownRadius(float DBH)
   return _crownradius;
 }
 
+float TreeFunctions::biomass(float DBH)
+{
+  _biomass = _bio0 * (pow(DBH, _bio1));
+  return _biomass;
+}
+
 void TreeFunctions::updateGeometry(float DBH)
 {
 
@@ -203,13 +335,27 @@ void TreeFunctions::slopeEffect()
   // needs to reference the slope of the stored square where the individual tree lies
 }
 
-void tempEffect(float tEffect)
+float TreeFunctions::tempEffect(float DEGD)
 {
   // to take in processed DEGD and species response from the envirn class
+  _tEffect = (4 * ((_DDmax - DEGD) * (DEGD - _DDmin))) / ((_DDmax - _DDmin) * (_DDmax - _DDmin));
+  //cout << "Temperature effect = " << _tEffect << endl;
+  return _tEffect;
 }
 
-void mortality()
+void TreeFunctions::mortality()
 {
   // mortality probability based on general mortality function and Environment
   // to be added here
+  if (_realG < (_optimalG / 10))
+  {
+    int death = rand() % 1000;
+
+    if (death < 368)
+    {
+      _mortality = true;
+    }
+  } else {
+    _mortality = false;
+  }
 }

@@ -21,6 +21,11 @@ float World::getSmNum()
   return _smNum;
 }
 
+float World::getElevation(int x, int y)
+{
+  return world[y][x];
+}
+
 void World::loadWorld(const char* fileName)
 {
   string line;

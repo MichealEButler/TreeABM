@@ -14,16 +14,16 @@ public:
   ~TreeFunctions();
   void setConstants(int species);
   float getHeight(float DBH);
-  float initAge(float DBH);
+  void initAge(float DBH);
   float expHeight(float DBH);
-  float growth(float DBH);
+  float growth(float DBH, float tEffect);
   float crownRadius(float DBH);
   void updateGeometry(float DBH);
-  void tempEffect(float tEffect);
+  float tempEffect(float DEGD);
+  float biomass(float DEGD);
   void slopeEffect();
   void mortality();
 
-  void setAge(int age);
   void setSpecies(int species);
   void setB2(float b2);
   void setB3(float b3);
@@ -32,6 +32,8 @@ public:
   void setS(float s);
   void setG(float g);
   void setCRATE(float crate);
+  void setDDmin(float DDmin);
+  void setDDmax(float DDmax);
 
   int getAge();
   int getSpecies();
@@ -42,6 +44,11 @@ public:
   float getS();
   float getG();
   float getCRATE();
+  float getDDmin();
+  float getDDmax();
+  float getTEffect();
+  float getBiomass();
+  bool getMortality();
 
 private:
   int _species;
@@ -49,13 +56,23 @@ private:
   float _b3;
   float _hmax;
   float _dmax;
+  float _agemx;
   float _s;
   float _g;
   float _crate;
   float _age;
+  float _DDmin;
+  float _DDmax;
+  float _tEffect;
+  float _bio0;
+  float _bio1;
+  float _biomass;
 
+  float _optimalG;
+  float _realG;
   float _currentDBH;
 
+  bool _mortality;
   int tick;
 };
 

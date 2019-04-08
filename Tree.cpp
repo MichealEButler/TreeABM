@@ -5,13 +5,22 @@ DrawFunctions * drawFunctionsTree = nullptr;
 
 Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
 {
-  _DBH = (rand() % 10) + 1;
+  // currently this runs everytime an individual is created, the initial recruits
+  // need randomizing in a different way when constructing the starting stand
+  int random = (rand() % 10) + 1;
+  _DBH = float(random);
 
   x = _x;
   y = _y;
   _species= species;
 
+  _cMortality = false;
+
   tf = new TreeFunctions();
+  tf->setConstants(_species);
+  tf->initAge(_DBH);
+  _age = tf->getAge();
+
   //cout << "Tree Created! " << endl;
   //cout << "x = " << x << endl;
   //cout << "y = " << y << endl;
@@ -24,13 +33,13 @@ Tree::~Tree()
   //cout << "Tree Destroyed! " << endl;
 }
 
-void Tree::update(float DBH, SDL_Renderer * renderer)
+void Tree::update(float DBH, float tEffect, SDL_Renderer * renderer)
 {
-  tf->setConstants(_species);
-
   _height = tf->getHeight(DBH);
-  setDBH(tf->growth(DBH));
+  setDBH(tf->growth(DBH, tEffect));
   _radius = (tf->crownRadius(DBH));
+  _biomass = (tf->biomass(DBH));
+  tf->mortality();
 
   drawFunctionsTree = new DrawFunctions();
 
@@ -52,8 +61,9 @@ void Tree::setRadius(float radius)
   _radius = radius;
 }
 
-void Tree::setAge(float age)
+void Tree::setAge(int age, int ticks)
 {
+  age = age + ticks;
   _age = age;
 }
 
@@ -70,10 +80,15 @@ void Tree::setChunk()
     {
       if(_x >= (i * 100) && _x < ((i + 1) * 100) && _y >= (j * 100) && _y < ((j + 1) * 100))
       {
-        _chunk = (10 * i) + (j);
+        _chunk = (10 * i) + (j+1);
       }
     }
   }
+}
+
+void Tree::setElevation(float worldElevation)
+{
+  _elevation = worldElevation;
 }
 
 void Tree::getNeighbors(vector<Tree*> cTrees)
@@ -84,13 +99,13 @@ void Tree::getNeighbors(vector<Tree*> cTrees)
     // radius of 5
     if((_x-5 <= cTrees[i]->getX()) && (_x+5 >= cTrees[i]->getX()) && (_y-5 <= cTrees[i]->getY()) && (_y+5 >= cTrees[i]->getY()))
     {
-      _nTrees.push_back(cTrees[i]);
+      //_nTrees.push_back(cTrees[i]);
+      _idTrees.push_back(cTrees[i]->getID());
 
       //cout << "Tree " << getID() << " neighbor = ";
       //cout << cTrees[i]->getID() << endl;
     }
   }
-
 }
 
 float Tree::getDBH()
@@ -108,7 +123,7 @@ float Tree::getRadius()
   return _radius;
 }
 
-float Tree::getAge()
+int Tree::getAge()
 {
   return _age;
 }
@@ -123,9 +138,30 @@ int Tree::getSpecies()
   return _species;
 }
 
+float Tree::getBiomass()
+{
+  return _biomass;
+}
+
 int Tree::getChunk()
 {
   return _chunk;
+}
+
+float Tree::getElevation()
+{
+  return _elevation;
+}
+
+void Tree::setTEffect(float DEGD)
+{
+  _tEffect = tf->tempEffect(DEGD);
+  //cout << "Temp Effect = " << _tEffect << endl;
+}
+
+float Tree::getTEffect()
+{
+  return _tEffect;
 }
 
 void Tree::isAlive(bool alive)
@@ -141,11 +177,16 @@ void Tree::isAlive(bool alive)
 
 bool Tree::removeTree()
 {
-  int chance = rand() % 1000;
+  // if real is less than opt to calculate
+  tf->getMortality();
+}
 
-  if (chance <= 50){
-    return true;
-  } else {
-    return false;
-  }
+void Tree::setCMortality()
+{
+  _cMortality = true;
+}
+
+bool Tree::crowdingMortality()
+{
+  return _cMortality;
 }

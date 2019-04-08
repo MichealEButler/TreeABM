@@ -13,6 +13,7 @@
 #include "Chunk.h"
 #include "Camp.h"
 #include "Environment.h"
+#include "Recruitment.h"
 
 using namespace std;
 
@@ -33,11 +34,20 @@ public:
   int elmNo;
   int pineNo;
   int oakNo;
+  int alderNo;
+  int hazelNo;
+  int ashNo;
+  int limeNo;
+  int birchNo;
   int campNo;
+
+  int species[8];
 
 private:
   Display * display;
   World * world;
+  Environment * environment;
+  Recruitment * recruitment;
   Agent ** agents;
   TreeFunctions * treeFunctions;
   vector<Tree*> trees; // = vector<Tree*>(10);
@@ -45,6 +55,9 @@ private:
   Output * output;
   Chunk ** chunks;
   Camp ** camps;
+
+  bool treeHere[1000][1000];
+
 };
 
 #endif
