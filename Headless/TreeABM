@@ -1,0 +1,1 @@
+ sudo g++ main.cpp Output.cpp Chunk.cpp World.cpp Environment.cpp Recruitment.cpp Agent.cpp Camp.cpp Simulation.cpp TreeFunctions.cpp Tree.cpp -o main -lSDL2 -std=gnu++0x
