@@ -1,0 +1,9 @@
+Ticks = 300
+Elm = 100
+Pine = 100
+Oak = 100
+Alder = 100
+Hazel = 100
+Ash = 100
+Lime = 100
+Birch = 100
