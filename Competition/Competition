@@ -1,0 +1,1 @@
+sudo g++ main.cpp Display.cpp World.cpp Tree.cpp Patch.cpp -o main -lSDL2 -std=gnu++0x
