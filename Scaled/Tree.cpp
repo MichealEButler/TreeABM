@@ -103,6 +103,44 @@ void Tree::setElevation(float worldElevation)
   _elevation = worldElevation;
 }
 
+void Tree::storePatches()
+{
+  // create a box around the crown area, and allocate patch id of each corner
+  int orig, topR, topL, botR, botL;
+
+  int castR = round(_radius);
+  cout << "Actual radius = " << _radius << endl;
+  cout << "Rounded radius = " << castR << endl;
+
+  int crD = castR + castR;
+  int sqr = castR * castR;
+
+  orig = (_x * 10) + (_y + 1);
+  topL = orig - ((castR * 10) - castR);
+  topR = orig + ((castR * 10) - castR);
+  botL = orig - ((castR * 10) + castR);
+  botR = orig + ((castR * 10) + castR);
+
+  for(int i = 1; i < (crD+1); i++)
+  {
+    for(int j = 0; j < crD; j++)
+    {
+      _npatches.push_back((topL*i)+j);
+    }
+  }
+
+  cout << "Tree at " << _x << " " << _y << endl;
+  cout << "Patches = ";
+
+  for (int i = 0; i < _npatches.size(); i++)
+  {
+    cout << _npatches[i] << " ";
+  }
+  cout << endl << endl;
+
+  _npatches.clear();
+}
+
 void Tree::getNeighbors(vector<Tree*> cTrees)
 {
   // ctrees is the reference to the chunk vector where the individual lies

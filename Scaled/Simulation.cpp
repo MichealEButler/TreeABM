@@ -518,6 +518,8 @@ void Simulation::renderSimulation()
 
     cout << trees.size() << endl;
 
+    trees[1]->storePatches();
+
     for(int i = 0; i < 10000; i++)
     {
       patches[i]->setTreeCover(trees);

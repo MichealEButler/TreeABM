@@ -34,6 +34,7 @@ public:
   void resetPatches();
   void setTCover();
   void referencePatches(int num);
+  void storePatches(); // generates an array of id's based on location and size of individuals crown
 
   void getNeighbors(vector<Tree*> cTrees);
 
@@ -66,6 +67,7 @@ private:
   TreeFunctions* tf;
   vector<Tree*> _nTrees; // neighbor trees
   vector<int> _idTrees;
+  vector<int> _npatches; // id of all patches covered by individual
 
   bool _alive;
   bool _dominance;
