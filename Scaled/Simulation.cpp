@@ -552,7 +552,7 @@ void Simulation::renderSimulation()
         treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
       }
 
-      if(trees[i]->removeTree() == true || trees[i]->crowdingMortality() == true || trees[i]->ageMortality() == true)// || trees[i]->getMyPatches() == 0) //|| trees[i]->getDominance() == false)
+      if(trees[i]->removeTree() == true || trees[i]->crowdingMortality() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getDominance() == false))
       {
         trees.erase(trees.begin() + i);
         vectorSize--;
