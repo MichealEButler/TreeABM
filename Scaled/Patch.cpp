@@ -61,6 +61,8 @@ void Patch::setTreeCover(vector<Tree*> trees)
       }
     }
   }
+
+  //cout << "Highest Tree = " << _hTree << endl;
 }
 
 int Patch::getID()
@@ -81,4 +83,9 @@ int Patch::getY()
 int Patch::getNumCover()
 {
   return _numCover;
+}
+
+int Patch::getHTree()
+{
+  return _hTree;
 }

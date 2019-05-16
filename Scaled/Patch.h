@@ -16,12 +16,13 @@ public:
   void setX(int x);
   void setY(int y);
   void setID(int id);
-  void setTreeCover(vector<Tree*> trees); 
+  void setTreeCover(vector<Tree*> trees);
 
   int getID();
   int getX();
   int getY();
   int getNumCover();
+  int getHTree();
 
 private:
   int _id;

@@ -1,4 +1,4 @@
-Ticks = 20
+Ticks = 100
 Elm = 100
 Pine = 100
 Oak = 100

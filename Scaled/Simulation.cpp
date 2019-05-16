@@ -518,12 +518,12 @@ void Simulation::renderSimulation()
 
     cout << trees.size() << endl;
 
-    trees[1]->storePatches();
+    //trees[1]->storePatches();
 
     for(int i = 0; i < 10000; i++)
     {
       patches[i]->setTreeCover(trees);
-      //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getNumCover() << endl;
+      //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
     }
 
     for(int i=0; i<vectorSize; i++)
@@ -535,9 +535,24 @@ void Simulation::renderSimulation()
       trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect(), display->renderer);
       trees[i]->setAge(1);
+    }
 
+    for(int i = 0; i < 10000; i++)
+    {
+      patches[i]->setTreeCover(trees);
+      //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
+    }
+
+    for(int i=0; i<vectorSize; i++)
+    {
       for(int j = 0; j < 10000; j++)
       {
+
+        if(trees[i]->getID() == patches[j]->getHTree())
+        {
+          trees[i]->setPDominace();
+        }
+
         if(patches[j]->getX() >= trees[i]->getX() - trees[i]->getRadius() && patches[j]->getX() < trees[i]->getX() + trees[i]->getRadius()
           && patches[j]->getY() >= trees[i]->getY() - trees[i]->getRadius() && patches[j]->getY() < trees[i]->getY() + trees[i]->getRadius())
         {
@@ -552,7 +567,7 @@ void Simulation::renderSimulation()
         treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
       }
 
-      if(trees[i]->removeTree() == true || trees[i]->crowdingMortality() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getDominance() == false))
+      if(trees[i]->removeTree() == true || trees[i]->crowdingMortality() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getPDominance() == false))
       {
         trees.erase(trees.begin() + i);
         vectorSize--;

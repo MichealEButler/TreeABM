@@ -16,6 +16,7 @@ Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
   _cMortality = false;
   _aMortality = false;
   _dominance = true;
+  _pDominace = false;
   _lEffect = 1.0;
 
   tf = new TreeFunctions();
@@ -103,6 +104,11 @@ void Tree::setElevation(float worldElevation)
   _elevation = worldElevation;
 }
 
+void Tree::setPDominace()
+{
+  _pDominace = true;
+}
+
 void Tree::storePatches()
 {
   // create a box around the crown area, and allocate patch id of each corner
@@ -112,7 +118,7 @@ void Tree::storePatches()
   cout << "Actual radius = " << _radius << endl;
   cout << "Rounded radius = " << castR << endl;
 
-  int crD = castR + castR;
+  int crD = castR + castR;int getHTree();
   int sqr = castR * castR;
 
   orig = (_x * 100) + (_y + 1);
@@ -220,6 +226,11 @@ bool Tree::getAlive()
 bool Tree::getDominance()
 {
   return _dominance;
+}
+
+bool Tree::getPDominance()
+{
+  return _pDominace;
 }
 
 int Tree::getSpecies()

@@ -29,6 +29,7 @@ public:
   void setSpecies(int species);
   void setChunk();
   void setDominance();
+  void setPDominace();
   void storeSlope(); // needs to refernce the world
   void setElevation(float worldElevation);
   void resetPatches();
@@ -44,6 +45,7 @@ public:
   int getAge();
   bool getAlive();
   bool getDominance();
+  bool getPDominance(); // sets true if tree over patch is the highest
   int getSpecies();
   float getBiomass();
   int getChunk();
@@ -84,6 +86,7 @@ private:
   float _elevation;
   bool _cMortality;
   bool _aMortality;
+  bool _pDominace;
   float _lEffect;
 
   int _tCover;
