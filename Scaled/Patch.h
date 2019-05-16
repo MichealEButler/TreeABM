@@ -16,7 +16,7 @@ public:
   void setX(int x);
   void setY(int y);
   void setID(int id);
-  void setTreeCover(vector<Tree*> trees);
+  void setTreeCover(vector<Tree*> trees); 
 
   int getID();
   int getX();
@@ -28,6 +28,7 @@ private:
   int _x;
   int _y;
   int _numCover; // number of trees covering it
+  int _hTree; // highest tree id
 };
 
 #endif

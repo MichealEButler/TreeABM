@@ -532,7 +532,7 @@ void Simulation::renderSimulation()
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
-      trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]); // not working as intended
+      trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect(), display->renderer);
       trees[i]->setAge(1);
 
@@ -631,6 +631,7 @@ void Simulation::renderSimulation()
     cout << "<---------------------------------------->" << endl << endl;
 
     display->handleEvents();
+
   }
 }
 

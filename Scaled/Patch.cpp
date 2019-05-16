@@ -28,7 +28,10 @@ void Patch::setY(int y)
 
 void Patch::setTreeCover(vector<Tree*> trees)
 {
+  int counter = 0;
   _numCover = 0;
+  float height = 0;
+  float height1 = 0;
 
   int vectSize = trees.size();
 
@@ -36,7 +39,26 @@ void Patch::setTreeCover(vector<Tree*> trees)
   {
     if(_x < trees[i]->getX()+trees[i]->getRadius() && _x >= trees[i]->getX()-trees[i]->getRadius() && _y < trees[i]->getY()+trees[i]->getRadius() && _y >= trees[i]->getY()-trees[i]->getRadius())
     {
+      counter++;
       _numCover++;
+      // also store id's of these trees in order to referecne which is the highest
+
+      if(counter == 1)
+      {
+        height = trees[i]->getHeight();
+        _hTree = trees[i]->getID();
+      }
+
+      if(counter > 1)
+      {
+        height1 = trees[i]->getHeight();
+
+        if(height < height1)
+        {
+          height = height1;
+          _hTree = trees[i]->getID();
+        }
+      }
     }
   }
 }
