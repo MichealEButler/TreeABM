@@ -338,7 +338,7 @@ void Simulation::renderSimulation()
 
     int newTrees = 0;
 
-    if(_isElm = 1)
+    if(_isElm == 1)
     {
       for(int i = 0; i < recruitment->getNumElm(); i++)
       {
@@ -360,7 +360,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isPine = 1)
+    if(_isPine == 1)
     {
       for(int i = 0; i < recruitment->getNumPine(); i++)
       {
@@ -382,7 +382,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isOak = 1)
+    if(_isOak == 1)
     {
       for(int i = 0; i < recruitment->getNumOak(); i++)
       {
@@ -404,7 +404,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isAlder = 1)
+    if(_isAlder == 1)
     {
       for(int i = 0; i < recruitment->getNumAlder(); i++)
       {
@@ -426,7 +426,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isHazel = 1)
+    if(_isHazel == 1)
     {
       for(int i = 0; i < recruitment->getNumHazel(); i++)
       {
@@ -448,7 +448,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isAsh = 1)
+    if(_isAsh == 1)
     {
       for(int i = 0; i < recruitment->getNumAsh(); i++)
       {
@@ -470,7 +470,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isLime = 1)
+    if(_isLime == 1)
     {
       for(int i = 0; i < recruitment->getNumLime(); i++)
       {
@@ -492,7 +492,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isBirch = 1)
+    if(_isBirch == 1)
     {
       for(int i = 0; i < recruitment->getNumBirch(); i++)
       {
