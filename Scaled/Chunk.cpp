@@ -113,7 +113,7 @@ void Chunk::storeTrees(vector <Tree*> trees, int tick)
     if(trees[i]->getChunk() == getID())
     {
       chunkTrees.push_back(trees[i]);
-      output->chunkOutput(trees[i]->getID(), trees[i]->getSpecies(), trees[i]->getX(), trees[i]->getY(), trees[i]->getChunk(), trees[i]->getDBH(), trees[i]->getHeight(), trees[i]->getRadius(), trees[i]->getElevation());
+      //output->chunkOutput(trees[i]->getID(), trees[i]->getSpecies(), trees[i]->getX(), trees[i]->getY(), trees[i]->getChunk(), trees[i]->getDBH(), trees[i]->getHeight(), trees[i]->getRadius(), trees[i]->getElevation());
     }
   }
   output->closeFile();

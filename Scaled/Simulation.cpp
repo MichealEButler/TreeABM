@@ -520,12 +520,6 @@ void Simulation::renderSimulation()
 
     //trees[1]->storePatches();
 
-    for(int i = 0; i < 10000; i++)
-    {
-      patches[i]->setTreeCover(trees);
-      //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
-    }
-
     for(int i=0; i<vectorSize; i++)
     {
       //cout << "DEGD " << environment->_DEGD[tick-1] << endl;
@@ -581,48 +575,14 @@ void Simulation::renderSimulation()
     {
       //camps[i]->drawCamp(Display::renderer);
     }
-
+/*
     for(int i=0; i<vectorSize; i++)
     {
-      string species;
-
-      if(trees[i]->getSpecies() == 1)
-      {
-        species = "Elm";
-      }
-      else if(trees[i]->getSpecies() == 2)
-      {
-        species = "Pine";
-      }
-      else if (trees[i]->getSpecies() == 3)
-      {
-        species = "Oak";
-      }
-      else if(trees[i]->getSpecies() == 4)
-      {
-        species = "Alder";
-      }
-      else if(trees[i]->getSpecies() == 5)
-      {
-        species = "Hazel";
-      }
-      else if (trees[i]->getSpecies() == 6)
-      {
-        species = "Ash";
-      }
-      else if(trees[i]->getSpecies() == 7)
-      {
-        species = "Lime";
-      }
-      else if (trees[i]->getSpecies() == 8)
-      {
-        species = "Birch";
-      }
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
-      output->runOutput(trees[i]->getID(),species,trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
+      output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
         trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
-
     }
+*/
     //world->renderWorld();
     int recruit = agentNo+((newAgents*ctick)-agentNo); // for id's
 

@@ -47,7 +47,7 @@ void Output::createDirectories()
   }
 }
 
-void Output::runOutput(int agentID, string species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk, bool dominant, float elevation)
+void Output::runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk, bool dominant, float elevation)
 {
   //cout << "agentID = " << agentID << endl;
   file << agentID << ", ";
