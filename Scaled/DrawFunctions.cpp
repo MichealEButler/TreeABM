@@ -42,28 +42,28 @@ void DrawFunctions::fillCircle(SDL_Renderer * renderer, int x, int y, int radius
 
   switch(_color){
     case 1:
-      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+      SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // red
       break;
     case 2:
-      SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+      SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255); // green
       break;
     case 3:
-      SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+      SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255); // blue
       break;
     case 4:
-      SDL_SetRenderDrawColor(renderer, 255, 178, 102, 255);
+      SDL_SetRenderDrawColor(renderer, 255, 178, 102, 255); // light orange
       break;
     case 5:
-      SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+      SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); // yellow
       break;
     case 6:
-      SDL_SetRenderDrawColor(renderer, 102, 51, 0, 255);
+      SDL_SetRenderDrawColor(renderer, 102, 51, 0, 255); // brown
       break;
     case 7:
-      SDL_SetRenderDrawColor(renderer, 51, 255, 51, 255);
+      SDL_SetRenderDrawColor(renderer, 51, 255, 51, 255); // lime
       break;
     case 8:
-      SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255);
+      SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // grey
       break;
     default:
       SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
