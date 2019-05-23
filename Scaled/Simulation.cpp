@@ -3,6 +3,15 @@
 
 Simulation::Simulation()
 {
+  _isElm = 0;
+  _isPine = 0;
+  _isOak = 0;
+  _isAlder = 0;
+  _isHazel = 0;
+  _isAsh = 0;
+  _isLime = 0;
+  _isBirch = 0;
+
   for (int i = 0; i < 100; i++)
   {
     for (int j = 0; j < 100; j++)
@@ -35,8 +44,6 @@ Simulation::Simulation()
       species[i] = 1;
       _isElm = 1;
       cout << "Number of Elm = " << _elmNo << endl;
-    } else {
-      _isElm = 0;
     }
 
     if(_pineNo > 0 && i == 1)
@@ -44,8 +51,6 @@ Simulation::Simulation()
       species[i] = 2;
       _isPine = 1;
       cout << "Number of Pine = " << _pineNo << endl;
-    } else {
-      _isPine = 0;
     }
 
     if(_oakNo > 0 && i == 2)
@@ -53,8 +58,6 @@ Simulation::Simulation()
       species[i] = 3;
       _isOak = 1;
       cout << "Number of Oak = " << _oakNo << endl;
-    } else {
-      _isOak = 0;
     }
 
     if(_alderNo > 0 && i == 3)
@@ -62,8 +65,6 @@ Simulation::Simulation()
       species[i] = 4;
       _isAlder = 1;
       cout << "Number of Alder = " << _alderNo << endl;
-    } else {
-      _isAlder = 0;
     }
 
     if(_hazelNo > 0 && i == 4)
@@ -71,8 +72,6 @@ Simulation::Simulation()
       species[i] = 5;
       _isHazel = 1;
       cout << "Number of Hazel = " << _hazelNo << endl;
-    } else {
-      _isHazel = 0;
     }
 
     if(_ashNo > 0 && i == 5)
@@ -80,8 +79,6 @@ Simulation::Simulation()
       species[i] = 6;
       _isAsh = 1;
       cout << "Number of Ash = " << _ashNo << endl;
-    } else {
-      _isAsh = 0;
     }
 
     if(_limeNo > 0 && i == 6)
@@ -89,8 +86,6 @@ Simulation::Simulation()
       species[i] = 7;
       _isLime = 1;
       cout << "Number of Lime = " << _limeNo << endl;
-    } else {
-      _isLime = 0;
     }
 
     if(_birchNo > 0 && i == 7)
@@ -98,10 +93,17 @@ Simulation::Simulation()
       species[i] = 8;
       _isBirch = 1;
       cout << "Number of Birch = " << _birchNo << endl;
-    } else {
-      _isBirch = 0;
     }
   }
+
+  cout << endl << "Is Elm = " << _isElm << endl;
+  cout << "Is Pine = " << _isPine << endl;
+  cout << "Is Oak = " << _isOak << endl;
+  cout << "Is Alder = " << _isAlder << endl;
+  cout << "Is Hazel = " << _isHazel << endl;
+  cout << "Is Ash = " << _isAsh << endl;
+  cout << "Is Lime = " << _isLime << endl;
+  cout << "Is Birch = " << _isBirch << endl << endl;
 
   cout << endl << "Simulation class agents created " << endl;
 
@@ -338,7 +340,7 @@ void Simulation::renderSimulation()
 
     int newTrees = 0;
 
-    if(_isElm == 1)
+    if(_isElm)
     {
       for(int i = 0; i < recruitment->getNumElm(); i++)
       {
@@ -360,7 +362,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isPine == 1)
+    if(_isPine)
     {
       for(int i = 0; i < recruitment->getNumPine(); i++)
       {
@@ -382,7 +384,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isOak == 1)
+    if(_isOak)
     {
       for(int i = 0; i < recruitment->getNumOak(); i++)
       {
@@ -404,7 +406,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isAlder == 1)
+    if(_isAlder)
     {
       for(int i = 0; i < recruitment->getNumAlder(); i++)
       {
@@ -426,7 +428,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isHazel == 1)
+    if(_isHazel)
     {
       for(int i = 0; i < recruitment->getNumHazel(); i++)
       {
@@ -448,7 +450,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isAsh == 1)
+    if(_isAsh)
     {
       for(int i = 0; i < recruitment->getNumAsh(); i++)
       {
@@ -470,7 +472,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isLime == 1)
+    if(_isLime)
     {
       for(int i = 0; i < recruitment->getNumLime(); i++)
       {
@@ -492,7 +494,7 @@ void Simulation::renderSimulation()
       }
     }
 
-    if(_isBirch == 1)
+    if(_isBirch)
     {
       for(int i = 0; i < recruitment->getNumBirch(); i++)
       {
