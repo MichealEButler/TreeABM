@@ -3,6 +3,23 @@
 
 Simulation::Simulation()
 {
+  char set;
+
+  cout << "Simulation is initialising! " << endl;
+  cout << "Would you like to enable graphics? y/n: ";
+  cin >> set;
+
+  if(set == 'y')
+  {
+    cout << endl << "Graphics have been enabled! " << endl;
+    _SDL = true;
+  }
+  if(set == 'n')
+  {
+    cout << endl << "Graphics have been disabled! " << endl;
+    _SDL = false;
+  }
+
   _isElm = 0;
   _isPine = 0;
   _isOak = 0;
@@ -277,9 +294,13 @@ void Simulation::initSimulation()
   }
 
   recruitment = new Recruitment(100, species);
-  display = new Display();
 
-  display->initDisplay("Test Display",500,0,800,800,true);
+  if(_SDL)
+  {
+    display = new Display();
+
+    display->initDisplay("Test Display",500,0,800,800,true);
+  }
 
   cout << endl << "Simulation class agents created " << endl;
 
@@ -306,7 +327,7 @@ void Simulation::renderSimulation()
   const string part3 = "Output/patches"; // you must create a folder called Output in src dirctory
   const string part4 = ".txt";
 
-  while (display->running() && ctick <= (_ticks-1))
+  while (ctick <= (_ticks-1)) // change to a while running function that takes in the graphics on/off parameter
   {
     ctick++;
     resetDEGD++;
@@ -322,8 +343,12 @@ void Simulation::renderSimulation()
 
     output->openFile(all);
     output->outPatches(treeHere, all2);
-    display->clearRenderer();
-    display->renderDisplay();
+
+    if(_SDL)
+    {
+      display->clearRenderer();
+      display->renderDisplay();
+    }
 
     recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 200);
 
@@ -529,7 +554,13 @@ void Simulation::renderSimulation()
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
       trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
-      trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect(), display->renderer);
+      trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
+
+      if(_SDL)
+      {
+        trees[i]->draw(display->renderer);
+      }
+
       trees[i]->setAge(1);
     }
 
@@ -594,8 +625,11 @@ void Simulation::renderSimulation()
     cout << "Trees = " << vectorSize << endl;
     cout << "Next ID = " << startID << endl;
 
-    display->updateDisplay();
-    display->renderPresent();
+    if(_SDL)
+    {
+      display->updateDisplay();
+      display->renderPresent();
+    }
 
     cout << "Tick = " << ctick << endl;
     output->closeFile();
@@ -607,14 +641,19 @@ void Simulation::renderSimulation()
 
     cout << "<---------------------------------------->" << endl << endl;
 
-    display->handleEvents();
-
+    if(_SDL)
+    {
+      display->handleEvents();
+    }
   }
 }
 
 void Simulation::cleanSimulation()
 {
-  display->cleanDisplay();
+  if(_SDL)
+  {
+    display->cleanDisplay();
+  }
 
   for(int i = 0; i < 1; i++)
   {
@@ -643,7 +682,11 @@ void Simulation::cleanSimulation()
     delete patches[i];
   }
 
-  delete display;
+  if(_SDL)
+  {
+    delete display;
+  }
+
   delete world;
   delete treeFunctions;
   delete output;

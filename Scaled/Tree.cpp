@@ -25,6 +25,8 @@ Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
   _age = tf->getAge();
   _alive = true;
   setChunk();
+
+  drawFunctionsTree = new DrawFunctions();
 }
 
 Tree::~Tree()
@@ -38,15 +40,17 @@ void Tree::randomDBH()
   _DBH = (rand() % maxDiameter) + 1;
 }
 
-void Tree::update(float DBH, float tEffect, float lClimate, SDL_Renderer * renderer)
+void Tree::update(float DBH, float tEffect, float lClimate)
 {
   _height = tf->getHeight(DBH);
   setDBH(tf->growth(DBH, tEffect, lClimate));
   _radius = (tf->crownRadius(DBH));
   _biomass = (tf->biomass(DBH));
   tf->mortality();
+}
 
-  drawFunctionsTree = new DrawFunctions();
+void Tree::draw(SDL_Renderer * renderer)
+{
   drawFunctionsTree->fillCircle(renderer,((_x*8)+4),((_y*8)+4),((int)round(_radius)*8),_species);
 }
 

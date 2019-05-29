@@ -74,6 +74,8 @@ private:
   int treeHere[100][100];
   int numPatchTrees[100][100];
 
+  bool _SDL;
+
 };
 
 #endif

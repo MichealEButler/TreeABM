@@ -57,7 +57,8 @@ public:
   void lightEffect();
   float getTEffect();
 
-  void update(float DBH, float tEffect, float lClimate, SDL_Renderer * renderer);
+  void update(float DBH, float tEffect, float lClimate);
+  void draw(SDL_Renderer * renderer);
 
   void isAlive(bool alive);
   void setCMortality();
