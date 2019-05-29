@@ -1,4 +1,4 @@
-Ticks = 2
+Ticks = 30
 Elm = 14.6
 Pine = 25.8
 Oak = 30.7
@@ -7,3 +7,4 @@ Hazel = 10.8
 Ash = 2.3
 Lime = 5
 Birch = 5
+Change = 0

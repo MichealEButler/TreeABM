@@ -10,14 +10,13 @@ Environment::~Environment()
 
 }
 
-void Environment::loadDEGD(string filename)
+void Environment::loadDEGD(string filename, float change)
 {
 
   int a;
   float b;
-  float change = 0;
 
-  //cout << "Change DEGD by a value of? " << endl;
+  cout << "Change DEGD = " << change << endl;
   //cin >> change;
 
   ifstream file;

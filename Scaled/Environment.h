@@ -14,7 +14,7 @@ class Environment
 public:
   Environment();
   ~Environment();
-  void loadDEGD(string filename);
+  void loadDEGD(string filename, float change);
   void closeFile(string filename);
   void readDEGD(string filename);
 

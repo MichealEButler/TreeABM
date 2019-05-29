@@ -27,6 +27,7 @@ public:
   float getAshCount();
   float getLimeCount();
   float getBirchCount();
+  float getChange();
 
 private:
   ifstream file;
@@ -39,6 +40,7 @@ private:
   float _ashNo;
   float _limeNo;
   float _birchNo;
+  float _change;
 };
 
 #endif

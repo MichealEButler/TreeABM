@@ -28,7 +28,7 @@ public:
   void updateSimulation();
   void renderSimulation();
   void cleanSimulation();
-  void setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo);
+  void setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float change);
   void setupPatches();
 
   int agentNo;
@@ -70,6 +70,7 @@ private:
   int _isAsh;
   int _isLime;
   int _isBirch;
+  float _change;
 
   int treeHere[100][100];
   int numPatchTrees[100][100];

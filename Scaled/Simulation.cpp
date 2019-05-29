@@ -49,7 +49,7 @@ Simulation::Simulation()
   input->closeFile();
 
   setConsts(input->getTicks(), input->getElmCount(), input->getPineCount(), input->getOakCount(), input->getAlderCount(),
-            input->getHazelCount(), input->getAshCount(), input->getLimeCount(), input->getBirchCount());
+            input->getHazelCount(), input->getAshCount(), input->getLimeCount(), input->getBirchCount(), input->getChange());
 
   agentNo = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo;
 
@@ -367,9 +367,10 @@ void Simulation::initSimulation()
     display->initDisplay("Test Display",500,0,800,800,true);
   }
 
+  cout << input->getChange();
   cout << endl << "Simulation class agents created " << endl;
 
-  environment->loadDEGD("Input/DEGD.txt");
+  environment->loadDEGD("Input/DEGD.txt", _change);
   //create world
 }
 
@@ -757,7 +758,7 @@ void Simulation::cleanSimulation()
   delete output;
 }
 
-void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo)
+void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float change)
 {
   _ticks = ticks;
 
@@ -816,6 +817,8 @@ void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, fl
   } else {
     _birchNo = 0;
   }
+
+  _change = change;
 }
 
 void Simulation::setupPatches()

@@ -18,7 +18,7 @@ void Input::loadFile(string filename)
 
   file.open(filename);
 
-  for(int i = 0; i < 9; i++)
+  for(int i = 0; i < 10; i++)
   {
     file >> one >> two >> value;
     switch(i)
@@ -49,6 +49,9 @@ void Input::loadFile(string filename)
         break;
       case 8:
         _birchNo = value;
+        break;
+      case 9:
+        _change = value;
         break;
       default:
         break;
@@ -109,4 +112,9 @@ float Input::getLimeCount()
 float Input::getBirchCount()
 {
   return _birchNo;
+}
+
+float Input::getChange()
+{
+  return _change;
 }
