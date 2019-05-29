@@ -140,6 +140,7 @@ Simulation::~Simulation()
 
 void Simulation::initSimulation()
 {
+  int accNo = 0; // count of how many have been recruited so far, for id
   int start = 0;
   int end = 0;
   world = new World();
@@ -157,9 +158,9 @@ void Simulation::initSimulation()
 //  vector<Tree*> trees(agentNo/agentNoSplit);
   trees = vector<Tree*>(agentNo/agentNoSplit);
 
-  for(int i=0; i<agentNo; i++)
+  if(_isElm)
   {
-    if (i<_elmNo)
+    for(int i=0; i<_elmNo; i++)
     {
       trees[i] = new Tree(i,0,0,1);
       trees[i]->randomDBH();
@@ -173,111 +174,169 @@ void Simulation::initSimulation()
       {
         treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=_elmNo&&i<_elmNo+_pineNo)
+  }
+
+  if(_isPine)
+  {
+    for(int i=0; i<_pineNo; i++)
     {
-      trees[i] = new Tree(i,0,0,2);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,2);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=_elmNo+_pineNo && i<(_elmNo+_pineNo+_oakNo))
+  }
+
+  if(_isOak)
+  {
+    for(int i=0; i<_oakNo; i++)
     {
-      trees[i] = new Tree(i,0,0,3);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,3);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=(_elmNo+_pineNo+_oakNo) && i<(_elmNo+_pineNo+_oakNo+_alderNo))
+  }
+
+  if(_isAlder)
+  {
+    for(int i=0; i<_alderNo; i++)
     {
-      trees[i] = new Tree(i,0,0,4);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,4);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=(_elmNo+_pineNo+_oakNo+_alderNo) && i<(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo))
+  }
+
+  if(_isHazel)
+  {
+    for(int i=0; i<_hazelNo; i++)
     {
-      trees[i] = new Tree(i,0,0,5);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,5);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo) && i<(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo+_ashNo))
+  }
+
+  if(_isAsh)
+  {
+    for(int i=0; i<_ashNo; i++)
     {
-      trees[i] = new Tree(i,0,0,6);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,6);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo+_ashNo) && i<(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo+_ashNo+_limeNo))
+  }
+
+  if(_isLime)
+  {
+    for(int i=0; i<_limeNo; i++)
     {
-      trees[i] = new Tree(i,0,0,7);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,7);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
-    else if (i>=(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo+_ashNo+_limeNo) && i<(_elmNo+_pineNo+_oakNo+_alderNo+_hazelNo+_ashNo+_limeNo+_birchNo))
+  }
+
+  if(_isBirch)
+  {
+    for(int i=0; i<_birchNo; i++)
     {
-      trees[i] = new Tree(i,0,0,8);
-      trees[i]->randomDBH();
-      trees[i]->setupAge();
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,8);
+      trees[j]->randomDBH();
+      trees[j]->setupAge();
       //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
-        trees[i]->setCMortality();
+        trees[j]->setCMortality();
       }
       else
       {
-        treeHere[trees[i]->getX()][trees[i]->getY()] = 1;
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
       }
+
+      accNo++;
     }
   }
 
