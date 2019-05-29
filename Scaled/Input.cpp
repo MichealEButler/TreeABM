@@ -14,7 +14,7 @@ void Input::loadFile(string filename)
 {
   string one;
   string two;
-  int value;
+  float value;
 
   file.open(filename);
 
@@ -24,7 +24,7 @@ void Input::loadFile(string filename)
     switch(i)
     {
       case 0:
-        _ticks = value;
+        _ticks = (int)value;
         break;
       case 1:
         _elmNo = value;
@@ -71,42 +71,42 @@ int Input::getTicks()
   return _ticks;
 }
 
-int Input::getElmCount()
+float Input::getElmCount()
 {
   return _elmNo;
 }
 
-int Input::getPineCount()
+float Input::getPineCount()
 {
   return _pineNo;
 }
 
-int Input::getOakCount()
+float Input::getOakCount()
 {
   return _oakNo;
 }
 
-int Input::getAlderCount()
+float Input::getAlderCount()
 {
   return _alderNo;
 }
 
-int Input::getHazelCount()
+float Input::getHazelCount()
 {
   return _hazelNo;
 }
 
-int Input::getAshCount()
+float Input::getAshCount()
 {
   return _ashNo;
 }
 
-int Input::getLimeCount()
+float Input::getLimeCount()
 {
   return _limeNo;
 }
 
-int Input::getBirchCount()
+float Input::getBirchCount()
 {
   return _birchNo;
 }

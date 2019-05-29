@@ -6,6 +6,11 @@ Simulation::Simulation()
   char set;
 
   cout << "Simulation is initialising! " << endl;
+  cout << "Enter overall tree population: ";
+  cin >> agentNo;
+  cout << endl;
+  cout << "Starting population = " << agentNo << endl;
+
   cout << "Would you like to enable graphics? y/n: ";
   cin >> set;
 
@@ -47,6 +52,7 @@ Simulation::Simulation()
             input->getHazelCount(), input->getAshCount(), input->getLimeCount(), input->getBirchCount());
 
   agentNo = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo;
+
   cout << "Number of Trees = " << agentNo << endl;
 
   campNo = 1;
@@ -751,17 +757,65 @@ void Simulation::cleanSimulation()
   delete output;
 }
 
-void Simulation::setConsts(int ticks, int elmNo, int pineNo, int oakNo, int alderNo, int hazelNo, int ashNo, int limeNo, int birchNo)
+void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo)
 {
   _ticks = ticks;
-  _elmNo = elmNo;
-  _pineNo = pineNo;
-  _oakNo = oakNo;
-  _alderNo = alderNo;
-  _hazelNo = hazelNo;
-  _ashNo = ashNo;
-  _limeNo = limeNo;
-  _birchNo = birchNo;
+
+  if(elmNo > 0)
+  {
+    _elmNo = (int)((elmNo * agentNo) / 100);
+  } else {
+    _elmNo = 0;
+  }
+
+  if(pineNo > 0)
+  {
+    _pineNo = (int)((pineNo * agentNo) / 100);
+  } else {
+    _pineNo = 0;
+  }
+
+  if(oakNo > 0)
+  {
+    _oakNo = (int)((oakNo * agentNo) / 100);
+  } else {
+    _oakNo = 0;
+  }
+
+  if(alderNo > 0)
+  {
+    _alderNo = (int)((alderNo * agentNo) / 100);
+  } else {
+    _alderNo = 0;
+  }
+
+  if(hazelNo > 0)
+  {
+    _hazelNo = (int)((hazelNo * agentNo) / 100);
+  } else {
+    _hazelNo = 0;
+  }
+
+  if(ashNo > 0)
+  {
+    _ashNo = (int)((ashNo * agentNo) / 100);
+  } else {
+    _ashNo = 0;
+  }
+
+  if(limeNo > 0)
+  {
+    _limeNo = (int)((limeNo * agentNo) / 100);
+  } else {
+    _limeNo = 0;
+  }
+
+  if(birchNo > 0)
+  {
+    _birchNo = (int)((birchNo * agentNo) / 100);
+  } else {
+    _birchNo = 0;
+  }
 }
 
 void Simulation::setupPatches()

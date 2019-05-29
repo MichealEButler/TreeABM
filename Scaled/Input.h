@@ -19,26 +19,26 @@ public:
   void closeFile();
 
   int getTicks();
-  int getElmCount();
-  int getPineCount();
-  int getOakCount();
-  int getAlderCount();
-  int getHazelCount();
-  int getAshCount();
-  int getLimeCount();
-  int getBirchCount();
+  float getElmCount();
+  float getPineCount();
+  float getOakCount();
+  float getAlderCount();
+  float getHazelCount();
+  float getAshCount();
+  float getLimeCount();
+  float getBirchCount();
 
 private:
   ifstream file;
   int _ticks;
-  int _elmNo;
-  int _pineNo;
-  int _oakNo;
-  int _alderNo;
-  int _hazelNo;
-  int _ashNo;
-  int _limeNo;
-  int _birchNo;
+  float _elmNo;
+  float _pineNo;
+  float _oakNo;
+  float _alderNo;
+  float _hazelNo;
+  float _ashNo;
+  float _limeNo;
+  float _birchNo;
 };
 
 #endif

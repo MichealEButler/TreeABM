@@ -28,7 +28,7 @@ public:
   void updateSimulation();
   void renderSimulation();
   void cleanSimulation();
-  void setConsts(int ticks, int elmNo, int pineNo, int oakNo, int alderNo, int hazelNo, int ashNo, int limeNo, int birchNo);
+  void setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo);
   void setupPatches();
 
   int agentNo;
