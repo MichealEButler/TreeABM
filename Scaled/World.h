@@ -20,6 +20,8 @@ public:
   void setColor(int color);
 
   int getColor();
+  float getLNum();
+  float getSmNum();
   float world[100][100];
   // function to update pixels in window to reference output from humpol (ui console)
   // function to update pixels to create a height map (ui console)
@@ -28,6 +30,8 @@ private:
   DrawFunctions* df;
 
   int _color;
+  float _lNum; // largest number within the world import array (i.e elevation, slope etc)
+  float _smNum; // smallest number
 };
 
 #endif

@@ -18,7 +18,6 @@ protected:
   Agent **_agents;
   int _noOfAgents;
 
-
   int _size;
   int _x;
   int _y;

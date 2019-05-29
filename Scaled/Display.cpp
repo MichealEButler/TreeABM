@@ -14,7 +14,7 @@ Display::Display()
 
     //world->loadWorld("Input/testDEM.txt");
     //world->loadWorld("Input/slope_7204.txt");
-    world->loadWorld("Input/nz7204_DTM_1M.txt");
+    world->loadWorld("Input/slope.txt");
 }
 
 Display::~Display()

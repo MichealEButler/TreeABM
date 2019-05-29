@@ -126,7 +126,7 @@ void Simulation::initSimulation()
   int start = 0;
   int end = 0;
   world = new World();
-  world->loadWorld("Input/nz7204_DTM_1M.txt");
+  world->loadWorld("Input/slope.txt");
 
   output = new Output();
   environment = new Environment();
@@ -585,7 +585,7 @@ void Simulation::renderSimulation()
         trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
 */
-    //world->renderWorld();
+
     int recruit = agentNo+((newAgents*ctick)-agentNo); // for id's
 
     // call function from recruitment for size of newAgents array
