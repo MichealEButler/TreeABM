@@ -30,6 +30,7 @@ public:
   void cleanSimulation();
   void setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float change);
   void setupPatches();
+  void outputCounts();
 
   int agentNo;
   int agentNoSplit;

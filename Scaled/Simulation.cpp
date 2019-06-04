@@ -716,6 +716,8 @@ void Simulation::renderSimulation()
 
 void Simulation::cleanSimulation()
 {
+  outputCounts();
+
   if(_SDL)
   {
     display->cleanDisplay();
@@ -836,4 +838,61 @@ void Simulation::setupPatches()
       patches[patchNo]->setY(j);
     }
   }
+}
+
+void Simulation::outputCounts()
+{
+  int elmSum = 0;
+  int pineSum = 0;
+  int oakSum = 0;
+  int alderSum = 0;
+  int hazelSum = 0;
+  int ashSum = 0;
+  int limeSum = 0;
+  int birchSum = 0;
+
+  for(int i = 0; i < trees.size(); i++)
+  {
+    if(trees[i]->getSpecies() == 1)
+    {
+      elmSum++;
+    }
+    if(trees[i]->getSpecies() == 2)
+    {
+      pineSum++;
+    }
+    if(trees[i]->getSpecies() == 3)
+    {
+      oakSum++;
+    }
+    if(trees[i]->getSpecies() == 4)
+    {
+      alderSum++;
+    }
+    if(trees[i]->getSpecies() == 5)
+    {
+      hazelSum++;
+    }
+    if(trees[i]->getSpecies() == 6)
+    {
+      ashSum++;
+    }
+    if(trees[i]->getSpecies() == 7)
+    {
+      limeSum++;
+    }
+    if(trees[i]->getSpecies() == 8)
+    {
+      birchSum++;
+    }
+  }
+
+  cout << "Elm population = " << elmSum << endl;
+  cout << "Pine population = " << pineSum << endl;
+  cout << "Oak population = " << oakSum << endl;
+  cout << "Alder population = " << alderSum << endl;
+  cout << "Hazel population = " << hazelSum << endl;
+  cout << "Ash population = " << ashSum << endl;
+  cout << "Lime population = " << limeSum << endl;
+  cout << "Birch population = " << birchSum << endl;
 }
