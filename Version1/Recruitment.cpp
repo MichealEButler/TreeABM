@@ -33,6 +33,7 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
 {
   //first identify how many species are present
   int numSpecies = 8; //counts number of species for determining probabilty
+  cout << "Identified species" << endl;
 
   for(int i = 0; i < 8; i++)
   {
@@ -47,6 +48,7 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         {
           _elmProb = 0.01;
         }
+        cout << "Made it 1" << endl;
         break;
       case 2 :
         _pineProb = (4 * ((2350 - DEGD) * (DEGD - 450))) / ((2350 - 450) * (2350 - 450));
@@ -54,6 +56,7 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         {
           _pineProb = 0.01;
         }
+        cout << "Made it 2" << endl;
         break;
       case 3 :
         _oakProb = (4 * ((4330 - DEGD) * (DEGD - 810))) / ((4330 - 810) * (4330 - 810));
@@ -61,6 +64,7 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         {
           _oakProb = 0.01;
         }
+        cout << "Made it 3" << endl;
         break;
       case 4 :
         _alderProb = (4 * ((4890 - DEGD) * (DEGD - 1100))) / ((4890 - 1100) * (4890 - 1100));

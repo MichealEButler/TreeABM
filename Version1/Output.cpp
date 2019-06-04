@@ -20,7 +20,7 @@ void Output::createDirectories()
   // creates chunk directories
   for (int i = 0; i < 100; i++)
   {
-    const char* a = "/home/micheal/Documents/CppModel/CppModel 3.0/Output/Chunks/Chunk";
+    const char* a = "/home/micheal/MichealEButler/TreeABM/Output/Chunks/Chunk";
     string stringB = to_string(i+1);
     const char* b = stringB.c_str();
     char buffer[256];
