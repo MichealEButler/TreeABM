@@ -188,11 +188,7 @@ void Simulation::renderSimulation()
     display->clearRenderer();
     display->renderDisplay();
 
-    cout << "pre recruitment reached" << endl;
-
     recruitment->speciesProbability(environment->_DEGD[tick-1], 2000);
-
-    cout << "post recruitment reached" << endl;
 
     // stores vector of trees within chunks
     for(int i = 0; i < 100; i++)
@@ -200,8 +196,6 @@ void Simulation::renderSimulation()
       chunks[i]->storeTrees(trees, tick);
       //cout << "Trees stored in chunks! " << chunks[i]->getID() << endl;
     }
-
-    cout << "Got here 1 " << endl;
 
     for(int i=0; i<trees.size(); i++)
     {

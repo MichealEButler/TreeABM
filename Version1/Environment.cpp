@@ -21,15 +21,11 @@ void Environment::loadDEGD(string filename)
 
   ifstream file;
   file.open(filename);
-  cout << "Soething loaded" << endl;
-
 
   while(file >> a >> b)
   {
     _year.push_back(a);
     _DEGD.push_back(b+change);
-    cout << "DEGD loaded " << endl;
-
   }
 
   for(int i = 0;i < _year.size(); i++)
