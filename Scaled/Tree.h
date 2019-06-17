@@ -32,6 +32,7 @@ public:
   void setPDominace();
   void storeSlope(); // needs to refernce the world
   void setElevation(float worldElevation);
+  void setSlope(float worldSlope);
   void resetPatches();
   void setTCover();
   void referencePatches(int num);
@@ -50,6 +51,7 @@ public:
   float getBiomass();
   int getChunk();
   float getElevation();
+  float getSlope();
   float getLEffect();
   int getMyPatches();
 
@@ -82,9 +84,9 @@ private:
   int _age;
   int _species;
   int _chunk;
-  float _slope;
   float _tEffect;
   float _elevation;
+  float _slope;
   bool _cMortality;
   bool _aMortality;
   bool _pDominace;

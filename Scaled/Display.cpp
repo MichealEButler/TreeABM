@@ -14,7 +14,8 @@ Display::Display()
 
     //world->loadWorld("Input/testDEM.txt");
     //world->loadWorld("Input/slope_7204.txt");
-    world->loadWorld("Input/slope.txt");
+    world->loadHeight("Input/height.txt");
+    world->loadSlope("Input/slope.txt");
 }
 
 Display::~Display()
@@ -104,7 +105,8 @@ void Display::renderDisplay()
     }
   }
 */
-  world->renderWorld(renderer);
+  world->renderHeight(renderer);
+  //world->renderSlope(renderer);
 }
 
 void Display::renderPresent()

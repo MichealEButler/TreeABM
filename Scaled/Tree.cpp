@@ -108,6 +108,11 @@ void Tree::setElevation(float worldElevation)
   _elevation = worldElevation;
 }
 
+void Tree::setSlope(float worldSlope)
+{
+  _slope = worldSlope;
+}
+
 void Tree::setPDominace()
 {
   _pDominace = true;
@@ -255,6 +260,11 @@ int Tree::getChunk()
 float Tree::getElevation()
 {
   return _elevation;
+}
+
+float Tree::getSlope()
+{
+  return _slope;
 }
 
 int Tree::getMyPatches()
