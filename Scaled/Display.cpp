@@ -16,6 +16,7 @@ Display::Display()
     //world->loadWorld("Input/slope_7204.txt");
     world->loadHeight("Input/height.txt");
     world->loadSlope("Input/slope.txt");
+    world->loadSoil("Input/soil.txt");
 }
 
 Display::~Display()
@@ -94,7 +95,7 @@ void Display::clearRenderer()
   SDL_RenderClear(renderer);
 }
 
-void Display::renderDisplay()
+void Display::renderDisplay(int state)
 {
 
   //SDL_RenderClear(renderer); // this was removed as display was recoloring everytime agents were being drawn
@@ -105,8 +106,19 @@ void Display::renderDisplay()
     }
   }
 */
-  world->renderHeight(renderer);
-  //world->renderSlope(renderer);
+switch(state) {
+  case 1:
+    world->renderHeight(renderer);
+    break;
+  case 2:
+    world->renderSlope(renderer);
+    break;
+  case 3:
+    world->renderSoil(renderer);
+    break;
+  default:
+    cout << "Failed to load world file! " << endl;
+  }
 }
 
 void Display::renderPresent()

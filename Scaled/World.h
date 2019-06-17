@@ -16,10 +16,13 @@ public:
   ~World();
   void loadHeight(const char* fileName);
   void loadSlope(const char* fileName);
+  void loadSoil(const char* fileName);
   void renderHeight(SDL_Renderer* renderer);
   void renderSlope(SDL_Renderer* renderer);
+  void renderSoil(SDL_Renderer* renderer);
   float getElevation(int x, int y);
   float getSlope(int x, int y);
+  int getSoil(int x, int y);
 
   void setColor(int color);
 
@@ -30,6 +33,7 @@ public:
   float getSmNumS();
   float height[100][100];
   float slope[100][100];
+  int soil[100][100];
   // function to update pixels in window to reference output from humpol (ui console)
   // function to update pixels to create a height map (ui console)
 

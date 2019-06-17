@@ -53,6 +53,8 @@ private:
   Chunk ** chunks;
   Camp ** camps;
 
+  int _worldState; // determines which raster asset to display
+
   int _ticks;
   int _elmNo;
   int _pineNo;

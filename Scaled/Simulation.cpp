@@ -4,6 +4,7 @@
 Simulation::Simulation()
 {
   char set;
+  _worldState = 0;
 
   cout << "Simulation is initialising! " << endl;
   cout << "Enter overall tree population: ";
@@ -18,6 +19,9 @@ Simulation::Simulation()
   {
     cout << endl << "Graphics have been enabled! " << endl;
     _SDL = true;
+    cout << "Set world projection: " << endl;
+    cout << "1 = Height " << endl << "2 = Slope " << endl << "3 = Slope " << endl << "Enter: ";
+    cin >> _worldState;
   }
   if(set == 'n')
   {
@@ -152,6 +156,7 @@ void Simulation::initSimulation()
   world = new World();
   world->loadHeight("Input/height.txt");
   world->loadSlope("Input/slope.txt");
+  world->loadSoil("Input/soil.txt");
 
   output = new Output();
   environment = new Environment();
@@ -422,7 +427,7 @@ void Simulation::renderSimulation()
     if(_SDL)
     {
       display->clearRenderer();
-      display->renderDisplay();
+      display->renderDisplay(_worldState);
     }
 
     recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 200);

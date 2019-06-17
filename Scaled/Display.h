@@ -15,7 +15,7 @@ public:
   void initDisplay(const char* title, int x, int y, int w, int h, bool isShown);
   void handleEvents();
   void updateDisplay();
-  void renderDisplay();
+  void renderDisplay(int state);
   void renderPresent();
   void clearRenderer();
   void cleanDisplay();

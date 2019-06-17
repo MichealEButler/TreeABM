@@ -143,6 +143,38 @@ void World::loadSlope(const char* fileName)
   delete[] my_array;
 }
 
+void World::loadSoil(const char* fileName)
+{
+  string line;
+  ifstream file (fileName);
+  file.is_open();
+
+  int **my_array;
+  my_array = new int*[100];
+
+  for (int i = 0; i < 100; i++) {
+    my_array[i] = new int[100];
+  }
+
+  for (int i = 0; i < 100; i++) {
+    for(int j = 0; j < 100; j++) {
+      file >> my_array[i][j];
+      soil[i][j] = my_array[i][j];
+    }
+    //cout << endl;
+  }
+
+  file.close();
+
+  cout << "Array created! " << endl;
+
+  for (int i = 0; i < 100; i++) {
+    delete[] my_array[i];
+  }
+
+  delete[] my_array;
+}
+
 void World::renderHeight(SDL_Renderer* renderer)
 {
   float type;
@@ -373,6 +405,34 @@ void World::renderSlope(SDL_Renderer* renderer)
   }
 }
 
+void World::renderSoil(SDL_Renderer* renderer)
+{
+  int type;
+
+  for (int j = 0; j < 100; j++) {
+    for (int i = 0; i < 100; i++) {
+
+      type = soil[j][i];
+
+      if(type == 0)
+      {
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        df->fillRect(renderer, i*8, j*8, 8, 8);
+      }
+      if(type == 1)
+      {
+        SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255);
+        df->fillRect(renderer, i*8, j*8, 8, 8);
+      }
+      if(type == 2)
+      {
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        df->fillRect(renderer, i*8, j*8, 8, 8);
+      }
+    }
+  }
+}
+
 float World::getElevation(int x, int y)
 {
   return height[y][x];
@@ -381,4 +441,9 @@ float World::getElevation(int x, int y)
 float World::getSlope(int x, int y)
 {
   return slope[y][x];
+}
+
+int World::getSoil(int x, int y)
+{
+  return soil[y][x];
 }
