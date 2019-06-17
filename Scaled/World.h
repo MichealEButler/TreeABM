@@ -16,6 +16,7 @@ public:
   ~World();
   void loadWorld(const char* fileName);
   void renderWorld(SDL_Renderer* renderer);
+  float getElevation(int x, int y);
 
   void setColor(int color);
 

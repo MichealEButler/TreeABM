@@ -191,3 +191,8 @@ void World::renderWorld(SDL_Renderer* renderer)
     }
   }
 }
+
+float World::getElevation(int x, int y)
+{
+  return world[y][x];
+}
