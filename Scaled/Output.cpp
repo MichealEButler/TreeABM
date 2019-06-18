@@ -46,6 +46,18 @@ void Output::createDirectories()
     const int dir = mkdir(buffer, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
   }
 }
+void Output::populations(int year, int elmNo, int pineNo, int oakNo, int alderNo, int hazelNo, int ashNo, int limeNo, int birchNo)
+{
+  file << year << ", ";
+  file << elmNo << ", ";
+  file << pineNo << ", ";
+  file << oakNo << ", ";
+  file << alderNo << ", ";
+  file << hazelNo << ", ";
+  file << ashNo << ", ";
+  file << limeNo << ", ";
+  file << birchNo << " " << endl;
+}
 
 void Output::runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk, bool dominant, float elevation)
 {

@@ -385,6 +385,7 @@ void Simulation::initSimulation()
   cout << endl << "Simulation class agents created " << endl;
 
   environment->loadDEGD("Input/DEGD.txt", _change);
+  environment->loadRain("Input/rain.txt");
   //create world
 }
 
@@ -407,6 +408,9 @@ void Simulation::renderSimulation()
   const string part3 = "Output/patches"; // you must create a folder called Output in src dirctory
   const string part4 = ".txt";
 
+  const string pop = "population.txt";
+  output->openFile(pop);
+
   while (ctick <= (_ticks-1)) // change to a while running function that takes in the graphics on/off parameter
   {
     ctick++;
@@ -421,7 +425,7 @@ void Simulation::renderSimulation()
     const string all = ((part1 + to_string(ctick))+ part2);
     const string all2 = ((part3 + to_string(ctick))+ part4);
 
-    output->openFile(all);
+    //output->openFile(all);
     output->outPatches(treeHere, all2);
 
     if(_SDL)
@@ -713,7 +717,7 @@ void Simulation::renderSimulation()
     }
 
     cout << "Tick = " << ctick << endl;
-    output->closeFile();
+
 
     for(int i = 0; i < 1; i++)
     {
@@ -726,7 +730,56 @@ void Simulation::renderSimulation()
     {
       display->handleEvents();
     }
+
+    int elmSum = 0;
+    int pineSum = 0;
+    int oakSum = 0;
+    int alderSum = 0;
+    int hazelSum = 0;
+    int ashSum = 0;
+    int limeSum = 0;
+    int birchSum = 0;
+
+    for(int i = 0; i < trees.size(); i++)
+    {
+      if(trees[i]->getSpecies() == 1)
+      {
+        elmSum++;
+      }
+      if(trees[i]->getSpecies() == 2)
+      {
+        pineSum++;
+      }
+      if(trees[i]->getSpecies() == 3)
+      {
+        oakSum++;
+      }
+      if(trees[i]->getSpecies() == 4)
+      {
+        alderSum++;
+      }
+      if(trees[i]->getSpecies() == 5)
+      {
+        hazelSum++;
+      }
+      if(trees[i]->getSpecies() == 6)
+      {
+        ashSum++;
+      }
+      if(trees[i]->getSpecies() == 7)
+      {
+        limeSum++;
+      }
+      if(trees[i]->getSpecies() == 8)
+      {
+        birchSum++;
+      }
+    }
+
+    output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);
+
   }
+  output->closeFile();
 }
 
 void Simulation::cleanSimulation()

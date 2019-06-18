@@ -15,11 +15,13 @@ public:
   Environment();
   ~Environment();
   void loadDEGD(string filename, float change);
+  void loadRain(string filename);
   void closeFile(string filename);
   void readDEGD(string filename);
 
   vector<int> _year;
   vector<float> _DEGD;
+  vector<float> _rain;
 
 private:
 

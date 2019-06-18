@@ -106,19 +106,19 @@ void Display::renderDisplay(int state)
     }
   }
 */
-switch(state) {
-  case 1:
-    world->renderHeight(renderer);
-    break;
-  case 2:
-    world->renderSlope(renderer);
-    break;
-  case 3:
-    world->renderSoil(renderer);
-    break;
-  default:
-    cout << "Failed to load world file! " << endl;
-  }
+  switch(state) {
+    case 1:
+      world->renderHeight(renderer);
+      break;
+    case 2:
+      world->renderSlope(renderer);
+      break;
+    case 3:
+      world->renderSoil(renderer);
+      break;
+    default:
+      cout << "Failed to load world file! " << endl;
+    }
 }
 
 void Display::renderPresent()

@@ -36,6 +36,22 @@ void Environment::loadDEGD(string filename, float change)
   file.close();
 }
 
+void Environment::loadRain(string filename)
+{
+  int a;
+  float b;
+
+  ifstream file;
+  file.open(filename);
+
+  while(file >> a >> b)
+  {
+    _rain.push_back(b);
+  }
+
+  file.close();
+}
+
 void Environment::readDEGD(string file)
 {
 
