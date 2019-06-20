@@ -8,7 +8,6 @@ World::World()
 World::~World()
 {
 
-
 }
 
 float World::getLNumH()

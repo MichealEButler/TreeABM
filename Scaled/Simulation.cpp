@@ -384,7 +384,7 @@ void Simulation::initSimulation()
   cout << input->getChange();
   cout << endl << "Simulation class agents created " << endl;
 
-  environment->loadDEGD("Input/DEGD.txt", _change);
+  environment->loadDEGD("Input/DEGD2.txt", _change);
   environment->loadRain("Input/rain.txt");
   //create world
 }
