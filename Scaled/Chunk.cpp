@@ -98,13 +98,13 @@ void Chunk::loadChunk(int x1, int x2, int y1, int y2, SDL_Renderer* renderer)
 
 void Chunk::storeTrees(vector <Tree*> trees, int tick)
 {
-  output = new Output();
+  //output = new Output();
   const string part1 = "Output/Chunks/Chunk";
   const string part2 = "/tick";
   const string part3 = ".txt";
 
   const string all = (part1 + to_string(getID()) + part2 + to_string(tick) + part3);
-  output->openFile(all);
+  //output->openFile(all);
   //takes in the vector of trees from the simulation class
   //iterates through the chunk variable of all the trees
   // if chunk is equal to the id, store this tree in a vector here
@@ -116,7 +116,7 @@ void Chunk::storeTrees(vector <Tree*> trees, int tick)
       //output->chunkOutput(trees[i]->getID(), trees[i]->getSpecies(), trees[i]->getX(), trees[i]->getY(), trees[i]->getChunk(), trees[i]->getDBH(), trees[i]->getHeight(), trees[i]->getRadius(), trees[i]->getElevation());
     }
   }
-  output->closeFile();
+  //output->closeFile();
 }
 /*
 vector <Tree*> Chunk::getTrees()
