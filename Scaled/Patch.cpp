@@ -65,6 +65,97 @@ void Patch::setTreeCover(vector<Tree*> trees)
   //cout << "Highest Tree = " << _hTree << endl;
 }
 
+void Patch::setNeighbors()
+{
+  int origin = _id;
+  int N, S, E, W, NE, NW, SE, SW;
+
+  if((origin - 1) % 100 == 0)
+  {
+    N = -1;
+    NE = -1;
+    NW = -1;
+  } else {
+    N = origin - 1;
+    NE = N + 100;
+    NW = N - 100;
+  }
+
+  if(origin % 100 == 0)
+  {
+    S = -1;
+    SE = -1;
+    SW = -1;
+  } else {
+    S = origin + 1;
+    SE = S + 100;
+    SW = S - 100;
+  }
+
+  E = origin + 100;
+  W = origin - 100;
+
+  if(origin == 1)
+  {
+    SW = -1;
+    W = -1;
+    N = -1;
+    NE = -1;
+    NW = -1;
+  }
+
+  if(origin == 9901)
+  {
+    SE = -1;
+    E = -1;
+    N = -1;
+    NE = -1;
+    NW = -1;
+  }
+
+  if(origin == 10000)
+  {
+    NE = -1;
+    E = -1;
+    S = -1;
+    SE = -1;
+    SW = -1;
+  }
+
+  if(origin == 100)
+  {
+    NW = -1;
+    W = -1;
+    S = -1;
+    SE = -1;
+    SW = -1;
+  }
+
+  neighbors[0] = N;
+  neighbors[1] = S;
+  neighbors[2] = E;
+  neighbors[3] = W;
+  neighbors[4] = NE;
+  neighbors[5] = NW;
+  neighbors[6] = SE;
+  neighbors[7] = SW;
+
+  neighbors4[0] = N;
+  neighbors4[1] = S;
+  neighbors4[2] = E;
+  neighbors4[3] = W;
+
+}
+
+void Patch::outNeighbors()
+{
+  for(int i = 0; i < 8; i++)
+  {
+    cout << neighbors[i] << " ";
+  }
+  cout << endl;
+}
+
 int Patch::getID()
 {
   return _id;
