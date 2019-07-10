@@ -21,11 +21,8 @@ Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
 
   tf = new TreeFunctions();
   tf->setConstants(_species);
-  tf->initAge(_DBH);
-  _age = tf->getAge();
   _alive = true;
   setChunk();
-
   drawFunctionsTree = new DrawFunctions();
 }
 
@@ -47,6 +44,7 @@ void Tree::update(float DBH, float tEffect, float lClimate)
   _radius = (tf->crownRadius(DBH));
   _biomass = (tf->biomass(DBH));
   tf->mortality();
+  _age++;
 }
 
 void Tree::draw(SDL_Renderer * renderer)

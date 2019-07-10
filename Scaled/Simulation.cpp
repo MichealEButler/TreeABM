@@ -6,7 +6,7 @@ Simulation::Simulation()
   char set;
   _worldState = 0;
 
-  cout << "Simulation is initialising! " << endl;
+  cout << "Simulation is initialising! Branch 2" << endl;
   cout << "Enter overall tree population: ";
   cin >> agentNo;
   cout << endl;
@@ -161,7 +161,7 @@ void Simulation::initSimulation()
   output = new Output();
   environment = new Environment();
   //to be called during initial run to construct chunk directories
-  output->createDirectories();
+  //output->createDirectories();
   //create agents
   //agents = new Agent*[agentNo];
   chunks = new Chunk*[1];
@@ -426,7 +426,7 @@ void Simulation::renderSimulation()
     const string all2 = ((part3 + to_string(ctick))+ part4);
 
     //output->openFile(all);
-    output->outPatches(treeHere, all2);
+    //output->outPatches(treeHere, all2);
 
     if(_SDL)
     {
@@ -434,7 +434,7 @@ void Simulation::renderSimulation()
       display->renderDisplay(_worldState);
     }
 
-    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 200);
+    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -456,18 +456,19 @@ void Simulation::renderSimulation()
         //cout << "New Elm = " << recruitment->getNumElm() << endl;
         trees.push_back(new Tree(startID, 0,0,1));
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -478,18 +479,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,2));
         //cout << "New pine = " << recruitment->getNumPine() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -500,18 +502,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,3));
         //cout << "New Oak = " << recruitment->getNumOak() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -646,7 +649,6 @@ void Simulation::renderSimulation()
         trees[i]->draw(display->renderer);
       }
 
-      trees[i]->setAge(1);
     }
 
     for(int i = 0; i < 10000; i++)
@@ -674,13 +676,9 @@ void Simulation::renderSimulation()
         }
       }
 
-      if(trees[i]->removeTree() == true)
+      if(trees[i]->removeTree() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getPDominance() == false))
       {
         treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
-      }
-
-      if(trees[i]->removeTree() == true || trees[i]->crowdingMortality() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getPDominance() == false))
-      {
         trees.erase(trees.begin() + i);
         vectorSize--;
       }
@@ -693,14 +691,13 @@ void Simulation::renderSimulation()
     {
       //camps[i]->drawCamp(Display::renderer);
     }
-/*
+
     for(int i=0; i<vectorSize; i++)
     {
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
-      output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
-        trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
+      //output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
+        //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
-*/
 
     int recruit = agentNo+((newAgents*ctick)-agentNo); // for id's
 
@@ -776,6 +773,7 @@ void Simulation::renderSimulation()
       }
     }
 
+    //output->closeFile();
     output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);
 
   }
