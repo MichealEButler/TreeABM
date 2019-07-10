@@ -6,7 +6,7 @@ Simulation::Simulation()
   char set;
   _worldState = 0;
 
-  cout << "Simulation is initialising! Branch 2" << endl;
+  cout << "Simulation is initialising! " << endl;
   cout << "Enter overall tree population: ";
   cin >> agentNo;
   cout << endl;
