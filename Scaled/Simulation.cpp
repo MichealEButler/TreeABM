@@ -409,7 +409,7 @@ void Simulation::renderSimulation()
   const string part4 = ".txt";
 
   const string pop = "population.txt";
-  //output->openFile(pop);
+  output->openFile(pop);
 
   while (ctick <= (_ticks-1)) // change to a while running function that takes in the graphics on/off parameter
   {
@@ -425,7 +425,7 @@ void Simulation::renderSimulation()
     const string all = ((part1 + to_string(ctick))+ part2);
     const string all2 = ((part3 + to_string(ctick))+ part4);
 
-    output->openFile(all);
+    //output->openFile(all);
     //output->outPatches(treeHere, all2);
 
     if(_SDL)
@@ -695,8 +695,8 @@ void Simulation::renderSimulation()
     for(int i=0; i<vectorSize; i++)
     {
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
-      output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
-        trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
+      //output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
+        //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
 
     int recruit = agentNo+((newAgents*ctick)-agentNo); // for id's
@@ -773,11 +773,11 @@ void Simulation::renderSimulation()
       }
     }
 
-    output->closeFile();
-    //output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);
+    //output->closeFile();
+    output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);
 
   }
-  //output->closeFile();
+  output->closeFile();
 }
 
 void Simulation::cleanSimulation()
