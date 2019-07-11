@@ -31,9 +31,9 @@ public:
   float getSmNumH();
   float getLNumS();
   float getSmNumS();
-  float height[100][100];
-  float slope[100][100];
-  int soil[100][100];
+  float height[14][14];
+  float slope[14][14];
+  int soil[14][14];
   // function to update pixels in window to reference output from humpol (ui console)
   // function to update pixels to create a height map (ui console)
 

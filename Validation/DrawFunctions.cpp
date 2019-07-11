@@ -101,14 +101,14 @@ void DrawFunctions::fillRect(SDL_Renderer * renderer, int x, int y, int width, i
   int y2 = y + height;
 
   if (x < 0) x = 0;
-  if(x >= 800) x = 800;
+  if(x >= 224) x = 224;
   if (y < 0) y = 0;
-  if(y >= 800) y = 800;
+  if(y >= 224) y = 224;
 
   if (x2 < 0) x2 = 0;
-  if(x2 >= 800) x2 = 800;
+  if(x2 >= 224) x2 = 224;
   if (y2 < 0) y2 = 0;
-  if(y >= 800) y2 = 800;
+  if(y >= 224) y2 = 224;
 
   for(int i = x; i < x2; i++)
   {

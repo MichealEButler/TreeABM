@@ -1,1 +1,1 @@
- sudo g++ -g main.cpp Patch.cpp Input.cpp Output.cpp Chunk.cpp World.cpp Environment.cpp Recruitment.cpp Agent.cpp Camp.cpp Simulation.cpp Display.cpp DrawFunctions.cpp TreeFunctions.cpp Tree.cpp -o main -lSDL2 -std=gnu++0x
+ sudo g++ -g main.cpp Patch.cpp Input.cpp Output.cpp Chunk.cpp World.cpp Environment.cpp Recruitment.cpp Agent.cpp Simulation.cpp Display.cpp DrawFunctions.cpp TreeFunctions.cpp Tree.cpp -o main -lSDL2 -std=gnu++0x

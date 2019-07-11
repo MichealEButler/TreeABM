@@ -15,13 +15,13 @@ void Output::openFile(string title)
   file.open(title);
 }
 
-void Output::outPatches(int array[100][100], string filename)
+void Output::outPatches(int array[14][14], string filename)
 {
   f.open(filename);
 
-  for(int i = 0; i < 100; i++)
+  for(int i = 0; i < 14; i++)
   {
-    for(int j = 0; j < 100; j++)
+    for(int j = 0; j < 14; j++)
     {
       f << array[i][j] << " ";
     }
@@ -34,7 +34,7 @@ void Output::outPatches(int array[100][100], string filename)
 void Output::createDirectories()
 {
   // creates chunk directories
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 14; i++)
   {
     const char* a = "/home/micheal/Documents/CppModel/CppModel 3.0/Output/Chunks/Chunk";
     string stringB = to_string(i+1);

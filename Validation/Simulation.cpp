@@ -38,9 +38,9 @@ Simulation::Simulation()
   _isLime = 0;
   _isBirch = 0;
 
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 14; i++)
   {
-    for (int j = 0; j < 100; j++)
+    for (int j = 0; j < 14; j++)
     {
         treeHere[i][j] = 0;
     }
@@ -365,13 +365,13 @@ void Simulation::initSimulation()
     chunks[i]->storeNeighbours();
   }
 
-  recruitment = new Recruitment(100, species);
+  recruitment = new Recruitment(2, species);
 
   if(_SDL)
   {
     display = new Display();
 
-    display->initDisplay("Test Display",500,0,800,800,true);
+    display->initDisplay("Test Display",500,0,224,224,true);
   }
 
   cout << input->getChange();
@@ -392,7 +392,7 @@ void Simulation::renderSimulation()
   int ctick = 0; // current iteration
   int resetDEGD = 0;
   char input;
-  int newAgents = 100;
+  int newAgents = 2;
   int startID = agentNo;
 
   const string part1 = "Output/tick"; // you must create a folder called Output in src dirctory
@@ -427,7 +427,7 @@ void Simulation::renderSimulation()
       display->renderDisplay(_worldState);
     }
 
-    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
+    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 2);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -644,7 +644,7 @@ void Simulation::renderSimulation()
 
     }
 
-    for(int i = 0; i < 10000; i++)
+    for(int i = 0; i < 196; i++)
     {
       patches[i]->setTreeCover(trees);
       //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
@@ -652,7 +652,7 @@ void Simulation::renderSimulation()
 
     for(int i=0; i<vectorSize; i++)
     {
-      for(int j = 0; j < 10000; j++)
+      for(int j = 0; j < 196; j++)
       {
 
         if(trees[i]->getID() == patches[j]->getHTree())
@@ -795,7 +795,7 @@ void Simulation::cleanSimulation()
     delete trees[i]; // calls each ~Agent()
   }
 
-  for(int i = 0; i < 10000; i++)
+  for(int i = 0; i < 196; i++)
   {
     delete patches[i];
   }
@@ -875,13 +875,13 @@ void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, fl
 
 void Simulation::setupPatches()
 {
-  patches = new Patch*[10000];
+  patches = new Patch*[196];
 
-  for(int i = 0; i < 100; i++)
+  for(int i = 0; i < 14; i++)
   {
-    for(int j = 0; j < 100; j++)
+    for(int j = 0; j < 14; j++)
     {
-      int patchNo = (100 * i) + j;
+      int patchNo = (14 * i) + j;
       patches[patchNo] = new Patch();
       patches[patchNo]->setID(patchNo);
       patches[patchNo]->setX(i);

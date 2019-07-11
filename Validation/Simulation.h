@@ -71,8 +71,8 @@ private:
   int _isBirch;
   float _change;
 
-  int treeHere[100][100];
-  int numPatchTrees[100][100];
+  int treeHere[14][14];
+  int numPatchTrees[14][14];
 
   bool _SDL;
 

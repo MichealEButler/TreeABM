@@ -70,30 +70,30 @@ void Patch::setNeighbors()
   int origin = _id;
   int N, S, E, W, NE, NW, SE, SW;
 
-  if((origin - 1) % 100 == 0)
+  if((origin - 1) % 14 == 0)
   {
     N = -1;
     NE = -1;
     NW = -1;
   } else {
     N = origin - 1;
-    NE = N + 100;
-    NW = N - 100;
+    NE = N + 14;
+    NW = N - 14;
   }
 
-  if(origin % 100 == 0)
+  if(origin % 14 == 0)
   {
     S = -1;
     SE = -1;
     SW = -1;
   } else {
     S = origin + 1;
-    SE = S + 100;
-    SW = S - 100;
+    SE = S + 14;
+    SW = S - 14;
   }
 
-  E = origin + 100;
-  W = origin - 100;
+  E = origin + 14;
+  W = origin - 14;
 
   if(origin == 1)
   {
@@ -104,7 +104,7 @@ void Patch::setNeighbors()
     NW = -1;
   }
 
-  if(origin == 9901)
+  if(origin == 183)
   {
     SE = -1;
     E = -1;
@@ -113,7 +113,7 @@ void Patch::setNeighbors()
     NW = -1;
   }
 
-  if(origin == 10000)
+  if(origin == 196)
   {
     NE = -1;
     E = -1;
@@ -122,7 +122,7 @@ void Patch::setNeighbors()
     SW = -1;
   }
 
-  if(origin == 100)
+  if(origin == 14)
   {
     NW = -1;
     W = -1;

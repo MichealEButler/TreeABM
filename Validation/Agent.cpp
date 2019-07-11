@@ -10,8 +10,8 @@ Agent::Agent(): Object(-1)
 Agent::Agent(int _id, int x, int y) : Object(_id)
 {
 
-  x = _x = rand() % 100;
-  y = _y = rand() % 100;
+  x = _x = rand() % 14;
+  y = _y = rand() % 14;
   //cout << "Agent created! " << endl;
   //cout << "x = " << x << ", y = " << y << endl;
   //cout << "x = " << _x << ", y = " << _y << endl;

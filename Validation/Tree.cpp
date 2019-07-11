@@ -49,7 +49,7 @@ void Tree::update(float DBH, float tEffect, float lClimate)
 
 void Tree::draw(SDL_Renderer * renderer)
 {
-  drawFunctionsTree->fillCircle(renderer,((_x*8)+4),((_y*8)+4),((int)round(_radius)*8),_species);
+  drawFunctionsTree->fillCircle(renderer,((_x*16)+8),((_y*16)+8),((int)round(_radius)*16),_species);
 }
 
 void Tree::setDBH(float DBH)
@@ -128,17 +128,17 @@ void Tree::storePatches()
   int crD = castR + castR;int getHTree();
   int sqr = castR * castR;
 
-  orig = (_x * 100) + (_y + 1);
-  topL = orig - ((castR * 100) - castR);
-  topR = orig + ((castR * 100) - castR);
-  botL = orig - ((castR * 100) + castR);
-  botR = orig + ((castR * 100) + castR);
+  orig = (_x * 14) + (_y + 1);
+  topL = orig - ((castR * 14) - castR);
+  topR = orig + ((castR * 14) - castR);
+  botL = orig - ((castR * 14) + castR);
+  botR = orig + ((castR * 14) + castR);
 
   for(int i = 1; i < (crD+1); i++)
   {
     for(int j = 0; j < crD; j++)
     {
-      _npatches.push_back((topL+(i*100))+j);
+      _npatches.push_back((topL+(i*14))+j);
     }
   }
 
