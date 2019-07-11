@@ -62,3 +62,8 @@ void Environment::closeFile(string filename)
 
 
 }
+
+float Environment::constantDEGD()
+{
+  return 2000;
+}

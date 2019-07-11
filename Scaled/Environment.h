@@ -19,6 +19,8 @@ public:
   void closeFile(string filename);
   void readDEGD(string filename);
 
+  float constantDEGD();
+
   vector<int> _year;
   vector<float> _DEGD;
   vector<float> _rain;

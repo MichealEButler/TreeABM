@@ -434,7 +434,8 @@ void Simulation::renderSimulation()
       display->renderDisplay(_worldState);
     }
 
-    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
+    //recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
+    recruitment->speciesProbability(environment->constantDEGD(), 100);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -641,7 +642,8 @@ void Simulation::renderSimulation()
       trees[i]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
-      trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
+      //trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
+      trees[i]->setTEffect(environment->constantDEGD());
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
 
       if(_SDL)
