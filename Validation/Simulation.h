@@ -11,7 +11,6 @@
 #include "TreeFunctions.h"
 #include "Output.h"
 #include "Chunk.h"
-#include "Camp.h"
 #include "Environment.h"
 #include "Recruitment.h"
 #include "Input.h"
@@ -34,8 +33,6 @@ public:
 
   int agentNo;
   int agentNoSplit;
-
-  int campNo;
   int species[8];
 
 private:
@@ -51,7 +48,6 @@ private:
   //Tree ** trees;
   Output * output;
   Chunk ** chunks;
-  Camp ** camps;
 
   int _worldState; // determines which raster asset to display
 

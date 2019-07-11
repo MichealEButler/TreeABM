@@ -59,7 +59,6 @@ Simulation::Simulation()
 
   cout << "Number of Trees = " << agentNo << endl;
 
-  campNo = 1;
   agentNoSplit = 1;
 
   for(int i = 0; i < 8; i++)
@@ -165,7 +164,6 @@ void Simulation::initSimulation()
   //create agents
   //agents = new Agent*[agentNo];
   chunks = new Chunk*[1];
-  camps = new Camp*[campNo];
 
 //  vector<Tree*> trees(agentNo/agentNoSplit);
   trees = vector<Tree*>(agentNo/agentNoSplit);
@@ -365,11 +363,6 @@ void Simulation::initSimulation()
   {
     chunks[i] = new Chunk(i+1);
     chunks[i]->storeNeighbours();
-  }
-
-  for (int i = 0; i < campNo; i++)
-  {
-    camps[i] = new Camp(-1, 500, 500, 20,20);
   }
 
   recruitment = new Recruitment(100, species);
@@ -687,11 +680,6 @@ void Simulation::renderSimulation()
 
     cout << "Processed update functions! " << endl;
 
-    for (int i = 0; i < campNo; i++)
-    {
-      //camps[i]->drawCamp(Display::renderer);
-    }
-
     for(int i=0; i<vectorSize; i++)
     {
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
@@ -805,11 +793,6 @@ void Simulation::cleanSimulation()
   for(int i = 0; i < trees.size(); i++)
   {
     delete trees[i]; // calls each ~Agent()
-  }
-
-  for(int i = 0; i < campNo; i++)
-  {
-    delete camps[i]; // calls each ~Agent()
   }
 
   for(int i = 0; i < 10000; i++)
