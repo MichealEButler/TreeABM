@@ -737,45 +737,70 @@ void Simulation::renderSimulation()
     int limeSum = 0;
     int birchSum = 0;
 
+    float elmAge = 0;
+    float pineAge = 0;
+    float oakAge = 0;
+    float alderAge = 0;
+    float hazelAge = 0;
+    float ashAge = 0;
+    float limeAge = 0;
+    float birchAge = 0;
+
     for(int i = 0; i < trees.size(); i++)
     {
       if(trees[i]->getSpecies() == 1)
       {
         elmSum++;
+        elmAge = elmAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 2)
       {
         pineSum++;
+        pineAge = pineAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 3)
       {
         oakSum++;
+        oakAge = oakAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 4)
       {
         alderSum++;
+        alderAge = alderAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 5)
       {
         hazelSum++;
+        hazelAge = hazelAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 6)
       {
         ashSum++;
+        ashAge = ashAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 7)
       {
         limeSum++;
+        limeAge = limeAge + trees[i]->getAge();
       }
       if(trees[i]->getSpecies() == 8)
       {
         birchSum++;
+        birchAge = birchAge + trees[i]->getAge();
       }
     }
 
-    //output->closeFile();
-    output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);
+    elmAge = ((elmAge / elmSum) * 100) / 400;
+    pineAge = ((pineAge / pineSum) * 100) / 450;
+    oakAge = ((oakAge / oakSum) * 100) / 500;
+    alderAge = ((alderAge / alderSum) * 100) / 300;
+    hazelAge = ((hazelAge / hazelSum) * 100) / 60;
+    ashAge = ((ashAge / ashSum) * 100) / 250;
+    limeAge = ((limeAge / limeSum) * 100) / 400;
+    birchAge = ((birchAge / birchSum) * 100) / 120;
 
+    //output->closeFile();
+    output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge);
   }
   output->closeFile();
 }
