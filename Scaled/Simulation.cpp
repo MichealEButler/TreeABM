@@ -435,7 +435,7 @@ void Simulation::renderSimulation()
     }
 
     //recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
-    recruitment->speciesProbability(environment->constantDEGD(), 100);
+    recruitment->speciesProbability(environment->constantDEGD(ctick), 100);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -643,14 +643,13 @@ void Simulation::renderSimulation()
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
       //trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
-      trees[i]->setTEffect(environment->constantDEGD());
+      trees[i]->setTEffect(environment->constantDEGD(ctick));
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
 
       if(_SDL)
       {
         trees[i]->draw(display->renderer);
       }
-
     }
 
     for(int i = 0; i < 10000; i++)
@@ -716,7 +715,6 @@ void Simulation::renderSimulation()
     }
 
     cout << "Tick = " << ctick << endl;
-
 
     for(int i = 0; i < 1; i++)
     {

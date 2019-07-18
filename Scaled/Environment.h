@@ -19,7 +19,7 @@ public:
   void closeFile(string filename);
   void readDEGD(string filename);
 
-  float constantDEGD();
+  float constantDEGD(int tick);
 
   vector<int> _year;
   vector<float> _DEGD;

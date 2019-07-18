@@ -63,7 +63,46 @@ void Environment::closeFile(string filename)
 
 }
 
-float Environment::constantDEGD()
+float Environment::constantDEGD(int tick)
 {
-  return 2000;
+  if(tick < 200)
+  {
+    return 2000;
+  }
+  if(tick >= 200 && tick < 400)
+  {
+    return 1950;
+  }
+  if(tick >= 400 && tick < 600)
+  {
+    return 1900;
+  }
+  if(tick >= 600 && tick < 800)
+  {
+    return 1800;
+  }
+  if(tick >= 800 && tick < 1000)
+  {
+    return 1750;
+  }
+  if(tick >= 1000 && tick < 1200)
+  {
+    return 1700;
+  }
+  if(tick >= 1200 && tick < 1400)
+  {
+    return 1650;
+  }
+  if(tick >= 1400 && tick < 1600)
+  {
+    return 1600;
+  }
+  if(tick >= 1600 && tick < 1800)
+  {
+    return 1550;
+  }
+  if(tick >= 1800 && tick <= 2000)
+  {
+    return 1500;
+  }
 }
