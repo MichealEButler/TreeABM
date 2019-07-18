@@ -35,6 +35,7 @@ public:
   void setCRATE(float crate);
   void setDDmin(float DDmin);
   void setDDmax(float DDmax);
+  void setDBHrange(float DBH); // allocates number based on DBH 
 
   int getAge();
   int getAgeMax();
@@ -71,6 +72,7 @@ private:
   float _bio0;
   float _bio1;
   float _biomass;
+  int _DBHrange; // this value taken from Bunce survey incremental every 5cm change
 
   float _optimalG;
   float _realG;

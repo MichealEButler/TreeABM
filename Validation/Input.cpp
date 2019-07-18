@@ -18,13 +18,18 @@ void Input::loadFile(string filename)
 
   file.open(filename);
 
+  while(file >> one >> two >> three)
+  {
+    
+  }
+
   for(int i = 0; i < 10; i++)
   {
     file >> one >> two >> value;
     switch(i)
     {
       case 0:
-        _ticks = (int)value;
+        _species = (int)value; // value between 1 and 8 for species
         break;
       case 1:
         _elmNo = value;
