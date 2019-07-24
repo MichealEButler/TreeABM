@@ -15,6 +15,8 @@ public:
   ~Input();
 
   void loadFile(string filename);
+  void loadPlotFile(string inFile); // function for loading in contemporary site data
+  int readSpecies(string name);
   void readConsts();
   void closeFile();
 
@@ -41,6 +43,7 @@ private:
   float _limeNo;
   float _birchNo;
   float _change;
+
 };
 
 #endif

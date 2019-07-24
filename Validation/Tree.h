@@ -21,6 +21,7 @@ public:
   Tree(int _id, int x, int y, int species);
   ~Tree();
   void setDBH(float DBH);
+  void setRangeDBH(int DBHclass);
   void setupAge();
   void randomDBH();
   void setHeight(float height);

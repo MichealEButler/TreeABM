@@ -57,6 +57,114 @@ void Tree::setDBH(float DBH)
   _DBH = DBH;
 }
 
+void Tree::setRangeDBH(int DBHclass)
+{
+  int randInt = rand() % 4;
+
+  switch(DBHclass)
+  {
+    case 1 :
+      _DBH = 1 + randInt;
+      break;
+    case 2 :
+      _DBH = 6 + randInt;
+      break;
+    case 3 :
+      _DBH = 11 + randInt;
+      break;
+    case 4 :
+      _DBH = 16 + randInt;
+      break;
+    case 5 :
+      _DBH = 21 + randInt;
+      break;
+    case 6 :
+      _DBH = 26 + randInt;
+      break;
+    case 7 :
+      _DBH = 31 + randInt;
+      break;
+    case 8 :
+      _DBH = 36 + randInt;
+      break;
+    case 9 :
+      _DBH = 41 + randInt;
+      break;
+    case 10 :
+      _DBH = 46 + randInt;
+      break;
+    case 11 :
+      _DBH = 51 + randInt;
+      break;
+    case 12 :
+      _DBH = 56 + randInt;
+      break;
+    case 13 :
+      _DBH = 61 + randInt;
+      break;
+    case 14 :
+      _DBH = 66 + randInt;
+      break;
+    case 15 :
+      _DBH = 71 + randInt;
+      break;
+    case 16 :
+      _DBH = 76 + randInt;
+      break;
+    case 17 :
+      _DBH = 81 + randInt;
+      break;
+    case 18 :
+      _DBH = 86 + randInt;
+      break;
+    case 19 :
+      _DBH = 91 + randInt;
+      break;
+    case 20 :
+      _DBH = 96 + randInt;
+      break;
+    case 21 :
+      _DBH = 101 + randInt;
+      break;
+    case 22 :
+      _DBH = 106 + randInt;
+      break;
+    case 23 :
+      _DBH = 111 + randInt;
+      break;
+    case 24 :
+      _DBH = 116 + randInt;
+      break;
+    case 25 :
+      _DBH = 121 + randInt;
+      break;
+    case 26 :
+      _DBH = 126 + randInt;
+      break;
+    case 27 :
+      _DBH = 131 + randInt;
+      break;
+    case 28 :
+      _DBH = 136 + randInt;
+      break;
+    case 29 :
+      _DBH = 141 + randInt;
+      break;
+    case 30 :
+      _DBH = 146 + randInt;
+      break;
+    case 31 :
+      _DBH = 151 + randInt;
+      break;
+    case 32 :
+      _DBH = 156 + randInt;
+      break;
+    default :
+      _DBH = 0;
+  }
+
+}
+
 void Tree::setHeight(float height)
 {
   _height = height;
