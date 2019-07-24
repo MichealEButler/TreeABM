@@ -20,11 +20,11 @@ void Input::loadFile(string filename)
 
   for(int i = 0; i < 10; i++)
   {
-    file >> one >> two >> value;
+    file >> one >> two;
     switch(i)
     {
       case 0:
-        _species = (int)value; // value between 1 and 8 for species
+        _ticks = (int)value; // value between 1 and 8 for species
         break;
       case 1:
         _elmNo = value;
@@ -61,8 +61,29 @@ void Input::loadFile(string filename)
 
 void Input::loadPlotFile(string inFile)
 {
-  string plot, species, DBHclass, count;
+  string species;
+  int plot;
+  int DBHclass;
+  int count;
   int year;
+
+  _elmCount.clear();
+  _pineCount.clear();
+  _oakCount.clear();
+  _alderCount.clear();
+  _hazelCount.clear();
+  _ashCount.clear();
+  _limeCount.clear();
+  _birchCount.clear();
+
+  _elmCountTwo.clear();
+  _pineCountTwo.clear();
+  _oakCountTwo.clear();
+  _alderCountTwo.clear();
+  _hazelCountTwo.clear();
+  _ashCountTwo.clear();
+  _limeCountTwo.clear();
+  _birchCountTwo.clear();
 
   ifstream file;
   file.open(inFile);
@@ -79,35 +100,62 @@ void Input::loadPlotFile(string inFile)
     {
       if(readSpecies(species) == 1)
       {
-
+        // pseudo procedure = store in species vector to be based to simualtion
+        // vector will include list of every inidividuals dbhclass, which will then be read
+        // during initialisation in the Simulation class
+        for(int i = 0; i < count; i++)
+        {
+          _elmCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 2)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _pineCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 3)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _oakCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 4)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _alderCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 5)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _hazelCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 6)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _ashCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 7)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _limeCount.push_back(count);
+        }
       }
       if(readSpecies(species) == 8)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _birchCount.push_back(count);
+        }
       }
     }
 
@@ -115,35 +163,62 @@ void Input::loadPlotFile(string inFile)
     {
       if(readSpecies(species) == 1)
       {
-
+        // pseudo procedure = store in species vector to be based to simualtion
+        // vector will include list of every inidividuals dbhclass, which will then be read
+        // during initialisation in the Simulation class
+        for(int i = 0; i < count; i++)
+        {
+          _elmCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 2)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _pineCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 3)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _oakCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 4)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _alderCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 5)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _hazelCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 6)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _ashCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 7)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _limeCountTwo.push_back(count);
+        }
       }
       if(readSpecies(species) == 8)
       {
-
+        for(int i = 0; i < count; i++)
+        {
+          _birchCountTwo.push_back(count);
+        }
       }
     }
   }
