@@ -33,6 +33,15 @@ public:
   float getBirchCount();
   float getChange();
 
+  vector <int> getElmInit(); // functions which return stored initialisation data for contemporary datasets
+  vector <int> getPineInit();
+  vector <int> getOakInit();
+  vector <int> getAlderInit();
+  vector <int> getHazelInit();
+  vector <int> getAshInit();
+  vector <int> getLimeInit();
+  vector <int> getBirchInit();
+
 private:
   ifstream file;
   int _ticks;

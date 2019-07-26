@@ -684,7 +684,7 @@ void Simulation::renderSimulation()
     {
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
       //output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
-        //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
+      //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
 
     int recruit = agentNo+((newAgents*ctick)-agentNo); // for id's
@@ -945,4 +945,9 @@ void Simulation::outputCounts()
   cout << "Ash population = " << ashSum << endl;
   cout << "Lime population = " << limeSum << endl;
   cout << "Birch population = " << birchSum << endl;
+}
+
+void Simulation::bunceRecruits()
+{
+
 }

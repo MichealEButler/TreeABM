@@ -230,7 +230,7 @@ void Input::loadPlotFile(string inFile, int nplot)
 
 void Input::readVectors()
 {
-  // read vectors that have more than one element
+  //read vectors that have more than one element
   if(_elmCount.size() >= 1)
   {
     for(int i = 0; i < _elmCount.size(); i++)
@@ -576,4 +576,44 @@ float Input::getBirchCount()
 float Input::getChange()
 {
   return _change;
+}
+
+vector <int> Input::getElmInit()
+{
+  return _elmCount;
+}
+
+vector <int> Input::getPineInit()
+{
+  return _pineCount;
+}
+
+vector <int> Input::getOakInit()
+{
+  return _oakCount;
+}
+
+vector <int> Input::getAlderInit()
+{
+  return _alderCount;
+}
+
+vector <int> Input::getHazelInit()
+{
+  return _hazelCount;
+}
+
+vector <int> Input::getAshInit()
+{
+  return _ashCount;
+}
+
+vector <int> Input::getLimeInit()
+{
+  return _limeCount;
+}
+
+vector <int> Input::getBirchInit()
+{
+  return _birchCount;
 }
