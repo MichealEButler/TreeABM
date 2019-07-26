@@ -72,6 +72,8 @@ private:
   int _isBirch;
   float _change;
 
+  int _plotPopulation;
+
   int treeHere[14][14];
   int numPatchTrees[14][14];
 

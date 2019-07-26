@@ -30,21 +30,15 @@ int main(int argc, char** argv)
   unsigned long begTime = clock();
 
   simulation = new Simulation();
-  input = new Input();
 
-/*
   simulation->initSimulation();
   simulation->renderSimulation();
   simulation->cleanSimulation();
-*/
-
-  input->loadPlotFile("Input/Balsham.txt", 1);
-  input->readVectors();
 
   unsigned long elapsedTime = ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
   cout << "Elapsed time: " << elapsedTime << " secs." << endl;
 
-  delete input;
+  //delete input;
 
   return 0;
 }

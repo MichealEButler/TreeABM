@@ -49,17 +49,11 @@ Simulation::Simulation()
   setupPatches();
 
   input = new Input();
-  input->loadFile("Input/parameters.txt");
-  input->closeFile();
+  input->loadPlotFile("Input/Balsham.txt", 1);
 
-  setConsts(input->getTicks(), input->getElmCount(), input->getPineCount(), input->getOakCount(), input->getAlderCount(),
-            input->getHazelCount(), input->getAshCount(), input->getLimeCount(), input->getBirchCount(), input->getChange());
+  bunceRecruits();
 
-  agentNo = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo;
-
-  cout << "Number of Trees = " << agentNo << endl;
-
-  agentNoSplit = 1;
+  cout << "Number of Trees = " << _plotPopulation << endl;
 
   for(int i = 0; i < 8; i++)
   {
@@ -137,9 +131,9 @@ Simulation::Simulation()
   {
     cout << species[i] << " ";
   }
+
   cout << endl;
 
-  delete input;
 }
 
 Simulation::~Simulation()
@@ -166,17 +160,17 @@ void Simulation::initSimulation()
   chunks = new Chunk*[1];
 
 //  vector<Tree*> trees(agentNo/agentNoSplit);
-  trees = vector<Tree*>(agentNo/agentNoSplit);
+  trees = vector<Tree*>(_plotPopulation);
 
   if(_isElm)
   {
     for(int i=0; i<_elmNo; i++)
     {
       trees[i] = new Tree(i,0,0,1);
-      trees[i]->randomDBH();
+      trees[i]->setRangeDBH(input->getElmInit()[i]);
       trees[i]->setupAge();
-      trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[i]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[i]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[i]->getX()][trees[i]->getY()] == true)
       {
         trees[i]->setCMortality();
@@ -197,10 +191,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,2);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getPineInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -221,10 +215,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,3);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getOakInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -245,10 +239,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,4);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getAlderInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -269,10 +263,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,5);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getHazelInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -293,10 +287,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,6);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getAshInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -317,10 +311,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,7);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getLimeInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -341,10 +335,10 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,8);
-      trees[j]->randomDBH();
+      trees[j]->setRangeDBH(input->getBirchInit()[i]);
       trees[j]->setupAge();
-      trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -805,6 +799,7 @@ void Simulation::cleanSimulation()
     delete display;
   }
 
+  delete input;
   delete world;
   delete treeFunctions;
   delete output;
@@ -949,5 +944,18 @@ void Simulation::outputCounts()
 
 void Simulation::bunceRecruits()
 {
+  // first generate population sum from size of vector
+  _ticks = 30;
+  _plotPopulation = 0;
 
+  _elmNo = input->getElmInit().size();
+  _pineNo = input->getPineInit().size();
+  _oakNo = input->getOakInit().size();
+  _alderNo = input->getAlderInit().size();
+  _hazelNo = input->getHazelInit().size();
+  _ashNo = input->getAshInit().size();
+  _limeNo = input->getLimeInit().size();
+  _birchNo = input->getBirchInit().size();
+
+  _plotPopulation = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo;
 }
