@@ -16,8 +16,9 @@ public:
   ~Input();
 
   void loadFile(string filename);
-  void loadPlotFile(string inFile); // function for loading in contemporary site data
+  void loadPlotFile(string inFile, int nplot); // function for loading in contemporary site data
   int readSpecies(string name);
+  void readVectors();
   void readConsts();
   void closeFile();
 

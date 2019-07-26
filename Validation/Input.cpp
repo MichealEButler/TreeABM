@@ -59,7 +59,7 @@ void Input::loadFile(string filename)
   }
 }
 
-void Input::loadPlotFile(string inFile)
+void Input::loadPlotFile(string inFile, int nplot)
 {
   string species;
   int plot;
@@ -96,133 +96,205 @@ void Input::loadPlotFile(string inFile)
     file >> count;
     file >> year;
 
-    if(year == 1)
+    if(nplot == plot)
     {
-      if(readSpecies(species) == 1)
+      if(year == 1)
       {
+        if(readSpecies(species) == 1)
+        {
         // pseudo procedure = store in species vector to be based to simualtion
         // vector will include list of every inidividuals dbhclass, which will then be read
         // during initialisation in the Simulation class
-        for(int i = 0; i < count; i++)
+          for(int i = 0; i < count; i++)
+          {
+            _elmCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 2)
         {
-          _elmCount.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _pineCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 3)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _oakCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 4)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _alderCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 5)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _hazelCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 6)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _ashCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 7)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _limeCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 8)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _birchCount.push_back(DBHclass);
+          }
         }
       }
-      if(readSpecies(species) == 2)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _pineCount.push_back(count);
-        }
-      }
-      if(readSpecies(species) == 3)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _oakCount.push_back(count);
-        }
-      }
-      if(readSpecies(species) == 4)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _alderCount.push_back(count);
-        }
-      }
-      if(readSpecies(species) == 5)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _hazelCount.push_back(count);
-        }
-      }
-      if(readSpecies(species) == 6)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _ashCount.push_back(count);
-        }
-      }
-      if(readSpecies(species) == 7)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _limeCount.push_back(count);
-        }
-      }
-      if(readSpecies(species) == 8)
-      {
-        for(int i = 0; i < count; i++)
-        {
-          _birchCount.push_back(count);
-        }
-      }
-    }
 
-    if(year == 2)
-    {
-      if(readSpecies(species) == 1)
+      if(year == 2)
       {
-        // pseudo procedure = store in species vector to be based to simualtion
-        // vector will include list of every inidividuals dbhclass, which will then be read
-        // during initialisation in the Simulation class
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 1)
         {
-          _elmCountTwo.push_back(count);
+          // pseudo procedure = store in species vector to be based to simualtion
+          // vector will include list of every inidividuals dbhclass, which will then be read
+          // during initialisation in the Simulation class
+          for(int i = 0; i < count; i++)
+          {
+            _elmCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 2)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 2)
         {
-          _pineCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _pineCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 3)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 3)
         {
-          _oakCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _oakCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 4)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 4)
         {
-          _alderCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _alderCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 5)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 5)
         {
-          _hazelCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _hazelCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 6)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 6)
         {
-          _ashCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _ashCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 7)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 7)
         {
-          _limeCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+            _limeCountTwo.push_back(DBHclass);
+          }
         }
-      }
-      if(readSpecies(species) == 8)
-      {
-        for(int i = 0; i < count; i++)
+        if(readSpecies(species) == 8)
         {
-          _birchCountTwo.push_back(count);
+          for(int i = 0; i < count; i++)
+          {
+          _birchCountTwo.push_back(DBHclass);
+          }
         }
       }
     }
   }
   file.close();
+}
+
+void Input::readVectors()
+{
+  // read vectors that have more than one element
+  if(_elmCount.size() >= 1)
+  {
+    for(int i = 0; i < _elmCount.size(); i++)
+    {
+      cout << "Elm tree " << i << " dbh = " << _elmCount[i] << endl;
+    }
+  }
+
+  if(_pineCount.size() >= 1)
+  {
+    for(int i = 0; i < _pineCount.size(); i++)
+    {
+      cout << "Pine tree " << i << " dbh = " << _pineCount[i] << endl;
+    }
+  }
+
+  if(_oakCount.size() >= 1)
+  {
+    for(int i = 0; i < _oakCount.size(); i++)
+    {
+      cout << "Oak tree " << i << " dbh = " << _oakCount[i] << endl;
+    }
+  }
+
+  if(_alderCount.size() >= 1)
+  {
+    for(int i = 0; i < _alderCount.size(); i++)
+    {
+      cout << "Alder tree " << i << " dbh = " << _alderCount[i] << endl;
+    }
+  }
+
+  if(_hazelCount.size() >= 1)
+  {
+    for(int i = 0; i < _hazelCount.size(); i++)
+    {
+      cout << "Hazel tree " << i << " dbh = " << _hazelCount[i] << endl;
+    }
+  }
+
+  if(_ashCount.size() >= 1)
+  {
+    for(int i = 0; i < _ashCount.size(); i++)
+    {
+      cout << "Ash tree " << i << " dbh = " << _ashCount[i] << endl;
+    }
+  }
+
+  if(_limeCount.size() >= 1)
+  {
+    for(int i = 0; i < _limeCount.size(); i++)
+    {
+      cout << "Lime tree " << i << " dbh = " << _limeCount[i] << endl;
+    }
+  }
+
+  if(_birchCount.size() >= 1)
+  {
+    for(int i = 0; i < _birchCount.size(); i++)
+    {
+      cout << "Birch tree " << i << " dbh = " << _birchCount[i] << endl;
+    }
+  }
+
 }
 
 int Input::readSpecies(string name)
