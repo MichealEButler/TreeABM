@@ -4,15 +4,15 @@
 Simulation::Simulation()
 {
   char set;
+  int plot;
   _worldState = 0;
 
   cout << "Simulation is initialising! " << endl;
-  cout << "Enter overall tree population: ";
-  cin >> agentNo;
-  cout << endl;
-  cout << "Starting population = " << agentNo << endl;
 
-  cout << "Would you like to enable graphics? y/n: ";
+  cout << "PLot to simulate = ";
+  cin >> plot;
+
+  cout << endl << "Would you like to enable graphics? y/n: ";
   cin >> set;
 
   if(set == 'y')
@@ -49,7 +49,7 @@ Simulation::Simulation()
   setupPatches();
 
   input = new Input();
-  input->loadPlotFile("Input/Balsham.txt", 1);
+  input->loadPlotFile("Input/Balsham.txt", plot);
 
   bunceRecruits();
 
