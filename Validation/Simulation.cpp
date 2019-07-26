@@ -371,7 +371,7 @@ void Simulation::initSimulation()
   cout << input->getChange();
   cout << endl << "Simulation class agents created " << endl;
 
-  environment->loadDEGD("Input/DEGD2.txt", _change);
+  environment->loadDEGD("Input/cambridgeDD.txt", _change);
   environment->loadRain("Input/rain.txt");
   //create world
 }
@@ -397,6 +397,8 @@ void Simulation::renderSimulation()
 
   const string pop = "population.txt";
   output->openFile(pop);
+
+  resetDEGD = 14;
 
   while (ctick <= (_ticks-1)) // change to a while running function that takes in the graphics on/off parameter
   {
