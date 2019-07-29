@@ -16,36 +16,42 @@
 #include <ctime>
 #include <time.h>
 #include "Simulation.h"
-#include "Input.h"
 
 using namespace std;
 
 Simulation * simulation;
-Input * input;
 
 int main(int argc, char** argv)
 {
-  int itPlot = 0;
+  int iterate = 0;
 
   srand(time(NULL));
   unsigned long seconds = 10;
   unsigned long begTime = clock();
 
-  simulation = new Simulation();
+  cout << "Specify iterations: ";
+  cin >> iterate;
 
-  while(itPlot < 16)
+  for(int i = 0; i < iterate; i++)
   {
-    itPlot++;
-    simulation->setPlot(itPlot);
-    simulation->initSimulation();
-    simulation->renderSimulation();
-    simulation->cleanSimulation();
+    simulation = new Simulation();
+
+    int itPlot = 0;
+
+    while(itPlot < 16)
+    {
+      itPlot++;
+      simulation->setPlot(itPlot);
+      simulation->initSimulation();
+      simulation->renderSimulation();
+      simulation->cleanSimulation();
+    }
+
+    delete simulation;
   }
 
   unsigned long elapsedTime = ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
   cout << "Elapsed time: " << elapsedTime << " secs." << endl;
-
-  //delete input;
 
   return 0;
 }

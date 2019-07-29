@@ -3,13 +3,12 @@
 
 Simulation::Simulation()
 {
-  char set;
+  char set = 'n';
   _worldState = 0;
 
   cout << "Simulation is initialising! " << endl;
 
   cout << endl << "Would you like to enable graphics? y/n: ";
-  cin >> set;
 
   if(set == 'y')
   {
@@ -380,7 +379,7 @@ void Simulation::renderSimulation()
   int resetDEGD = 0;
   char input;
   int newAgents = 2;
-  int startID = agentNo;
+  int startID = _plotPopulation;
 
   const string part1 = "Output/tick"; // you must create a folder called Output in src dirctory
   const string part2 = ".txt";
