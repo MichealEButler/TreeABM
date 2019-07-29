@@ -25,15 +25,22 @@ Input * input;
 
 int main(int argc, char** argv)
 {
+  int itPlot = 0;
+
   srand(time(NULL));
   unsigned long seconds = 10;
   unsigned long begTime = clock();
 
   simulation = new Simulation();
 
-  simulation->initSimulation();
-  simulation->renderSimulation();
-  simulation->cleanSimulation();
+  while(itPlot < 16)
+  {
+    itPlot++;
+    simulation->setPlot(itPlot);
+    simulation->initSimulation();
+    simulation->renderSimulation();
+    simulation->cleanSimulation();
+  }
 
   unsigned long elapsedTime = ((unsigned long) clock() - begTime) / CLOCKS_PER_SEC;
   cout << "Elapsed time: " << elapsedTime << " secs." << endl;

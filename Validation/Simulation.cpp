@@ -4,13 +4,9 @@
 Simulation::Simulation()
 {
   char set;
-  int plot;
   _worldState = 0;
 
   cout << "Simulation is initialising! " << endl;
-
-  cout << "PLot to simulate = ";
-  cin >> plot;
 
   cout << endl << "Would you like to enable graphics? y/n: ";
   cin >> set;
@@ -19,15 +15,24 @@ Simulation::Simulation()
   {
     cout << endl << "Graphics have been enabled! " << endl;
     _SDL = true;
-    cout << "Set world projection: " << endl;
-    cout << "1 = Height " << endl << "2 = Slope " << endl << "3 = Slope " << endl << "Enter: ";
-    cin >> _worldState;
   }
   if(set == 'n')
   {
     cout << endl << "Graphics have been disabled! " << endl;
     _SDL = false;
   }
+}
+
+Simulation::~Simulation()
+{
+  cout << endl << "Simulation class destroyed! " << endl << endl;
+}
+
+void Simulation::initSimulation()
+{
+  int accNo = 0; // count of how many have been recruited so far, for id
+  int start = 0;
+  int end = 0;
 
   _isElm = 0;
   _isPine = 0;
@@ -49,7 +54,7 @@ Simulation::Simulation()
   setupPatches();
 
   input = new Input();
-  input->loadPlotFile("Input/Balsham.txt", plot);
+  input->loadPlotFile("Input/Balsham.txt", _plot);
 
   bunceRecruits();
 
@@ -134,18 +139,6 @@ Simulation::Simulation()
 
   cout << endl;
 
-}
-
-Simulation::~Simulation()
-{
-  cout << endl << "Simulation class destroyed! " << endl << endl;
-}
-
-void Simulation::initSimulation()
-{
-  int accNo = 0; // count of how many have been recruited so far, for id
-  int start = 0;
-  int end = 0;
   world = new World();
   world->loadHeight("Input/height.txt");
   world->loadSlope("Input/slope.txt");
@@ -805,6 +798,8 @@ void Simulation::cleanSimulation()
   delete world;
   delete treeFunctions;
   delete output;
+  delete recruitment;
+  delete environment;
 }
 
 void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float change)
@@ -960,4 +955,9 @@ void Simulation::bunceRecruits()
   _birchNo = input->getBirchInit().size();
 
   _plotPopulation = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo;
+}
+
+void Simulation::setPlot(int plot)
+{
+  _plot = plot;
 }

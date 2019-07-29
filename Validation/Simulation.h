@@ -31,6 +31,7 @@ public:
   void setupPatches();
   void outputCounts();
   void bunceRecruits();
+  void setPlot(int plot);
 
   int agentNo;
   int agentNoSplit;
@@ -61,6 +62,7 @@ private:
   int _ashNo;
   int _limeNo;
   int _birchNo;
+  int _plot;
 
   int _isElm;
   int _isPine;
