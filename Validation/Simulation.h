@@ -32,6 +32,7 @@ public:
   void outputCounts();
   void bunceRecruits();
   void setPlot(int plot);
+  void setIteration(int iteration);
 
   int agentNo;
   int agentNoSplit;
@@ -63,6 +64,7 @@ private:
   int _limeNo;
   int _birchNo;
   int _plot;
+  int _iteration;
 
   int _isElm;
   int _isPine;

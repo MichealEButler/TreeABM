@@ -387,7 +387,7 @@ void Simulation::renderSimulation()
   const string part3 = "Output/patches"; // you must create a folder called Output in src dirctory
   const string part4 = ".txt";
 
-  const string pop = "population.txt";
+  const string pop = "Output/" + to_string(_plot) + "-" + to_string(_iteration) + ".txt";
   output->openFile(pop);
 
   resetDEGD = 14;
@@ -403,8 +403,8 @@ void Simulation::renderSimulation()
     }
 
     int vectorSize = trees.size();
-    const string all = ((part1 + to_string(ctick))+ part2);
-    const string all2 = ((part3 + to_string(ctick))+ part4);
+    //const string all = ((part1 + to_string(ctick))+ part2);
+    //const string all2 = ((part3 + to_string(ctick))+ part4);
 
     //output->openFile(all);
     //output->outPatches(treeHere, all2);
@@ -968,4 +968,9 @@ void Simulation::bunceRecruits()
 void Simulation::setPlot(int plot)
 {
   _plot = plot;
+}
+
+void Simulation::setIteration(int iteration)
+{
+  _iteration = iteration;
 }

@@ -42,6 +42,7 @@ int main(int argc, char** argv)
     {
       itPlot++;
       simulation->setPlot(itPlot);
+      simulation->setIteration(i+1);
       simulation->initSimulation();
       simulation->renderSimulation();
       simulation->cleanSimulation();
