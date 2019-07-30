@@ -96,7 +96,7 @@ void Input::loadPlotFile(string inFile, int nplot)
     file >> count;
     file >> year;
 
-    if(nplot == plot)
+    if(plot == nplot)
     {
       if(year == 1)
       {

@@ -351,7 +351,7 @@ void Simulation::initSimulation()
     chunks[i]->storeNeighbours();
   }
 
-  recruitment = new Recruitment(2, species);
+  recruitment = new Recruitment(10, species);
 
   if(_SDL)
   {
@@ -415,7 +415,7 @@ void Simulation::renderSimulation()
       display->renderDisplay(_worldState);
     }
 
-    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 2);
+    recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -432,7 +432,7 @@ void Simulation::renderSimulation()
 
     if(_isElm)
     {
-      for(int i = 0; i < recruitment->getNumElm(); i++)
+      for(int i = 0; i < recruitment->getNumElm((float)_elmNo / vectorSize); i++)
       {
         //cout << "New Elm = " << recruitment->getNumElm() << endl;
         trees.push_back(new Tree(startID, 0,0,1));
@@ -455,7 +455,7 @@ void Simulation::renderSimulation()
 
     if(_isPine)
     {
-      for(int i = 0; i < recruitment->getNumPine(); i++)
+      for(int i = 0; i < recruitment->getNumPine((float)_pineNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,2));
         //cout << "New pine = " << recruitment->getNumPine() << endl;
@@ -478,7 +478,7 @@ void Simulation::renderSimulation()
 
     if(_isOak)
     {
-      for(int i = 0; i < recruitment->getNumOak(); i++)
+      for(int i = 0; i < recruitment->getNumOak((float)_oakNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,3));
         //cout << "New Oak = " << recruitment->getNumOak() << endl;
@@ -501,7 +501,7 @@ void Simulation::renderSimulation()
 
     if(_isAlder)
     {
-      for(int i = 0; i < recruitment->getNumAlder(); i++)
+      for(int i = 0; i < recruitment->getNumAlder((float)_alderNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,4));
         //cout << "New Alder = " << recruitment->getNumAlder() << endl;
@@ -523,7 +523,7 @@ void Simulation::renderSimulation()
 
     if(_isHazel)
     {
-      for(int i = 0; i < recruitment->getNumHazel(); i++)
+      for(int i = 0; i < recruitment->getNumHazel((float)_hazelNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,5));
         //cout << "New Hazel = " << recruitment->getNumHazel() << endl;
@@ -545,7 +545,7 @@ void Simulation::renderSimulation()
 
     if(_isAsh)
     {
-      for(int i = 0; i < recruitment->getNumAsh(); i++)
+      for(int i = 0; i < recruitment->getNumAsh((float)_hazelNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,6));
         //cout << "New Ash = " << recruitment->getNumAsh() << endl;
@@ -567,7 +567,7 @@ void Simulation::renderSimulation()
 
     if(_isLime)
     {
-      for(int i = 0; i < recruitment->getNumLime(); i++)
+      for(int i = 0; i < recruitment->getNumLime((float)_limeNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,7));
         //cout << "New Lime = " << recruitment->getNumLime() << endl;
@@ -589,7 +589,7 @@ void Simulation::renderSimulation()
 
     if(_isBirch)
     {
-      for(int i = 0; i < recruitment->getNumBirch(); i++)
+      for(int i = 0; i < recruitment->getNumBirch((float)_birchNo / vectorSize); i++)
       {
         trees.push_back(new Tree(startID, 0,0,8));
         //cout << "New Birch = " << recruitment->getNumBirch() << endl;
@@ -748,6 +748,15 @@ void Simulation::renderSimulation()
         birchSum++;
       }
     }
+
+    _elmNo = elmSum;
+    _pineNo = pineSum;
+    _oakNo = oakSum;
+    _alderNo = alderSum;
+    _hazelNo = hazelSum;
+    _ashNo = ashSum;
+    _limeNo = limeSum;
+    _birchNo = birchSum;
 
     //output->closeFile();
     output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);

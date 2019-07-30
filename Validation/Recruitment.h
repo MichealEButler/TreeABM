@@ -16,14 +16,14 @@ public:
   void setNumRecruits();
   int getNumRecruits();
 
-  int getNumElm();
-  int getNumPine();
-  int getNumOak();
-  int getNumAlder();
-  int getNumHazel();
-  int getNumAsh();
-  int getNumLime();
-  int getNumBirch();
+  int getNumElm(float elmPercent);
+  int getNumPine(float pinePercent);
+  int getNumOak(float oakPercent);
+  int getNumAlder(float alderPercent);
+  int getNumHazel(float hazelPercent);
+  int getNumAsh(float ashPercent);
+  int getNumLime(float limePercent);
+  int getNumBirch(float birchPercent);
 
   float overall;
 

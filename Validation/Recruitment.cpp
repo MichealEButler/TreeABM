@@ -31,6 +31,7 @@ Recruitment::~Recruitment()
 
 void Recruitment::speciesProbability(float DEGD, int recruits)
 {
+  // add percent of current population to reduce recruitment based on population size
   //first identify how many species are present
   int numSpecies = 8; //counts number of species for determining probabilty
 
@@ -175,58 +176,98 @@ int Recruitment::getNumRecruits()
   return _acRecruits;
 }
 
-int Recruitment::getNumElm()
+int Recruitment::getNumElm(float elmPercent)
 {
-  float numElm = (float)_acRecruits * _elmProb;
+  float numElm = ((float)_acRecruits * _elmProb) * elmPercent;
+
+  if(numElm < 1)
+  {
+    numElm = 0;
+  }
 
   return (int)numElm;
 }
 
-int Recruitment::getNumPine()
+int Recruitment::getNumPine(float pinePercent)
 {
-  float numPine = (float)_acRecruits *_pineProb;
+  float numPine = ((float)_acRecruits *_pineProb) * pinePercent;
+
+  if(numPine < 1)
+  {
+    numPine = 0;
+  }
 
   return (int)numPine;
 }
 
-int Recruitment::getNumOak()
+int Recruitment::getNumOak(float oakPercent)
 {
-  float numOak = (float)_acRecruits * _oakProb;
+  float numOak = ((float)_acRecruits * _oakProb) * oakPercent;
+
+  if(numOak < 1)
+  {
+    numOak = 0;
+  }
 
   return (int)numOak;
 }
 
-int Recruitment::getNumAlder()
+int Recruitment::getNumAlder(float alderPercent)
 {
-  float numAlder = (float)_acRecruits * _alderProb;
+  float numAlder = ((float)_acRecruits * _alderProb) * alderPercent;
+
+  if(numAlder < 1)
+  {
+    numAlder = 0;
+  }
 
   return (int)numAlder;
 }
 
-int Recruitment::getNumHazel()
+int Recruitment::getNumHazel(float hazelPercent)
 {
-  float numHazel = (float)_acRecruits *_hazelProb;
+  float numHazel = ((float)_acRecruits *_hazelProb) * hazelPercent;
+
+  if(numHazel < 1)
+  {
+    numHazel = 0;
+  }
 
   return (int)numHazel;
 }
 
-int Recruitment::getNumAsh()
+int Recruitment::getNumAsh(float ashPercent)
 {
-  float numAsh = (float)_acRecruits * _ashProb;
+  float numAsh = ((float)_acRecruits * _ashProb) * ashPercent;
+
+  if(numAsh < 1)
+  {
+    numAsh = 0;
+  }
 
   return (int)numAsh;
 }
 
-int Recruitment::getNumLime()
+int Recruitment::getNumLime(float limePercent)
 {
-  float numLime = (float)_acRecruits *_limeProb;
+  float numLime = ((float)_acRecruits *_limeProb) * limePercent;
+
+  if(numLime < 1)
+  {
+    numLime = 0;
+  }
 
   return (int)numLime;
 }
 
-int Recruitment::getNumBirch()
+int Recruitment::getNumBirch(float birchPercent)
 {
-  float numBirch = (float)_acRecruits * _birchProb;
+  float numBirch = ((float)_acRecruits * _birchProb) * birchPercent;
+
+  if(numBirch < 1)
+  {
+    numBirch = 0;
+  }
 
   return (int)numBirch;
 }
