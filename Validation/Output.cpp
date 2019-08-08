@@ -48,14 +48,14 @@ void Output::createDirectories()
 }
 void Output::populations(int year, int elmNo, int pineNo, int oakNo, int alderNo, int hazelNo, int ashNo, int limeNo, int birchNo)
 {
-  file << year << ", ";
-  file << elmNo << ", ";
-  file << pineNo << ", ";
-  file << oakNo << ", ";
-  file << alderNo << ", ";
-  file << hazelNo << ", ";
-  file << ashNo << ", ";
-  file << limeNo << ", ";
+  file << year << " ";
+  file << elmNo << " ";
+  file << pineNo << " ";
+  file << oakNo << " ";
+  file << alderNo << " ";
+  file << hazelNo << " ";
+  file << ashNo << " ";
+  file << limeNo << " ";
   file << birchNo << " " << endl;
 }
 
