@@ -126,6 +126,34 @@ void TreeFunctions::setConstants(int species)
       _bio0 = 0.13;
       _bio1 = 2.43;
       break;
+    case 9 : //Hornbeam
+      _b2 = 109.4;
+      _b3 = 2.18;
+      _hmax = 15;
+      _dmax = 25;
+      _agemx = 130;
+      _s = 0.9;
+      _g = 60;
+      _crate = 0.1;
+      _DDmin = 1400;
+      _DDmax = 3300;
+      _bio0 = 0.13; //provisional from Pretzsch
+      _bio1 = 2.49;
+      break;
+    case 10 : //Larch
+      _b2 = 64.84;
+      _b3 = 0.22;
+      _hmax = 50;
+      _dmax = 150;
+      _agemx = 400;
+      _s = 0.7;
+      _g = 110;
+      _crate = 0.1;
+      _DDmin = 110;
+      _DDmax = 2060;
+      _bio0 = 0.04; //provisional from Pretzsch
+      _bio1 = 1.37;
+      break;
     default:
       cout << "No species found " << endl;
   }

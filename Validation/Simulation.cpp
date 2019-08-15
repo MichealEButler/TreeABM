@@ -185,8 +185,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,2);
       trees[j]->setRangeDBH(input->getPineInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -209,8 +209,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,3);
       trees[j]->setRangeDBH(input->getOakInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -233,8 +233,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,4);
       trees[j]->setRangeDBH(input->getAlderInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -257,8 +257,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,5);
       trees[j]->setRangeDBH(input->getHazelInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -281,8 +281,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,6);
       trees[j]->setRangeDBH(input->getAshInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -305,8 +305,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,7);
       trees[j]->setRangeDBH(input->getLimeInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
@@ -329,8 +329,8 @@ void Simulation::initSimulation()
       trees[j] = new Tree(j,0,0,8);
       trees[j]->setRangeDBH(input->getBirchInit()[i]);
       trees[j]->setupAge();
-      //trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
-      //trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
       if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
       {
         trees[j]->setCMortality();
