@@ -468,6 +468,7 @@ int Input::readSpecies(string name)
       {
         case 'e' :
           cout << "Species is Ulex. " << endl;
+          species = 14;
           break;
         case 'm' :
           cout << "Species is Ulmus. " << endl;
@@ -486,6 +487,7 @@ int Input::readSpecies(string name)
               {
                 case 'n' :
                   cout << "Species is Cornus. " << endl;
+                  species = 14;
                   break;
                 case 'y' :
                   cout << "Species is Corylus. " << endl;
@@ -497,18 +499,22 @@ int Input::readSpecies(string name)
           break;
         case 'r' :
           cout << "Species is Crataegus. " << endl;
+          species = 14;
           break;
         case 'l' :
           cout << "Species is Clematis. " << endl;
+          species = 14;
           break;
         case 'y' :
           cout << "Species is Cytitus. " << endl;
+          species = 14;
           break;
         case 'a' :
           switch(*third)
           {
             case 's' :
               cout << "Species is Castanea. " << endl;
+              species = 14;
               break;
             case 'r' :
               cout << "Species is Carpinus. " << endl;
@@ -523,6 +529,7 @@ int Input::readSpecies(string name)
       {
         case 'i' :
           cout << "Species is Ligustrum. " << endl;
+          species = 14;
           break;
         case 'a' :
           cout << "Species is Larix. " << endl;
@@ -535,20 +542,25 @@ int Input::readSpecies(string name)
       {
         case 'a' :
           cout << "Species is Rhamus. " << endl;
+          species = 14;
           break;
         case 'o' :
           cout << "Species is Rhododendron. " << endl;
+          species = 14;
           break;
       }
       break;
     case 'V' :
       cout << "Species is Viburnum. " << endl;
+      species = 14;
       break;
     case 'E' :
       cout << "Species is Euonymus. " << endl;
+      species = 14;
       break;
     case 'J' :
       cout << "Species is Juniperus. " << endl;
+      species = 14;
       break;
     case 'S' :
         switch(*second)
@@ -558,6 +570,7 @@ int Input::readSpecies(string name)
             {
               case 'm' :
                 cout << "Species is Sambucus. " << endl;
+                species = 14;
                 break;
               case 'l' :
                 cout << "Species is Salix. " << endl;
@@ -567,6 +580,7 @@ int Input::readSpecies(string name)
             break;
           case 'o' :
             cout << "Species is Sorbus. " << endl;
+            species = 14;
             break;
         }
         break;
@@ -578,6 +592,7 @@ int Input::readSpecies(string name)
             {
               case 'n' :
                 cout << "Species is Frangula. " << endl;
+                species = 14;
                 break;
               case 'x' :
                 cout << "Species is Fraxinus. " << endl;
@@ -596,15 +611,18 @@ int Input::readSpecies(string name)
         {
           case 'r' :
             cout << "Species is Prunus. " << endl;
+            species = 14;
             break;
           case 'o' :
             cout << "Species is Populus " << endl;
+            species = 14;
             break;
           case 'i' :
             switch(*third)
             {
               case 'c' :
                 cout << "Species is Picea. " << endl;
+                species = 14;
                 break;
               case 'n' :
                 cout << "Species is Pinus. " << endl;
@@ -614,6 +632,7 @@ int Input::readSpecies(string name)
             break;
           case 's' :
             cout << "Species is Pseudostuga. " << endl;
+            species = 14;
             break;
         }
         break;
@@ -627,6 +646,7 @@ int Input::readSpecies(string name)
         break;
       case 'M' :
         cout << "Species is Malus. " << endl;
+        species = 14;
         break;
       case 'A' :
         switch(*second)
@@ -637,6 +657,7 @@ int Input::readSpecies(string name)
             break;
           case 'e' :
             cout << "Species is Aesculus. " << endl;
+            species = 14;
             break;
           case 'l' :
             cout << "Species is Alnus. " << endl;
@@ -644,6 +665,7 @@ int Input::readSpecies(string name)
             break;
           case 'b' :
             cout << "Species is Abies. " << endl;
+            species = 14;
             break;
         }
         break;
@@ -656,17 +678,21 @@ int Input::readSpecies(string name)
             break;
           case 'a' :
             cout << "Species is Taxus. " << endl;
+            species = 14;
             break;
           case 'h' :
             cout << "Species is Thuja. " << endl;
+            species = 14;
             break;
           case 's' :
             cout << "Species is Tsuga. " << endl;
+            species = 14;
             break;
         }
         break;
     default:
       cout << "Unknown Species " << endl;
+      //species = 14;
   }
 
   cout << species << endl;

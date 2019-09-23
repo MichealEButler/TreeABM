@@ -70,14 +70,14 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         }
         break;
       case 4 :
-        _alderProb = (4 * ((4890 - DEGD) * (DEGD - 1100))) / ((4890 - 1100) * (4890 - 1100));
+        _alderProb = (4 * ((4890 - DEGD) * (DEGD - 670))) / ((4890 - 670) * (4890 - 670));
         if(_alderProb < 0)
         {
           _alderProb = 0.01;
         }
         break;
       case 5 :
-        _hazelProb = (4 * ((4300 - DEGD) * (DEGD - 410))) / ((4300 - 410) * (4300 - 410));
+        _hazelProb = (4 * ((4300 - DEGD) * (DEGD - 410))) / ((4300 - 410) * (4300 - 410)); // DEGD sums need verifying
         if(_hazelProb < 0)
         {
           _hazelProb = 0.01;
@@ -105,42 +105,42 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         }
         break;
       case 9 :
-        _hornProb = (4 * ((4330 - DEGD) * (DEGD - 810))) / ((4330 - 810) * (4330 - 810));
+        _hornProb = (4 * ((3300 - DEGD) * (DEGD - 1400))) / ((3300 - 1400) * (3300 - 1400));
         if(_hornProb < 0)
         {
           _hornProb = 0.01;
         }
         break;
       case 10 :
-        _larchProb = (4 * ((4890 - DEGD) * (DEGD - 1100))) / ((4890 - 1100) * (4890 - 1100));
+        _larchProb = (4 * ((2060 - DEGD) * (DEGD - 110))) / ((2060 - 110) * (2060 - 110));
         if(_larchProb < 0)
         {
           _larchProb = 0.01;
         }
         break;
       case 11 :
-        _beechProb = (4 * ((4300 - DEGD) * (DEGD - 410))) / ((4300 - 410) * (4300 - 410));
+        _beechProb = (4 * ((4330 - DEGD) * (DEGD - 500))) / ((4330 - 500) * (4330 - 500));
         if(_beechProb < 0)
         {
           _beechProb = 0.01;
         }
         break;
       case 12 :
-        _willowProb = (4 * ((4170 - DEGD) * (DEGD - 750))) / ((4170 - 750) * (4170 - 750));
+        _willowProb = (4 * ((5060 - DEGD) * (DEGD - 830))) / ((5060 - 830) * (5060 - 830));
         if(_willowProb < 0)
         {
           _willowProb = 0.01;
         }
         break;
       case 13 :
-        _mapleProb = (4 * ((4170 - DEGD) * (DEGD - 1100))) / ((4170 - 1100) * (4170 - 1100));
+        _mapleProb = (4 * ((4170 - DEGD) * (DEGD - 1100))) / ((4170 - 1100) * (4170 - 1100)); //provisional
         if(_mapleProb < 0)
         {
           _mapleProb = 0.01;
         }
         break;
       case 14 :
-        _pftProb = (4 * ((2300 - DEGD) * (DEGD - 410))) / ((2300 - 410) * (2300 - 410));
+        _pftProb = (4 * ((2300 - DEGD) * (DEGD - 410))) / ((2300 - 410) * (2300 - 410)); //provisional
         if(_pftProb < 0)
         {
           _pftProb = 0.01;

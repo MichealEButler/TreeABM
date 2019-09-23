@@ -65,7 +65,7 @@ void TreeFunctions::setConstants(int species)
       _s = 1.2;
       _g = 200;
       _crate = 0.1;
-      _DDmin = 1100;
+      _DDmin = 670;
       _DDmax = 4890;
       _bio0 = 0.3;
       _bio1 = 2.22;
@@ -155,60 +155,60 @@ void TreeFunctions::setConstants(int species)
       _bio1 = 1.37;
       break;
     case 11 : //Beech
-      _b2 = 64.84;
-      _b3 = 0.22;
-      _hmax = 50;
-      _dmax = 150;
-      _agemx = 400;
-      _s = 0.7;
-      _g = 110;
+      _b2 = 64.84; //provisional
+      _b3 = 0.22; //provisional
+      _hmax = 35;
+      _dmax = 135;
+      _agemx = 350;
+      _s = 0.7; //provisional
+      _g = 110; //provisional
       _crate = 0.1;
-      _DDmin = 110;
-      _DDmax = 2060;
+      _DDmin = 500;
+      _DDmax = 4330;
       _bio0 = 0.04; //provisional from Pretzsch
-      _bio1 = 1.37;
+      _bio1 = 1.37; //provisional
       break;
     case 12 : //Willow
-      _b2 = 64.84;
-      _b3 = 0.22;
-      _hmax = 50;
-      _dmax = 150;
-      _agemx = 400;
-      _s = 0.7;
-      _g = 110;
+      _b2 = 64.84; //provisional
+      _b3 = 0.22; //provisional
+      _hmax = 30;
+      _dmax = 100;
+      _agemx = 150;
+      _s = 0.7; //provisional
+      _g = 110; //provisional
       _crate = 0.1;
-      _DDmin = 110;
-      _DDmax = 2060;
+      _DDmin = 830;
+      _DDmax = 5060;
       _bio0 = 0.04; //provisional from Pretzsch
-      _bio1 = 1.37;
+      _bio1 = 1.37; //provisional
       break;
     case 13 : //Maple
-      _b2 = 64.84;
-      _b3 = 0.22;
-      _hmax = 50;
-      _dmax = 150;
-      _agemx = 400;
-      _s = 0.7;
-      _g = 110;
-      _crate = 0.1;
-      _DDmin = 110;
-      _DDmax = 2060;
+      _b2 = 64.84; //provisional
+      _b3 = 0.22; //provisional
+      _hmax = 50; //provisional
+      _dmax = 150; //provisional
+      _agemx = 400; //provisional
+      _s = 0.7; //provisional
+      _g = 110; //provisional
+      _crate = 0.1; //provisional
+      _DDmin = 110; //provisional
+      _DDmax = 2060; //provisional
       _bio0 = 0.04; //provisional from Pretzsch
-      _bio1 = 1.37;
+      _bio1 = 1.37; //provisional
       break;
     case 14 : //PFT place holder to mantain populations
-      _b2 = 64.84;
-      _b3 = 0.22;
-      _hmax = 50;
-      _dmax = 150;
-      _agemx = 400;
-      _s = 0.7;
-      _g = 110;
-      _crate = 0.1;
-      _DDmin = 110;
-      _DDmax = 2060;
+      _b2 = 64.84; //provisional
+      _b3 = 0.22; //provisional
+      _hmax = 50; //provisional
+      _dmax = 150; //provisional
+      _agemx = 400; //provisional
+      _s = 0.7; //provisional
+      _g = 110; //provisional
+      _crate = 0.1; //provisional
+      _DDmin = 110; //provisional
+      _DDmax = 2060; //provisional
       _bio0 = 0.04; //provisional from Pretzsch
-      _bio1 = 1.37;
+      _bio1 = 1.37; //provisional
       break;
     default:
       cout << "No species found " << endl;

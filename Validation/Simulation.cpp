@@ -125,21 +125,21 @@ void Simulation::initSimulation()
       cout << "Number of Birch = " << _birchNo << endl;
     }
 
-    if(_hornNo > 0 && i == 9)
+    if(_hornNo > 0 && i == 8)
     {
       species[i] = 9;
       _isHorn = 1;
       cout << "Number of Hornbeam = " << _hornNo << endl;
     }
 
-    if(_larchNo > 0 && i == 10)
+    if(_larchNo > 0 && i == 9)
     {
       species[i] = 10;
       _isLarch = 1;
       cout << "Number of Alder = " << _larchNo << endl;
     }
 
-    if(_beechNo > 0 && i == 11)
+    if(_beechNo > 0 && i == 10)
     {
       species[i] = 11;
       _isBeech = 1;
@@ -153,14 +153,14 @@ void Simulation::initSimulation()
       cout << "Number of Willow = " << _willowNo << endl;
     }
 
-    if(_mapleNo > 0 && i == 13)
+    if(_mapleNo > 0 && i == 12)
     {
       species[i] = 13;
       _isMaple = 1;
       cout << "Number of Maple = " << _mapleNo << endl;
     }
 
-    if(_pftNo > 0 && i == 14)
+    if(_pftNo > 0 && i == 13)
     {
       species[i] = 14;
       _isPFT = 1;
@@ -558,7 +558,7 @@ void Simulation::initSimulation()
     display->initDisplay("Test Display",500,0,224,224,true);
   }
 
-  cout << input->getChange();
+  //cout << input->getChange();
   cout << endl << "Simulation class agents created " << endl;
 
   environment->loadDEGD("Input/cambridgeDD.txt", _change);
