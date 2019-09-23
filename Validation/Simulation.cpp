@@ -41,6 +41,12 @@ void Simulation::initSimulation()
   _isAsh = 0;
   _isLime = 0;
   _isBirch = 0;
+  _isHorn = 0;
+  _isLarch = 0;
+  _isBeech = 0;
+  _isWillow = 0;
+  _isMaple = 0;
+  _isPFT = 0;
 
   for (int i = 0; i < 14; i++)
   {
@@ -59,7 +65,7 @@ void Simulation::initSimulation()
 
   cout << "Number of Trees = " << _plotPopulation << endl;
 
-  for(int i = 0; i < 8; i++)
+  for(int i = 0; i < 14; i++)
   {
     species[i] = 0;
 
@@ -118,6 +124,48 @@ void Simulation::initSimulation()
       _isBirch = 1;
       cout << "Number of Birch = " << _birchNo << endl;
     }
+
+    if(_hornNo > 0 && i == 9)
+    {
+      species[i] = 9;
+      _isHorn = 1;
+      cout << "Number of Hornbeam = " << _hornNo << endl;
+    }
+
+    if(_larchNo > 0 && i == 10)
+    {
+      species[i] = 10;
+      _isLarch = 1;
+      cout << "Number of Alder = " << _larchNo << endl;
+    }
+
+    if(_beechNo > 0 && i == 11)
+    {
+      species[i] = 11;
+      _isBeech = 1;
+      cout << "Number of Beech = " << _beechNo << endl;
+    }
+
+    if(_willowNo > 0 && i == 11)
+    {
+      species[i] = 12;
+      _isWillow = 1;
+      cout << "Number of Willow = " << _willowNo << endl;
+    }
+
+    if(_mapleNo > 0 && i == 13)
+    {
+      species[i] = 13;
+      _isMaple = 1;
+      cout << "Number of Maple = " << _mapleNo << endl;
+    }
+
+    if(_pftNo > 0 && i == 14)
+    {
+      species[i] = 14;
+      _isPFT = 1;
+      cout << "Number of PFT = " << _pftNo << endl;
+    }
   }
 
   cout << endl << "Is Elm = " << _isElm << endl;
@@ -127,11 +175,17 @@ void Simulation::initSimulation()
   cout << "Is Hazel = " << _isHazel << endl;
   cout << "Is Ash = " << _isAsh << endl;
   cout << "Is Lime = " << _isLime << endl;
-  cout << "Is Birch = " << _isBirch << endl << endl;
+  cout << "Is Birch = " << _isBirch << endl;
+  cout << "Is Hornbeam = " << _isHorn << endl;
+  cout << "Is Larch = " << _isLarch << endl;
+  cout << "Is Beech = " << _isBeech << endl;
+  cout << "Is Willow = " << _isWillow << endl;
+  cout << "Is Maple = " << _isMaple << endl;
+  cout << "Is PFT = " << _isPFT << endl << endl;
 
   cout << endl << "Simulation class agents created " << endl;
 
-  for(int i = 0; i < 8; i++)
+  for(int i = 0; i < 14; i++)
   {
     cout << species[i] << " ";
   }
@@ -328,6 +382,150 @@ void Simulation::initSimulation()
 
       trees[j] = new Tree(j,0,0,8);
       trees[j]->setRangeDBH(input->getBirchInit()[i]);
+      trees[j]->setupAge();
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
+      {
+        trees[j]->setCMortality();
+      }
+      else
+      {
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
+      }
+
+      accNo++;
+    }
+  }
+
+  if(_isHorn)
+  {
+    for(int i=0; i<_hornNo; i++)
+    {
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,9);
+      trees[j]->setRangeDBH(input->getHornInit()[i]);
+      trees[j]->setupAge();
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
+      {
+        trees[j]->setCMortality();
+      }
+      else
+      {
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
+      }
+
+      accNo++;
+    }
+  }
+
+  if(_isLarch)
+  {
+    for(int i=0; i<_larchNo; i++)
+    {
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,10);
+      trees[j]->setRangeDBH(input->getLarchInit()[i]);
+      trees[j]->setupAge();
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
+      {
+        trees[j]->setCMortality();
+      }
+      else
+      {
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
+      }
+
+      accNo++;
+    }
+  }
+
+  if(_isBeech)
+  {
+    for(int i=0; i<_beechNo; i++)
+    {
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,11);
+      trees[j]->setRangeDBH(input->getBeechInit()[i]);
+      trees[j]->setupAge();
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
+      {
+        trees[j]->setCMortality();
+      }
+      else
+      {
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
+      }
+
+      accNo++;
+    }
+  }
+
+  if(_isWillow)
+  {
+    for(int i=0; i<_willowNo; i++)
+    {
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,12);
+      trees[j]->setRangeDBH(input->getWillowInit()[i]);
+      trees[j]->setupAge();
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
+      {
+        trees[j]->setCMortality();
+      }
+      else
+      {
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
+      }
+
+      accNo++;
+    }
+  }
+
+  if(_isMaple)
+  {
+    for(int i=0; i<_mapleNo; i++)
+    {
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,13);
+      trees[j]->setRangeDBH(input->getMapleInit()[i]);
+      trees[j]->setupAge();
+      //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
+      //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
+      if(treeHere[trees[j]->getX()][trees[j]->getY()] == true)
+      {
+        trees[j]->setCMortality();
+      }
+      else
+      {
+        treeHere[trees[j]->getX()][trees[j]->getY()] = 1;
+      }
+
+      accNo++;
+    }
+  }
+
+  if(_isPFT)
+  {
+    for(int i=0; i<_pftNo; i++)
+    {
+      int j = accNo;
+
+      trees[j] = new Tree(j,0,0,14);
+      trees[j]->setRangeDBH(input->getPFTInit()[i]);
       trees[j]->setupAge();
       //trees[j]->setElevation(world->getElevation(trees[j]->getX(), trees[j]->getY()));
       //trees[j]->setSlope(world->getSlope(trees[j]->getX(), trees[j]->getY()));
@@ -609,6 +807,138 @@ void Simulation::renderSimulation()
       }
     }
 
+    if(_isHorn)
+    {
+      for(int i = 0; i < recruitment->getNumHorn((float)_hornNo / vectorSize); i++)
+      {
+        trees.push_back(new Tree(startID, 0,0,9));
+        //cout << "New Birch = " << recruitment->getNumBirch() << endl;
+
+        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        {
+          trees[vectorSize-1]->setCMortality();
+        }
+        else
+        {
+          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+        }
+
+        vectorSize++;
+        startID++;
+        newTrees++;
+      }
+    }
+
+    if(_isLarch)
+    {
+      for(int i = 0; i < recruitment->getNumLarch((float)_larchNo / vectorSize); i++)
+      {
+        trees.push_back(new Tree(startID, 0,0,10));
+        //cout << "New Birch = " << recruitment->getNumBirch() << endl;
+
+        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        {
+          trees[vectorSize-1]->setCMortality();
+        }
+        else
+        {
+          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+        }
+
+        vectorSize++;
+        startID++;
+        newTrees++;
+      }
+    }
+
+    if(_isBeech)
+    {
+      for(int i = 0; i < recruitment->getNumBeech((float)_beechNo / vectorSize); i++)
+      {
+        trees.push_back(new Tree(startID, 0,0,11));
+        //cout << "New Birch = " << recruitment->getNumBirch() << endl;
+
+        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        {
+          trees[vectorSize-1]->setCMortality();
+        }
+        else
+        {
+          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+        }
+
+        vectorSize++;
+        startID++;
+        newTrees++;
+      }
+    }
+
+    if(_isWillow)
+    {
+      for(int i = 0; i < recruitment->getNumWillow((float)_willowNo / vectorSize); i++)
+      {
+        trees.push_back(new Tree(startID, 0,0,12));
+        //cout << "New Birch = " << recruitment->getNumBirch() << endl;
+
+        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        {
+          trees[vectorSize-1]->setCMortality();
+        }
+        else
+        {
+          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+        }
+
+        vectorSize++;
+        startID++;
+        newTrees++;
+      }
+    }
+
+    if(_isMaple)
+    {
+      for(int i = 0; i < recruitment->getNumMaple((float)_mapleNo / vectorSize); i++)
+      {
+        trees.push_back(new Tree(startID, 0,0,13));
+        //cout << "New Birch = " << recruitment->getNumBirch() << endl;
+
+        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        {
+          trees[vectorSize-1]->setCMortality();
+        }
+        else
+        {
+          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+        }
+
+        vectorSize++;
+        startID++;
+        newTrees++;
+      }
+    }
+
+    if(_isPFT)
+    {
+      for(int i = 0; i < recruitment->getNumPFT((float)_pftNo / vectorSize); i++)
+      {
+        trees.push_back(new Tree(startID, 0,0,14));
+        //cout << "New Birch = " << recruitment->getNumBirch() << endl;
+
+        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        {
+          trees[vectorSize-1]->setCMortality();
+        }
+        else
+        {
+          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+        }
+
+        vectorSize++;
+        startID++;
+        newTrees++;
+      }
+    }
+
     cout << "Recruited new Trees! " << newTrees << endl;
 
     cout << trees.size() << endl;
@@ -712,6 +1042,12 @@ void Simulation::renderSimulation()
     int ashSum = 0;
     int limeSum = 0;
     int birchSum = 0;
+    int hornSum = 0;
+    int larchSum = 0;
+    int beechSum = 0;
+    int willowSum = 0;
+    int mapleSum = 0;
+    int pftSum = 0;
 
     for(int i = 0; i < trees.size(); i++)
     {
@@ -747,6 +1083,30 @@ void Simulation::renderSimulation()
       {
         birchSum++;
       }
+      if(trees[i]->getSpecies() == 9)
+      {
+        hornSum++;
+      }
+      if(trees[i]->getSpecies() == 10)
+      {
+        larchSum++;
+      }
+      if(trees[i]->getSpecies() == 11)
+      {
+        beechSum++;
+      }
+      if(trees[i]->getSpecies() == 12)
+      {
+        willowSum++;
+      }
+      if(trees[i]->getSpecies() == 13)
+      {
+        mapleSum++;
+      }
+      if(trees[i]->getSpecies() == 14)
+      {
+        pftSum++;
+      }
     }
 
     _elmNo = elmSum;
@@ -757,9 +1117,15 @@ void Simulation::renderSimulation()
     _ashNo = ashSum;
     _limeNo = limeSum;
     _birchNo = birchSum;
+    _hornNo = hornSum;
+    _larchNo = larchSum;
+    _beechNo = beechSum;
+    _willowNo = willowSum;
+    _mapleNo = mapleSum;
+    _pftNo = pftSum;
 
     //output->closeFile();
-    output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum);
+    output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum, hornSum, larchSum, beechSum, willowSum, mapleSum, pftSum);
 
   }
   output->closeFile();
@@ -810,7 +1176,7 @@ void Simulation::cleanSimulation()
   delete environment;
 }
 
-void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float change)
+void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float hornNo, float larchNo, float beechNo, float willowNo, float mapleNo, float pftNo, float change)
 {
   _ticks = ticks;
 
@@ -870,6 +1236,48 @@ void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, fl
     _birchNo = 0;
   }
 
+  if(hornNo > 0)
+  {
+    _hornNo = (int)((hornNo * agentNo) / 100);
+  } else {
+    _hornNo = 0;
+  }
+
+  if(larchNo > 0)
+  {
+    _larchNo = (int)((larchNo * agentNo) / 100);
+  } else {
+    _larchNo = 0;
+  }
+
+  if(beechNo > 0)
+  {
+    _beechNo = (int)((beechNo * agentNo) / 100);
+  } else {
+    _beechNo = 0;
+  }
+
+  if(willowNo > 0)
+  {
+    _willowNo = (int)((willowNo * agentNo) / 100);
+  } else {
+    _willowNo = 0;
+  }
+
+  if(mapleNo > 0)
+  {
+    _mapleNo = (int)((mapleNo * agentNo) / 100);
+  } else {
+    _mapleNo = 0;
+  }
+
+  if(pftNo > 0)
+  {
+    _pftNo = (int)((pftNo * agentNo) / 100);
+  } else {
+    _pftNo = 0;
+  }
+
   _change = change;
 }
 
@@ -900,6 +1308,12 @@ void Simulation::outputCounts()
   int ashSum = 0;
   int limeSum = 0;
   int birchSum = 0;
+  int hornSum = 0;
+  int larchSum = 0;
+  int beechSum = 0;
+  int willowSum = 0;
+  int mapleSum = 0;
+  int pftSum = 0;
 
   for(int i = 0; i < trees.size(); i++)
   {
@@ -935,6 +1349,30 @@ void Simulation::outputCounts()
     {
       birchSum++;
     }
+    if(trees[i]->getSpecies() == 9)
+    {
+      hornSum++;
+    }
+    if(trees[i]->getSpecies() == 10)
+    {
+      larchSum++;
+    }
+    if(trees[i]->getSpecies() == 11)
+    {
+      beechSum++;
+    }
+    if(trees[i]->getSpecies() == 12)
+    {
+      willowSum++;
+    }
+    if(trees[i]->getSpecies() == 13)
+    {
+      mapleSum++;
+    }
+    if(trees[i]->getSpecies() == 14)
+    {
+      pftSum++;
+    }
   }
 
   cout << "Elm population = " << elmSum << endl;
@@ -945,6 +1383,12 @@ void Simulation::outputCounts()
   cout << "Ash population = " << ashSum << endl;
   cout << "Lime population = " << limeSum << endl;
   cout << "Birch population = " << birchSum << endl;
+  cout << "Hornbeam population = " << hornSum << endl;
+  cout << "Larch population = " << larchSum << endl;
+  cout << "Beech population = " << beechSum << endl;
+  cout << "Willow population = " << willowSum << endl;
+  cout << "Maple population = " << mapleSum << endl;
+  cout << "PFT population = " << pftSum << endl;
 }
 
 void Simulation::bunceRecruits()
@@ -961,8 +1405,14 @@ void Simulation::bunceRecruits()
   _ashNo = input->getAshInit().size();
   _limeNo = input->getLimeInit().size();
   _birchNo = input->getBirchInit().size();
+  _hornNo = input->getHornInit().size();
+  _larchNo = input->getLarchInit().size();
+  _beechNo = input->getBeechInit().size();
+  _willowNo = input->getWillowInit().size();
+  _mapleNo = input->getMapleInit().size();
+  _pftNo = input->getPFTInit().size();
 
-  _plotPopulation = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo;
+  _plotPopulation = _elmNo + _pineNo + _oakNo + _alderNo + _hazelNo + _ashNo + _limeNo + _birchNo + _hornNo + _larchNo + _beechNo + _willowNo + _mapleNo + _pftNo;
 }
 
 void Simulation::setPlot(int plot)

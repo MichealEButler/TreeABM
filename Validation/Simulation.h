@@ -27,7 +27,7 @@ public:
   void updateSimulation();
   void renderSimulation();
   void cleanSimulation();
-  void setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float change);
+  void setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float hornNo, float larchNo, float beechNo, float willowNo, float mapleNo, float pftNo, float change);
   void setupPatches();
   void outputCounts();
   void bunceRecruits();
@@ -36,7 +36,7 @@ public:
 
   int agentNo;
   int agentNoSplit;
-  int species[8];
+  int species[14];
 
 private:
   Patch ** patches;
@@ -63,6 +63,12 @@ private:
   int _ashNo;
   int _limeNo;
   int _birchNo;
+  int _hornNo;
+  int _larchNo;
+  int _beechNo;
+  int _willowNo;
+  int _mapleNo;
+  int _pftNo;
   int _plot;
   int _iteration;
 
@@ -74,6 +80,12 @@ private:
   int _isAsh;
   int _isLime;
   int _isBirch;
+  int _isHorn;
+  int _isLarch;
+  int _isBeech;
+  int _isWillow;
+  int _isMaple;
+  int _isPFT;
   float _change;
 
   int _plotPopulation;

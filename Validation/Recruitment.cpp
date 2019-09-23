@@ -10,15 +10,21 @@ Recruitment::Recruitment()
   _ashProb = 0;
   _limeProb = 0;
   _birchProb = 0;
+  _hornProb = 0;
+  _larchProb = 0;
+  _beechProb = 0;
+  _willowProb = 0;
+  _mapleProb = 0;
+  _pftProb = 0;
 }
 
-Recruitment::Recruitment(int numRecruits, int species[8])
+Recruitment::Recruitment(int numRecruits, int species[14])
 {
   _numRecruits = numRecruits;
   int * array;
   array = species;
 
-  for (int i = 0; i < 8; i++)
+  for (int i = 0; i < 14; i++)
   {
     _species[i] = array[i];
   }
@@ -33,9 +39,9 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
 {
   // add percent of current population to reduce recruitment based on population size
   //first identify how many species are present
-  int numSpecies = 8; //counts number of species for determining probabilty
+  int numSpecies = 14; //counts number of species for determining probabilty
 
-  for(int i = 0; i < 8; i++)
+  for(int i = 0; i < 14; i++)
   {
     switch(_species[i])
     {
@@ -96,6 +102,48 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         if(_birchProb < 0)
         {
           _birchProb = 0.01;
+        }
+        break;
+      case 9 :
+        _hornProb = (4 * ((4330 - DEGD) * (DEGD - 810))) / ((4330 - 810) * (4330 - 810));
+        if(_hornProb < 0)
+        {
+          _hornProb = 0.01;
+        }
+        break;
+      case 10 :
+        _larchProb = (4 * ((4890 - DEGD) * (DEGD - 1100))) / ((4890 - 1100) * (4890 - 1100));
+        if(_larchProb < 0)
+        {
+          _larchProb = 0.01;
+        }
+        break;
+      case 11 :
+        _beechProb = (4 * ((4300 - DEGD) * (DEGD - 410))) / ((4300 - 410) * (4300 - 410));
+        if(_beechProb < 0)
+        {
+          _beechProb = 0.01;
+        }
+        break;
+      case 12 :
+        _willowProb = (4 * ((4170 - DEGD) * (DEGD - 750))) / ((4170 - 750) * (4170 - 750));
+        if(_willowProb < 0)
+        {
+          _willowProb = 0.01;
+        }
+        break;
+      case 13 :
+        _mapleProb = (4 * ((4170 - DEGD) * (DEGD - 1100))) / ((4170 - 1100) * (4170 - 1100));
+        if(_mapleProb < 0)
+        {
+          _mapleProb = 0.01;
+        }
+        break;
+      case 14 :
+        _pftProb = (4 * ((2300 - DEGD) * (DEGD - 410))) / ((2300 - 410) * (2300 - 410));
+        if(_pftProb < 0)
+        {
+          _pftProb = 0.01;
         }
         break;
     }
@@ -162,7 +210,44 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
     //cout << "Birch probabilty = " << _birchProb << endl;
   }
 
-  overall = _elmProb + _pineProb + _oakProb + _alderProb + _hazelProb + _ashProb + _limeProb + _birchProb;
+  if(_hornProb > 0)
+  {
+    _hornProb = _hornProb * percent;
+    //cout << "Hornbeam probabilty = " << _hornProb << endl;
+  }
+
+  if(_larchProb > 0)
+  {
+    _larchProb = _larchProb * percent;
+    //cout << "Larch probabilty = " << _larchProb << endl;
+  }
+
+  if(_beechProb > 0)
+  {
+    _beechProb = _beechProb * percent;
+    //cout << "Beech probabilty = " << _beechProb << endl;
+  }
+
+  if(_willowProb > 0)
+  {
+    _willowProb = _willowProb * percent;
+    //cout << "Willow probabilty = " << _willowProb << endl;
+  }
+
+  if(_mapleProb > 0)
+  {
+    _mapleProb = _mapleProb * percent;
+    //cout << "Maple probabilty = " << _mapleProb << endl;
+  }
+
+  if(_pftProb > 0)
+  {
+    _pftProb = _pftProb * percent;
+    //cout << "PFT probabilty = " << _pftProb << endl;
+  }
+
+  overall = _elmProb + _pineProb + _oakProb + _alderProb + _hazelProb + _ashProb + _limeProb + _birchProb
+        + _hornProb + _larchProb + _beechProb + _willowProb + _mapleProb + _pftProb;
 
   float newRecruits = (float)recruits * overall;
   _acRecruits = recruits;
@@ -270,4 +355,76 @@ int Recruitment::getNumBirch(float birchPercent)
   }
 
   return (int)numBirch;
+}
+
+int Recruitment::getNumHorn(float hornPercent)
+{
+  float numHorn = ((float)_acRecruits * _hornProb) * hornPercent;
+
+  if(numHorn < 1)
+  {
+    numHorn = 0;
+  }
+
+  return (int)numHorn;
+}
+
+int Recruitment::getNumLarch(float larchPercent)
+{
+  float numLarch = ((float)_acRecruits * _larchProb) * larchPercent;
+
+  if(numLarch < 1)
+  {
+    numLarch = 0;
+  }
+
+  return (int)numLarch;
+}
+
+int Recruitment::getNumBeech(float beechPercent)
+{
+  float numBeech = ((float)_acRecruits * _beechProb) * beechPercent;
+
+  if(numBeech < 1)
+  {
+    numBeech = 0;
+  }
+
+  return (int)numBeech;
+}
+
+int Recruitment::getNumWillow(float willowPercent)
+{
+  float numWillow = ((float)_acRecruits * _willowProb) * willowPercent;
+
+  if(numWillow < 1)
+  {
+    numWillow = 0;
+  }
+
+  return (int)numWillow;
+}
+
+int Recruitment::getNumMaple(float maplePercent)
+{
+  float numMaple = ((float)_acRecruits * _mapleProb) * maplePercent;
+
+  if(numMaple < 1)
+  {
+    numMaple = 0;
+  }
+
+  return (int)numMaple;
+}
+
+int Recruitment::getNumPFT(float pftPercent)
+{
+  float numPFT = ((float)_acRecruits * _pftProb) * pftPercent;
+
+  if(numPFT < 1)
+  {
+    numPFT = 0;
+  }
+
+  return (int)numPFT;
 }

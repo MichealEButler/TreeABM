@@ -9,7 +9,7 @@ class Recruitment
 {
 public:
   Recruitment();
-  Recruitment(int numRecruits, int species[8]);
+  Recruitment(int numRecruits, int species[14]);
   void speciesProbability(float DEGD, int recuits);
   ~Recruitment();
 
@@ -24,13 +24,19 @@ public:
   int getNumAsh(float ashPercent);
   int getNumLime(float limePercent);
   int getNumBirch(float birchPercent);
+  int getNumHorn(float hornPercent);
+  int getNumLarch(float larchPercent);
+  int getNumBeech(float beechPercent);
+  int getNumWillow(float willowPercent);
+  int getNumMaple(float maplePercent);
+  int getNumPFT(float pftPercent);
 
   float overall;
 
 private:
   int _numRecruits;
   int _acRecruits;
-  int _species[8]; // value of one to 8 depending on how many species represented
+  int _species[14]; // value of one to 8 depending on how many species represented
   float _proportion;
 
   float _elmProb;
@@ -41,6 +47,12 @@ private:
   float _ashProb;
   float _limeProb;
   float _birchProb;
+  float _hornProb;
+  float _larchProb;
+  float _beechProb;
+  float _willowProb;
+  float _mapleProb;
+  float _pftProb;
 };
 
 #endif

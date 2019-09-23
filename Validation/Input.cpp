@@ -51,6 +51,24 @@ void Input::loadFile(string filename)
         _birchNo = value;
         break;
       case 9:
+        _hornNo = value;
+        break;
+      case 10:
+        _larchNo = value;
+        break;
+      case 11:
+        _beechNo = value;
+        break;
+      case 12:
+        _willowNo = value;
+        break;
+      case 13:
+        _mapleNo = value;
+        break;
+      case 14:
+        _pftNo = value;
+        break;
+      case 15:
         _change = value;
         break;
       default:
@@ -159,6 +177,48 @@ void Input::loadPlotFile(string inFile, int nplot)
             _birchCount.push_back(DBHclass);
           }
         }
+        if(readSpecies(species) == 9)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _hornCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 10)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _larchCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 11)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _beechCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 12)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _willowCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 13)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _mapleCount.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 14)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _pftCount.push_back(DBHclass);
+          }
+        }
       }
 
       if(year == 2)
@@ -220,6 +280,48 @@ void Input::loadPlotFile(string inFile, int nplot)
           for(int i = 0; i < count; i++)
           {
           _birchCountTwo.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 9)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _hornCountTwo.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 10)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _larchCountTwo.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 11)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _beechCountTwo.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 12)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _willowCountTwo.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 13)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _mapleCountTwo.push_back(DBHclass);
+          }
+        }
+        if(readSpecies(species) == 14)
+        {
+          for(int i = 0; i < count; i++)
+          {
+            _pftCountTwo.push_back(DBHclass);
           }
         }
       }
@@ -295,6 +397,54 @@ void Input::readVectors()
     }
   }
 
+  if(_hornCount.size() >= 1)
+  {
+    for(int i = 0; i < _hornCount.size(); i++)
+    {
+      cout << "Hornbeam tree " << i << " dbh = " << _hornCount[i] << endl;
+    }
+  }
+
+  if(_larchCount.size() >= 1)
+  {
+    for(int i = 0; i < _larchCount.size(); i++)
+    {
+      cout << "Larch tree " << i << " dbh = " << _larchCount[i] << endl;
+    }
+  }
+
+  if(_beechCount.size() >= 1)
+  {
+    for(int i = 0; i < _beechCount.size(); i++)
+    {
+      cout << "Beech tree " << i << " dbh = " << _beechCount[i] << endl;
+    }
+  }
+
+  if(_willowCount.size() >= 1)
+  {
+    for(int i = 0; i < _willowCount.size(); i++)
+    {
+      cout << "Willow tree " << i << " dbh = " << _willowCount[i] << endl;
+    }
+  }
+
+  if(_mapleCount.size() >= 1)
+  {
+    for(int i = 0; i < _mapleCount.size(); i++)
+    {
+      cout << "Maple tree " << i << " dbh = " << _mapleCount[i] << endl;
+    }
+  }
+
+  if(_pftCount.size() >= 1)
+  {
+    for(int i = 0; i < _pftCount.size(); i++)
+    {
+      cout << "PFT tree " << i << " dbh = " << _pftCount[i] << endl;
+    }
+  }
+
 }
 
 int Input::readSpecies(string name)
@@ -362,6 +512,7 @@ int Input::readSpecies(string name)
               break;
             case 'r' :
               cout << "Species is Carpinus. " << endl;
+              species = 9;
               break;
           }
           break;
@@ -375,6 +526,7 @@ int Input::readSpecies(string name)
           break;
         case 'a' :
           cout << "Species is Larix. " << endl;
+          species = 10;
           break;
       }
       break;
@@ -409,6 +561,7 @@ int Input::readSpecies(string name)
                 break;
               case 'l' :
                 cout << "Species is Salix. " << endl;
+                species = 12;
                 break;
             }
             break;
@@ -434,6 +587,7 @@ int Input::readSpecies(string name)
             break;
           case 'a' :
             cout << "Species is Fagus. " << endl;
+            species = 11;
             break;
         }
         break;
@@ -479,6 +633,7 @@ int Input::readSpecies(string name)
         {
           case 'c' :
             cout << "Species is Acer. " << endl;
+            species = 13;
             break;
           case 'e' :
             cout << "Species is Aesculus. " << endl;
@@ -573,6 +728,36 @@ float Input::getBirchCount()
   return _birchNo;
 }
 
+float Input::getHornCount()
+{
+  return _hornNo;
+}
+
+float Input::getLarchCount()
+{
+  return _larchNo;
+}
+
+float Input::getBeechCount()
+{
+  return _beechNo;
+}
+
+float Input::getWillowCount()
+{
+  return _willowNo;
+}
+
+float Input::getMapleCount()
+{
+  return _mapleNo;
+}
+
+float Input::getPFTCount()
+{
+  return _pftNo;
+}
+
 float Input::getChange()
 {
   return _change;
@@ -616,4 +801,34 @@ vector <int> Input::getLimeInit()
 vector <int> Input::getBirchInit()
 {
   return _birchCount;
+}
+
+vector <int> Input::getHornInit()
+{
+  return _hornCount;
+}
+
+vector <int> Input::getLarchInit()
+{
+  return _larchCount;
+}
+
+vector <int> Input::getBeechInit()
+{
+    return _beechCount;
+}
+
+vector <int> Input::getWillowInit()
+{
+  return _willowCount;
+}
+
+vector <int> Input::getMapleInit()
+{
+  return _mapleCount;
+}
+
+vector <int> Input::getPFTInit()
+{
+  return _pftCount;
 }

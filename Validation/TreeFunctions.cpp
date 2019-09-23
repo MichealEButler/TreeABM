@@ -154,6 +154,62 @@ void TreeFunctions::setConstants(int species)
       _bio0 = 0.04; //provisional from Pretzsch
       _bio1 = 1.37;
       break;
+    case 11 : //Beech
+      _b2 = 64.84;
+      _b3 = 0.22;
+      _hmax = 50;
+      _dmax = 150;
+      _agemx = 400;
+      _s = 0.7;
+      _g = 110;
+      _crate = 0.1;
+      _DDmin = 110;
+      _DDmax = 2060;
+      _bio0 = 0.04; //provisional from Pretzsch
+      _bio1 = 1.37;
+      break;
+    case 12 : //Willow
+      _b2 = 64.84;
+      _b3 = 0.22;
+      _hmax = 50;
+      _dmax = 150;
+      _agemx = 400;
+      _s = 0.7;
+      _g = 110;
+      _crate = 0.1;
+      _DDmin = 110;
+      _DDmax = 2060;
+      _bio0 = 0.04; //provisional from Pretzsch
+      _bio1 = 1.37;
+      break;
+    case 13 : //Maple
+      _b2 = 64.84;
+      _b3 = 0.22;
+      _hmax = 50;
+      _dmax = 150;
+      _agemx = 400;
+      _s = 0.7;
+      _g = 110;
+      _crate = 0.1;
+      _DDmin = 110;
+      _DDmax = 2060;
+      _bio0 = 0.04; //provisional from Pretzsch
+      _bio1 = 1.37;
+      break;
+    case 14 : //PFT place holder to mantain populations
+      _b2 = 64.84;
+      _b3 = 0.22;
+      _hmax = 50;
+      _dmax = 150;
+      _agemx = 400;
+      _s = 0.7;
+      _g = 110;
+      _crate = 0.1;
+      _DDmin = 110;
+      _DDmax = 2060;
+      _bio0 = 0.04; //provisional from Pretzsch
+      _bio1 = 1.37;
+      break;
     default:
       cout << "No species found " << endl;
   }
