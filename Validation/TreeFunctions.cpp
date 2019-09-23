@@ -2,7 +2,6 @@
 
 TreeFunctions::TreeFunctions()
 {
-
   _mortality = false;
 }
 
@@ -102,7 +101,7 @@ void TreeFunctions::setConstants(int species)
       _b2 = 128.76;
       _b3 = 1.07;
       _hmax = 25;
-      _dmax = 30; //??
+      _dmax = 300; //??
       _agemx = 400;
       _s = 0.2;
       _g = 60;
@@ -155,13 +154,13 @@ void TreeFunctions::setConstants(int species)
       _bio1 = 1.37;
       break;
     case 11 : //Beech
-      _b2 = 64.84; //provisional
-      _b3 = 0.22; //provisional
+      _b2 = 49.82;
+      _b3 = 0.18;
       _hmax = 35;
       _dmax = 135;
       _agemx = 350;
       _s = 0.7; //provisional
-      _g = 110; //provisional
+      _g = 140; 
       _crate = 0.1;
       _DDmin = 500;
       _DDmax = 4330;
@@ -169,13 +168,13 @@ void TreeFunctions::setConstants(int species)
       _bio1 = 1.37; //provisional
       break;
     case 12 : //Willow
-      _b2 = 64.84; //provisional
-      _b3 = 0.22; //provisional
+      _b2 = 57.26;
+      _b3 = 0.29;
       _hmax = 30;
       _dmax = 100;
       _agemx = 150;
       _s = 0.7; //provisional
-      _g = 110; //provisional
+      _g = 200;
       _crate = 0.1;
       _DDmin = 830;
       _DDmax = 5060;
@@ -183,16 +182,16 @@ void TreeFunctions::setConstants(int species)
       _bio1 = 1.37; //provisional
       break;
     case 13 : //Maple
-      _b2 = 64.84; //provisional
-      _b3 = 0.22; //provisional
-      _hmax = 50; //provisional
-      _dmax = 150; //provisional
-      _agemx = 400; //provisional
+      _b2 = 28.63;
+      _b3 = 0.07;
+      _hmax = 30;
+      _dmax = 200;
+      _agemx = 600;
       _s = 0.7; //provisional
-      _g = 110; //provisional
+      _g = 90;
       _crate = 0.1; //provisional
-      _DDmin = 110; //provisional
-      _DDmax = 2060; //provisional
+      _DDmin = 670;
+      _DDmax = 4170;
       _bio0 = 0.04; //provisional from Pretzsch
       _bio1 = 1.37; //provisional
       break;
