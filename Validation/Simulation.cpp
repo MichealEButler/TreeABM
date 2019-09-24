@@ -198,6 +198,7 @@ void Simulation::initSimulation()
   world->loadSoil("Input/soil.txt");
 
   manageSpecies.push_back(6);
+  //manageSpecies.push_back(5);
 
   output = new Output();
   environment = new Environment();
@@ -1000,6 +1001,7 @@ void Simulation::renderSimulation()
         treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
         trees.erase(trees.begin() + i);
         vectorSize--;
+        i--;
       }
 
       //trees[i]->isAlive(trees[i]->getAlive());
@@ -1007,10 +1009,13 @@ void Simulation::renderSimulation()
 
     for(int i=0; i<vectorSize; i++)
     {
-      if(manage->removeState(trees[i]->getSpecies(), int(trees[i]->getDBH()), ctick) == true)
+      cout << "Tree " << i << " DBH = " << int(trees[i]->getDBH()) << endl;
+
+      if(manage->removeState(trees[i]->getSpecies(), int(trees[i]->getDBH()), ctick))
       {
         trees.erase(trees.begin() + i);
         vectorSize--;
+        i--;
       }
     }
 
@@ -1126,6 +1131,9 @@ void Simulation::renderSimulation()
         pftSum++;
       }
     }
+
+    cout << "Hazel population = " << hazelSum << endl;
+    cout << "Ash population = " << ashSum << endl;
 
     _elmNo = elmSum;
     _pineNo = pineSum;
