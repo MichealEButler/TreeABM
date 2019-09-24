@@ -682,6 +682,7 @@ void Simulation::renderSimulation()
         treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
         trees.erase(trees.begin() + i);
         vectorSize--;
+        i--;
       }
       //trees[i]->isAlive(trees[i]->getAlive());
     }

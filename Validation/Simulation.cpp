@@ -205,7 +205,7 @@ void Simulation::initSimulation()
   manage = new Manage();
 
   manage->setSpecies(manageSpecies);
-  manage->setDBHrange(0, 200);
+  manage->setDBHrange(20, 200);
   manage->setYear(28);
 
   //to be called during initial run to construct chunk directories
