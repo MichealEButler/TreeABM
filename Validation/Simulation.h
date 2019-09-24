@@ -15,6 +15,7 @@
 #include "Recruitment.h"
 #include "Input.h"
 #include "Patch.h"
+#include "Manage.h"
 
 using namespace std;
 
@@ -41,6 +42,7 @@ public:
 private:
   Patch ** patches;
   Input * input;
+  Manage * manage;
   Display * display;
   World * world;
   Environment * environment;
@@ -92,6 +94,8 @@ private:
 
   int treeHere[14][14];
   int numPatchTrees[14][14];
+
+  vector<int> manageSpecies;
 
   bool _SDL;
 

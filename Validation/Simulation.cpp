@@ -197,8 +197,16 @@ void Simulation::initSimulation()
   world->loadSlope("Input/slope.txt");
   world->loadSoil("Input/soil.txt");
 
+  manageSpecies.push_back(6);
+
   output = new Output();
   environment = new Environment();
+  manage = new Manage();
+
+  manage->setSpecies(manageSpecies);
+  manage->setDBHrange(0, 200);
+  manage->setYear(28);
+
   //to be called during initial run to construct chunk directories
   //output->createDirectories();
   //create agents
@@ -993,7 +1001,17 @@ void Simulation::renderSimulation()
         trees.erase(trees.begin() + i);
         vectorSize--;
       }
+
       //trees[i]->isAlive(trees[i]->getAlive());
+    }
+
+    for(int i=0; i<vectorSize; i++)
+    {
+      if(manage->removeState(trees[i]->getSpecies(), int(trees[i]->getDBH()), ctick) == true)
+      {
+        trees.erase(trees.begin() + i);
+        vectorSize--;
+      }
     }
 
     cout << "Processed update functions! " << endl;
@@ -1128,6 +1146,7 @@ void Simulation::renderSimulation()
     output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum, hornSum, larchSum, beechSum, willowSum, mapleSum, pftSum);
 
   }
+  manageSpecies.clear();
   output->closeFile();
 }
 
@@ -1174,6 +1193,7 @@ void Simulation::cleanSimulation()
   delete output;
   delete recruitment;
   delete environment;
+  delete manage;
 }
 
 void Simulation::setConsts(int ticks, float elmNo, float pineNo, float oakNo, float alderNo, float hazelNo, float ashNo, float limeNo, float birchNo, float hornNo, float larchNo, float beechNo, float willowNo, float mapleNo, float pftNo, float change)
