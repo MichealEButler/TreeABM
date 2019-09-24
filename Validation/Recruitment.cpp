@@ -133,14 +133,14 @@ void Recruitment::speciesProbability(float DEGD, int recruits)
         }
         break;
       case 13 :
-        _mapleProb = (4 * ((4170 - DEGD) * (DEGD - 1100))) / ((4170 - 1100) * (4170 - 1100)); //provisional
+        _mapleProb = (4 * ((4170 - DEGD) * (DEGD - 670))) / ((4170 - 670) * (4170 - 670)); //provisional
         if(_mapleProb < 0)
         {
           _mapleProb = 0.01;
         }
         break;
       case 14 :
-        _pftProb = (4 * ((2300 - DEGD) * (DEGD - 410))) / ((2300 - 410) * (2300 - 410)); //provisional
+        _pftProb = (4 * ((3870 - DEGD) * (DEGD - 690))) / ((3870 - 690) * (3870 - 690)); //provisional
         if(_pftProb < 0)
         {
           _pftProb = 0.01;

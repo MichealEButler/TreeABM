@@ -160,7 +160,7 @@ void TreeFunctions::setConstants(int species)
       _dmax = 135;
       _agemx = 350;
       _s = 0.7; //provisional
-      _g = 140; 
+      _g = 140;
       _crate = 0.1;
       _DDmin = 500;
       _DDmax = 4330;
@@ -195,17 +195,17 @@ void TreeFunctions::setConstants(int species)
       _bio0 = 0.04; //provisional from Pretzsch
       _bio1 = 1.37; //provisional
       break;
-    case 14 : //PFT place holder to mantain populations
-      _b2 = 64.84; //provisional
-      _b3 = 0.22; //provisional
-      _hmax = 50; //provisional
-      _dmax = 150; //provisional
-      _agemx = 400; //provisional
-      _s = 0.7; //provisional
+    case 14 : //PFT place holder to mantain populations averaged (rounded) across all initialised species in the model
+      _b2 = 47.72;
+      _b3 = 0.2;
+      _hmax = 30;
+      _dmax = 120;
+      _agemx = 300;
+      _s = 1.1;
       _g = 110; //provisional
       _crate = 0.1; //provisional
-      _DDmin = 110; //provisional
-      _DDmax = 2060; //provisional
+      _DDmin = 690;
+      _DDmax = 3870;
       _bio0 = 0.04; //provisional from Pretzsch
       _bio1 = 1.37; //provisional
       break;
