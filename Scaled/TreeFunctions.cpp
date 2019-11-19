@@ -27,6 +27,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 4890;
       _bio0 = 0.13;
       _bio1 = 2.49;
+      _seedmax = 30;
       break;
     case 2 : //Pine
       _b2 = 67.26;
@@ -41,6 +42,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 2350;
       _bio0 = 0.3;
       _bio1 = 2.22;
+      _seedmax = 30;
       break;
     case 3 : //Oak
       _b2 = 38.63;
@@ -55,6 +57,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 4330;
       _bio0 = 0.23;
       _bio1 = 2.28;
+      _seedmax = 30;
       break;
     case 4 : //Alder
       _b2 = 128.76;
@@ -69,6 +72,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 4890;
       _bio0 = 0.3;
       _bio1 = 2.22;
+      _seedmax = 30;
       break;
     case 5 : //Hazel
       _b2 = 67.26;
@@ -83,6 +87,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 4300;
       _bio0 = 0.2;
       _bio1 = 2.19;
+      _seedmax = 30;
       break;
     case 6 : //Ash
       _b2 = 38.63;
@@ -97,6 +102,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 4170;
       _bio0 = 0.13;
       _bio1 = 2.52;
+      _seedmax = 30;
       break;
     case 7 : //lime
       _b2 = 128.76;
@@ -111,6 +117,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 4170;
       _bio0 = 0.13; // not correct
       _bio1 = 2.49; // not correct
+      _seedmax = 30;
       break;
     case 8 : //Birch
       _b2 = 67.26;
@@ -125,6 +132,7 @@ void TreeFunctions::setConstants(int species)
       _DDmax = 2300;
       _bio0 = 0.13;
       _bio1 = 2.43;
+      _seedmax = 30;
       break;
     default:
       cout << "No species found " << endl;

@@ -47,8 +47,8 @@ void Output::createDirectories()
   }
 }
 
-void Output::populations(int year, int elmNo, float elmAge, int pineNo, float pineAge, int oakNo, float oakAge, int alderNo, float alderAge,
-                          int hazelNo, float hazelAge, int ashNo, float ashAge, int limeNo, float limeAge, int birchNo, float birchAge)
+void Output::populations(int &year, int &elmNo, float &elmAge, int &pineNo, float &pineAge, int &oakNo, float &oakAge, int &alderNo, float &alderAge,
+                          int &hazelNo, float &hazelAge, int &ashNo, float &ashAge, int &limeNo, float &limeAge, int &birchNo, float &birchAge)
 {
   file << year << ", ";
   file << elmNo << ", ";

@@ -71,6 +71,7 @@ private:
   float _bio0;
   float _bio1;
   float _biomass;
+  float _seedmax;
 
   float _optimalG;
   float _realG;

@@ -30,7 +30,7 @@ public:
 private:
   int _numRecruits;
   int _acRecruits;
-  int _species[8]; // value of one to 8 depending on how many species represented
+  int _species[8]; // value of 1 to 8 depending on how many species represented
   float _proportion;
 
   float _elmProb;
