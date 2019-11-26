@@ -68,11 +68,13 @@ public:
   bool removeTree();
   bool ageMortality();
 
+  vector<int> _npatches; // id of all patches covered by individual
+
 private:
   TreeFunctions* tf;
   vector<Tree*> _nTrees; // neighbor trees
   vector<int> _idTrees;
-  vector<int> _npatches; // id of all patches covered by individual
+
 
   bool _alive;
   bool _dominance;

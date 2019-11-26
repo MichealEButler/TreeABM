@@ -645,6 +645,7 @@ void Simulation::renderSimulation()
       //trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
       trees[i]->setTEffect(environment->constantDEGD(ctick));
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
+      trees[i]->storePatches();
 
       if(_SDL)
       {
@@ -654,29 +655,42 @@ void Simulation::renderSimulation()
 
     for(int i = 0; i < 10000; i++)
     {
+      patches[i]->clearTreeIDs();
       patches[i]->setTreeCover(trees);
       //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
     }
 
+    for(int i = 0; i < vectorSize; i++)
+    {
+      //cout << "Elements = " << trees[i]->_npatches.size() << endl;
+
+      for(int j = 0; j < trees[i]->_npatches.size(); j++)
+      {
+        patches[trees[i]->_npatches[j]]->setTreeCoverTwo(i);
+        //cout << trees[i]->_npatches[j] << " ";
+      }
+    }
+
     for(int i=0; i<vectorSize; i++)
     {
-      for(int j = 0; j < 10000; j++)
+      for(int j = 0; j < trees[i]->_npatches.size(); j++)
       {
 
-        if(trees[i]->getID() == patches[j]->getHTree())
+        if(trees[i]->getID() == patches[trees[i]->_npatches[j]]->getHTree())
         {
           trees[i]->setPDominace();
         }
 
-        if(patches[j]->getX() >= trees[i]->getX() - trees[i]->getRadius() && patches[j]->getX() < trees[i]->getX() + trees[i]->getRadius()
-          && patches[j]->getY() >= trees[i]->getY() - trees[i]->getRadius() && patches[j]->getY() < trees[i]->getY() + trees[i]->getRadius())
-        {
+        //if(patches[trees[i]->_npatches[j]]->getX() >= trees[i]->getX() - trees[i]->getRadius() && patches[trees[i]->_npatches[j]]->getX() < trees[i]->getX() + trees[i]->getRadius()
+          //&& patches[trees[i]->_npatches[j]]->getY() >= trees[i]->getY() - trees[i]->getRadius() && patches[trees[i]->_npatches[j]]->getY() < trees[i]->getY() + trees[i]->getRadius())
+        //{
           trees[i]->setTCover();
-          trees[i]->referencePatches(patches[j]->getNumCover());
+          trees[i]->referencePatches(patches[trees[i]->_npatches[j]]->getNumCover());
           trees[i]->lightEffect();
-        }
-      }
+        //}
 
+      }
+/*
       if(trees[i]->removeTree() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getPDominance() == false))
       {
         treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
@@ -684,7 +698,26 @@ void Simulation::renderSimulation()
         vectorSize--;
         i--;
       }
+*/
       //trees[i]->isAlive(trees[i]->getAlive());
+    }
+
+    for(int i=0; i<vectorSize; i++)
+    {
+      if(trees[i]->removeTree() == true || trees[i]->ageMortality() == true) // || trees[i]->getPDominance() == false) //(trees[i]->getMyPatches() == 0)) // && trees[i]->getPDominance() == false))
+      {
+        treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
+        trees.erase(trees.begin() + i);
+        vectorSize--;
+        i--;
+      }
+      else if (trees[i]->getPDominance() == false && trees[i]->getMyPatches() == 0)
+      {
+        treeHere[trees[i]->getX()][trees[i]->getY()] = 0;
+        trees.erase(trees.begin() + i);
+        vectorSize--;
+        i--;
+      }
     }
 
     cout << "Processed update functions! " << endl;

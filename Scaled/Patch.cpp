@@ -3,6 +3,7 @@
 Patch::Patch()
 {
   _x = _y = _id = _numCover = 0;
+  treeIDs.clear();
 }
 
 Patch::~Patch()
@@ -63,6 +64,11 @@ void Patch::setTreeCover(vector<Tree*> trees)
   }
 
   //cout << "Highest Tree = " << _hTree << endl;
+}
+
+void Patch::setTreeCoverTwo(int treeID)
+{
+  treeIDs.push_back(treeID);
 }
 
 void Patch::setNeighbors()
@@ -154,6 +160,11 @@ void Patch::outNeighbors()
     cout << neighbors[i] << " ";
   }
   cout << endl;
+}
+
+void Patch::clearTreeIDs()
+{
+  treeIDs.clear();
 }
 
 int Patch::getID()

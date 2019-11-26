@@ -12,6 +12,7 @@ Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
   x = _x;
   y = _y;
   _species = species;
+  _npatches.clear();
 
   _cMortality = false;
   _aMortality = false;
@@ -122,10 +123,12 @@ void Tree::storePatches()
   int orig, topR, topL, botR, botL;
 
   int castR = round(_radius);
-  cout << "Actual radius = " << _radius << endl;
-  cout << "Rounded radius = " << castR << endl;
 
-  int crD = castR + castR;int getHTree();
+  _npatches.clear();
+  //cout << "Actual radius = " << _radius << endl;
+  //cout << "Rounded radius = " << castR << endl;
+
+  int crD = castR + castR;
   int sqr = castR * castR;
 
   orig = (_x * 100) + (_y + 1);
@@ -138,10 +141,16 @@ void Tree::storePatches()
   {
     for(int j = 0; j < crD; j++)
     {
-      _npatches.push_back((topL+(i*100))+j);
+      int value = (topL+(i*100))+j;
+
+      if(value >= 0 && value < 10000)
+      {
+        _npatches.push_back(value);
+      }
     }
   }
 
+/*
   cout << "Tree at " << _x << " " << _y << endl;
   cout << "Patches = ";
 
@@ -149,10 +158,13 @@ void Tree::storePatches()
   {
     cout << _npatches[i] << " ";
   }
-  cout << endl << endl;
 
-  _npatches.clear();
+  cout << endl << endl;
+*/
+
 }
+
+
 
 void Tree::getNeighbors(vector<Tree*> cTrees)
 {

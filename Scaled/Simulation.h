@@ -16,6 +16,7 @@
 #include "Recruitment.h"
 #include "Input.h"
 #include "Patch.h"
+#include "Grid.h"
 
 using namespace std;
 
@@ -54,6 +55,7 @@ private:
   Camp ** camps;
 
   int _worldState; // determines which raster asset to display
+  int listLength; // for assessing tree ID's for patch ID list
 
   int _ticks;
   int _elmNo;
