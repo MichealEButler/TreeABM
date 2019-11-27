@@ -657,7 +657,7 @@ void Simulation::renderSimulation()
     {
       patches[i]->clearTreeIDs();
       patches[i]->setTreeCover(trees);
-      //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
+      cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
     }
 
     for(int i = 0; i < vectorSize; i++)
@@ -679,6 +679,7 @@ void Simulation::renderSimulation()
         if(trees[i]->getID() == patches[trees[i]->_npatches[j]]->getHTree())
         {
           trees[i]->setPDominace();
+          cout << "Tree " << trees[i]->getID() << "is dominant tree on Patch " << trees[i]->_npatches[j] << endl;
         }
 
         //if(patches[trees[i]->_npatches[j]]->getX() >= trees[i]->getX() - trees[i]->getRadius() && patches[trees[i]->_npatches[j]]->getX() < trees[i]->getX() + trees[i]->getRadius()

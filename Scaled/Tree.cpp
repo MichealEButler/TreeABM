@@ -149,7 +149,7 @@ void Tree::storePatches()
       }
     }
   }
-
+  
 /*
   cout << "Tree at " << _x << " " << _y << endl;
   cout << "Patches = ";
