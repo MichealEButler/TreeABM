@@ -52,6 +52,44 @@ void Environment::loadRain(string filename)
   file.close();
 }
 
+void Environment::palaeoDEGD(string filename)
+{
+  int a;
+  float b;
+
+  ifstream file;
+  file.open(filename);
+
+  while(file >> a >> b)
+  {
+    _pYear.push_back(a);
+    _DEGD.push_back(b);
+  }
+
+  for(int i = 0;i < _pYear.size(); i++)
+  {
+    //cout << "Year = " << _year[i] << endl;
+  }
+
+  file.close();
+}
+
+void Environment::palaeoRain(string filename)
+{
+  int a;
+  float b;
+
+  ifstream file;
+  file.open(filename);
+
+  while(file >> a >> b)
+  {
+    _pRain.push_back(b);
+  }
+
+  file.close();
+}
+
 void Environment::readDEGD(string file)
 {
 
