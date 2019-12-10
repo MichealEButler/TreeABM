@@ -69,6 +69,12 @@ void Output::populations(int &year, int &elmNo, float &elmAge, int &pineNo, floa
   file << birchAge << " " << endl;
 }
 
+void Output::openessOutput(int year, int openPatches)
+{
+  file << year << ", ";
+  file << openPatches << " " << endl;
+}
+
 void Output::runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk, bool dominant, float elevation)
 {
   //cout << "agentID = " << agentID << endl;

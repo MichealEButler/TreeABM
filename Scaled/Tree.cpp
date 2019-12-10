@@ -130,14 +130,21 @@ void Tree::storePatches()
 
   int crD = castR + castR;
   int sqr = castR * castR;
+  int left = ((castR + 1) * 100);
+  int right = ((castR - 1) * 100);
 
-  orig = (_x * 100) + (_y + 1);
-  topL = orig - ((castR * 100) - castR);
-  topR = orig + ((castR * 100) - castR);
-  botL = orig - ((castR * 100) + castR);
-  botR = orig + ((castR * 100) + castR);
+  orig = (_x * 100) + _y;
+  topL = orig - (left + castR);
+  topR = orig + (right - castR);
+  botL = orig - (left - castR);
+  botR = orig + (right + castR);
 
-  for(int i = 1; i < (crD+1); i++)
+  if (castR == 0)
+  {
+    _npatches.push_back(orig);
+  }
+
+  for(int i = 0; i < (crD+1); i++)
   {
     for(int j = 0; j < crD; j++)
     {
@@ -149,7 +156,7 @@ void Tree::storePatches()
       }
     }
   }
-  
+
 /*
   cout << "Tree at " << _x << " " << _y << endl;
   cout << "Patches = ";
