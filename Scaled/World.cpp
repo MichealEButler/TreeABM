@@ -77,7 +77,7 @@ void World::loadHeight(const char* fileName)
 
   file.close();
 
-  cout << "Array created! " << endl;
+  cout << "Height array created! " << endl;
 
   for (int i = 0; i < 100; i++) {
     delete[] my_array[i];
@@ -133,7 +133,7 @@ void World::loadSlope(const char* fileName)
 
   file.close();
 
-  cout << "Array created! " << endl;
+  cout << "Slope array created! " << endl;
 
   for (int i = 0; i < 100; i++) {
     delete[] my_array[i];
@@ -165,7 +165,71 @@ void World::loadSoil(const char* fileName)
 
   file.close();
 
-  cout << "Array created! " << endl;
+  cout << "Soil array created! " << endl;
+
+  for (int i = 0; i < 100; i++) {
+    delete[] my_array[i];
+  }
+
+  delete[] my_array;
+}
+
+void World::loadPollen(const char* fileName)
+{
+  string line;
+  ifstream file (fileName);
+  file.is_open();
+
+  int **my_array;
+  my_array = new int*[100];
+
+  for (int i = 0; i < 100; i++) {
+    my_array[i] = new int[100];
+  }
+
+  for (int i = 0; i < 100; i++) {
+    for(int j = 0; j < 100; j++) {
+      file >> my_array[i][j];
+      pollen[i][j] = my_array[i][j];
+    }
+    //cout << endl;
+  }
+
+  file.close();
+
+  cout << "Pollen array created! " << endl;
+
+  for (int i = 0; i < 100; i++) {
+    delete[] my_array[i];
+  }
+
+  delete[] my_array;
+}
+
+void World::loadCatchment(const char* fileName)
+{
+  string line;
+  ifstream file (fileName);
+  file.is_open();
+
+  int **my_array;
+  my_array = new int*[100];
+
+  for (int i = 0; i < 100; i++) {
+    my_array[i] = new int[100];
+  }
+
+  for (int i = 0; i < 100; i++) {
+    for(int j = 0; j < 100; j++) {
+      file >> my_array[i][j];
+      catchment[i][j] = my_array[i][j];
+    }
+    //cout << endl;
+  }
+
+  file.close();
+
+  cout << "Catchment array created! " << endl;
 
   for (int i = 0; i < 100; i++) {
     delete[] my_array[i];
@@ -427,6 +491,90 @@ void World::renderSoil(SDL_Renderer* renderer)
       {
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         df->fillRect(renderer, i*8, j*8, 8, 8);
+      }
+    }
+  }
+}
+
+void World::renderCatchment(SDL_Renderer* renderer)
+{
+  int type;
+
+  for (int j = 0; j < 100; j++) {
+    for (int i = 0; i < 100; i++) {
+
+      type = catchment[j][i];
+
+      switch(type)
+      {
+        case 1:
+          SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 2:
+          SDL_SetRenderDrawColor(renderer, 130, 208, 146, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        default:
+          SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+      }
+    }
+  }
+}
+
+void World::renderPollen(SDL_Renderer* renderer)
+{
+  int type;
+
+  for (int j = 0; j < 100; j++)
+  {
+    for (int i = 0; i < 100; i++)
+    {
+
+      type = pollen[j][i];
+
+      switch(type)
+      {
+        case 1:
+          SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 2:
+          SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 3:
+          SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 4:
+          SDL_SetRenderDrawColor(renderer, 255, 178, 102, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 5:
+          SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 6:
+          SDL_SetRenderDrawColor(renderer, 102, 51, 0, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 7:
+          SDL_SetRenderDrawColor(renderer, 51, 255, 51, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 8:
+          SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        case 9:
+          SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
+          break;
+        default:
+          SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+          df->fillRect(renderer, i*8, j*8, 8, 8);
       }
     }
   }

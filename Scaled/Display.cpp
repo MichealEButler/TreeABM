@@ -11,6 +11,7 @@ Display::Display()
 {
     world = new World();
     drawFunctions = new DrawFunctions();
+    isPollen = false;
 
     //world->loadWorld("Input/testDEM.txt");
     //world->loadWorld("Input/slope_7204.txt");
@@ -95,6 +96,13 @@ void Display::clearRenderer()
   SDL_RenderClear(renderer);
 }
 
+void Display::showPollen()
+{
+  // this runs prior to the simulation LOOP
+
+
+}
+
 void Display::renderDisplay(int state)
 {
 
@@ -106,6 +114,7 @@ void Display::renderDisplay(int state)
     }
   }
 */
+
   switch(state) {
     case 1:
       world->renderHeight(renderer);
@@ -145,4 +154,9 @@ bool Display::running()
 bool Display::cPressed()
 {
   return isCPressed;
+}
+
+bool Display::initPollen()
+{
+  return isPollen;
 }

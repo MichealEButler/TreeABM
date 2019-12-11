@@ -16,12 +16,14 @@ public:
   void handleEvents();
   void updateDisplay();
   void renderDisplay(int state);
+  void showPollen(); // shows pollen catchment, and distribution
   void renderPresent();
   void clearRenderer();
   void cleanDisplay();
 
   bool running();
   bool cPressed();
+  bool initPollen();
   SDL_Renderer* renderer;
 
 private:
@@ -31,6 +33,7 @@ private:
 
   bool isCPressed;
   bool isRunning;
+  bool isPollen;
 
 };
 

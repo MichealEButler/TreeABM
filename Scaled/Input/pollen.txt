@@ -1,0 +1,11 @@
+year = 1000
+x = 50
+y = 50
+Elm = 15
+Pine = 15
+Oak = 15
+Alder = 15
+Hazel = 10
+Ash = 10
+Lime = 10
+Birch = 10
