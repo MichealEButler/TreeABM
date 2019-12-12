@@ -1,7 +1,7 @@
 Ticks = 500
-Elm = 40
-Pine = 30
-Oak = 30
+Elm = 0
+Pine = 0
+Oak = 100
 Alder = 0
 Hazel = 0
 Ash = 0

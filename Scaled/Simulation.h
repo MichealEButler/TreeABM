@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <time.h>
+#include <ctime>
+#include <algorithm>
 #include "World.h"
 #include "Display.h"
 #include "Tree.h"
@@ -17,6 +20,7 @@
 #include "Input.h"
 #include "Patch.h"
 #include "Grid.h"
+#include "Manage.h"
 
 using namespace std;
 
@@ -53,6 +57,7 @@ private:
   Output * output;
   Chunk ** chunks;
   Camp ** camps;
+  Manage * manage1;
 
   int _worldState; // determines which raster asset to display
   int listLength; // for assessing tree ID's for patch ID list
@@ -76,6 +81,9 @@ private:
   int _isLime;
   int _isBirch;
   float _change;
+
+  vector<int> oakArray;
+  vector<int> manageArray;
 
   int treeHere[100][100];
   int numPatchTrees[100][100];

@@ -64,7 +64,7 @@ void Pollen::pollenIn(string filename)
 
 void Pollen::defConsts()
 {
-  // Oak as reference taken from Sugita 1999 (a) and Bunting 2005 (b)
+  // Oak as reference taken from Sugita 1999(a) and Bunting 2005(b)
   _elmPPE = 0.17; // a
   _pinePPE = 0.75; // a
   _oakPPE = 1.0;

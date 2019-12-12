@@ -140,6 +140,11 @@ Simulation::Simulation()
   }
   cout << endl;
 
+  manage1 = new Manage();
+  manage1->setTicks(1);
+  manage1->setSpecies(3);
+  manage1->setRSum(50);
+
   delete input;
 }
 
@@ -414,7 +419,7 @@ void Simulation::renderSimulation()
 
   while (ctick <= (_ticks-1)) // change to a while running function that takes in the graphics on/off parameter
   {
-
+    oakArray.clear();
     openPatches = 0;
     ctick++;
     resetDEGD++;
@@ -647,7 +652,8 @@ void Simulation::renderSimulation()
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
       //trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
-      trees[i]->setTEffect(environment->constantDEGD(ctick));
+      //trees[i]->setTEffect(environment->constantDEGD(ctick));
+      trees[i]->setTEffect(2000);
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
       //cout << "Made to pre-patch allocation for tree " << trees[i]->getID() << endl;
       trees[i]->storePatches();
@@ -801,6 +807,7 @@ void Simulation::renderSimulation()
       {
         oakSum++;
         oakAge = oakAge + trees[i]->getAge();
+        oakArray.push_back(i);
       }
       if(trees[i]->getSpecies() == 4)
       {
@@ -837,6 +844,34 @@ void Simulation::renderSimulation()
     ashAge = ((ashAge / ashSum) * 100) / 250;
     limeAge = ((limeAge / limeSum) * 100) / 400;
     birchAge = ((birchAge / birchSum) * 100) / 120;
+
+    //removal mechanic
+
+    if(ctick % manage1->getTicks() == 0 && ctick > 200)
+    {
+      manageArray.clear();
+      int removeCounter = 0;
+
+      while(removeCounter < manage1->getRSum())
+      {
+        //srand(time(NULL));
+        int a = rand() % oakArray.size();
+
+        manageArray.push_back(oakArray[a]);
+        removeCounter++;
+      }
+
+      sort(manageArray.begin(), manageArray.end());
+
+      for(int i = 0; i < manageArray.size(); i++)
+      {
+        cout << trees[manageArray[i] - i]->getSpecies() << " with ID " << trees[manageArray[i] - i]->getID() << "removed! " << endl;
+        trees.erase(trees.begin() + (manageArray[i] - i));
+        vectorSize--;
+      }
+
+      cout << "Managed landscape. " << endl;
+    }
 
     for(int i = 0; i < 10000; i++)
     {
@@ -897,6 +932,7 @@ void Simulation::cleanSimulation()
     delete display;
   }
 
+  delete manage1;
   delete world;
   delete treeFunctions;
   delete output;
