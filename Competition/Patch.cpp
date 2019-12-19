@@ -49,6 +49,40 @@ void Patch::setTreeCover(vector<Tree*> trees)
   }
 }
 
+void Patch::setTreeCoverC(Tree* circle)
+{
+  circleCover.clear();
+  _numCover = 0;
+
+
+  if(_x <= circle->getX()+(circle->getCRadius()-1) && _x >= circle->getX()-circle->getCRadius() && _y <= circle->getY()+(circle->getCRadius()-1) && _y >= circle->getY()-circle->getCRadius())
+  {
+    circleCover.push_back(circle->getID());
+    _numCover = _numCover + 1;
+  }
+
+}
+
+void Patch::setPixelCoverC(Tree* circle)
+{
+  // if the location of the circle falls within the patch color the patch
+  pixelCover.clear();
+  _numCover = 0;
+  int pixelW = 20;
+  int pixelH = 20;
+
+  int pixelX = circle->getX() * pixelW;
+  int pixelY = circle->getX() * pixelH;
+  int pixelR = circle->getCRadius() * pixelH;
+
+  if((_x * 20) <= (pixelX+(pixelR-1)) && (_x * 20) >= (pixelX-pixelR) && (_y * 20) <= (pixelY+(pixelR-1)) && (_y * 20) >= (pixelY-pixelR));
+  {
+    pixelCover.push_back(circle->getID());
+    _numCover = _numCover + 1;
+  }
+
+}
+
 int Patch::getID()
 {
   return _id;
@@ -72,4 +106,9 @@ int Patch::getNumCover()
 vector<int> Patch::getTreeCover()
 {
   return treeCover;
+}
+
+vector<int> Patch::getCCover()
+{
+  return circleCover;
 }

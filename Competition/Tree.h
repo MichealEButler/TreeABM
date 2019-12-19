@@ -12,11 +12,12 @@ class Tree
 public:
   Tree();
   Tree(int id);
+  Tree(int x, int y, float radius); //constructor just for circle to view patch area referencing
   ~Tree();
 
   int getX();
   int getY();
-  int getCRadius();
+  float getCRadius();
   int getHeight();
   int getID();
   bool getDominance();
@@ -29,17 +30,21 @@ public:
   void setTCover();
   void outData();
   void resetPatches();
+  void growCircle();
+  void storePatches();
 
   void referencePatches(int num); // takes in a vector of the
+  vector<int> patches;
 
 private:
   vector<Tree*> _nTrees; // neighouring trees
   vector<int> _idTrees;
 
+
   int _x;
   int _y;
   int _id;
-  int _cradius;
+  float _cradius;
   int _height;
   bool _dominance;
 

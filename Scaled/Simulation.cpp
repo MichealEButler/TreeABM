@@ -865,7 +865,7 @@ void Simulation::renderSimulation()
 
       for(int i = 0; i < manageArray.size(); i++)
       {
-        cout << trees[manageArray[i] - i]->getSpecies() << " with ID " << trees[manageArray[i] - i]->getID() << "removed! " << endl;
+        cout << trees[manageArray[i] - i]->getSpecies() << " with ID " << trees[manageArray[i] - i]->getID() << " removed! " << endl;
         trees.erase(trees.begin() + (manageArray[i] - i));
         vectorSize--;
       }

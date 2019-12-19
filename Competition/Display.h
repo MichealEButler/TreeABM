@@ -19,6 +19,7 @@ public:
   void cleanDisplay();
 
   bool running();
+  bool space();
   SDL_Renderer* renderer;
 
 private:
@@ -27,7 +28,7 @@ private:
   SDL_RendererInfo rendererInfo;
 
   bool isRunning;
-
+  bool isSpace;
 };
 
 #endif

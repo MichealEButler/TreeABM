@@ -40,6 +40,14 @@ Tree::Tree(int id)
   cout << "-------------------" << endl;
 }
 
+Tree::Tree(int x, int y, float radius)
+{
+  _x = x;
+  _y = y;
+
+  _cradius = radius;
+}
+
 Tree::~Tree()
 {
 
@@ -55,7 +63,7 @@ int Tree::getY()
   return _y;
 }
 
-int Tree::getCRadius()
+float Tree::getCRadius()
 {
   return _cradius;
 }
@@ -84,9 +92,41 @@ int Tree::getMyPatches()
   return _myPatches;
 }
 
+void Tree::storePatches()
+{
+  patches.clear();
+
+  int x = _x;
+  int y = _y;
+  int x0 = 0;
+  int y0 = round(_cradius);
+  int d = 3 - 2 * round(_cradius);
+  if(!_cradius) return;
+
+  while(y0 >= x0)
+  {
+    patches.push_back((20 * (x - x0)) + ((y - y0)));
+    patches.push_back((20 * (x - y0)) + ((y - x0)));
+    patches.push_back((20 * (x + y0)) + ((y - x0)));
+    patches.push_back((20 * (x + x0)) + ((y - y0)));
+    patches.push_back((20 * (x - x0)) + ((y + y0)));
+    patches.push_back((20 * (x - y0)) + ((y + x0)));
+    patches.push_back((20 * (x + y0)) + ((y + x0)));
+    patches.push_back((20 * (x + x0)) + ((y + y0)));
+    if(d < 0) d += 4 * x0++ + 6;
+    else d+= 4 * (x0++ - y0--) + 10;
+  }
+}
+
 void Tree::setDominance(vector<Tree*> nTrees)
 {
 
+}
+
+void Tree::growCircle()
+{
+  _cradius = _cradius + 0.1f;
+  cout << "Circle Radius = " << _cradius << endl;
 }
 
 float Tree::intersectArea(float Ax, float Ay, float Bx, float By, float Ar, float Br)

@@ -8,7 +8,7 @@ World *world = nullptr;
 Display::Display()
 {
     world = new World();
-      world->loadWorld();
+    world->loadWorld();
 }
 
 Display::~Display()
@@ -55,6 +55,18 @@ void Display::handleEvents()
     {
       isRunning = false;
     }
+    if (e.key.keysym.sym == SDLK_SPACE)
+    {
+      isSpace = true;
+    }
+  }
+
+  if(e.type == SDL_KEYUP)
+  {
+    if (e.key.keysym.sym == SDLK_SPACE)
+    {
+      isSpace = false;
+    }
   }
 
   if (e.type == SDL_QUIT)
@@ -98,4 +110,9 @@ void Display::cleanDisplay()
 bool Display::running()
 {
   return isRunning;
+}
+
+bool Display::space()
+{
+  return isSpace;
 }

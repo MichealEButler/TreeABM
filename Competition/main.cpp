@@ -33,17 +33,20 @@ float intersectArea(float Ax, float Ay, float Bx, float By, float Ar, float Br);
 void fillCircle(SDL_Renderer * renderer, int x, int y, int radius, int color);
 void drawCircle(SDL_Renderer * renderer, int x, int y, int radius, int color);
 void drawRect(SDL_Renderer * renderer, int x, int y, int width, int height, int color);
+void cirleGrow();
 
 Display * display;
 vector<Tree*> trees;
 Patch **patches;
+Tree* circle;
 
 int main(int argc, char ** argv)
 {
   srand(time(NULL));
 
   display = new Display();
-  trees = vector<Tree*>(8);
+  //trees = vector<Tree*>(8);
+  circle = new Tree(10,10,2.2f);
   patches = new Patch*[400];
 
   for(int i = 0; i < trees.size(); i++)
@@ -93,21 +96,24 @@ int main(int argc, char ** argv)
   {
     display->updateDisplay();
     display->renderDisplay();
+/*
     for(int i = 0; i < trees.size(); i++)
     {
       trees[i]->resetPatches();
       trees[i]->setNeighbors(trees);
       trees[i]->getDominance();
-      drawCircle(display->renderer, (trees[i]->getX())*20, (trees[i]->getY())*20, (trees[i]->getCRadius())*20, 2);
+      //drawCircle(display->renderer, (trees[i]->getX())*20, (trees[i]->getY())*20, (trees[i]->getCRadius())*20, 2);
       //fillCircle(display->renderer, (trees[i]->getX())*20, (trees[i]->getY())*20, (trees[i]->getCRadius())*20, 2);
     }
-
+*/
+/*
     for(int i = 0; i < 400; i++)
     {
       patches[i]->setTreeCover(trees);
       cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getNumCover() << endl;
     }
-
+*/
+/*
     for(int i = 0; i < trees.size(); i++)
     {
       if(trees[i]->getDominance() != true)
@@ -116,7 +122,7 @@ int main(int argc, char ** argv)
         {
           if(patches[j]->getNumCover() == 1)
           {
-            drawRect(display->renderer, patches[j]->getX()*20, patches[j]->getY()*20, 20, 20, 1);
+            //drawRect(display->renderer, patches[j]->getX()*20, patches[j]->getY()*20, 20, 20, 1);
           }
 
           if(patches[j]->getX() >= trees[i]->getX() - trees[i]->getCRadius() && patches[j]->getX() < trees[i]->getX() + trees[i]->getCRadius()
@@ -128,11 +134,51 @@ int main(int argc, char ** argv)
 
             if(patches[j]->getNumCover() > 1)
             {
-              drawRect(display->renderer, patches[j]->getX()*20, patches[j]->getY()*20, 20, 20, 3);
+              //drawRect(display->renderer, patches[j]->getX()*20, patches[j]->getY()*20, 20, 20, 3);
             }
           }
         }
       }
+*/
+
+      for(int i = 0; i < 400; i++)
+      {
+        patches[i]->setTreeCoverC(circle);
+        //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getNumCover() << endl;
+      }
+
+      for(int j = 0; j < 400; j++)
+      {
+        if(patches[j]->getNumCover() == 1)
+        {
+          drawRect(display->renderer, patches[j]->getX()*20, patches[j]->getY()*20, 20, 20, 3);
+        }
+
+        if(patches[j]->getX() >= circle->getX() - circle->getCRadius() && patches[j]->getX() < circle->getX() + circle->getCRadius()
+          && patches[j]->getY() >= circle->getY() - circle->getCRadius() && patches[j]->getY() < circle->getY() + circle->getCRadius())
+        {
+          circle->setTCover();
+          circle->referencePatches(patches[j]->getNumCover());
+        }
+
+        if(patches[j]->getNumCover() > 1)
+        {
+          //drawRect(display->renderer, patches[j]->getX()*20, patches[j]->getY()*20, 20, 20, 3);
+        }
+      }
+
+    drawCircle(display->renderer, (circle->getX())*20, (circle->getY())*20, round((circle->getCRadius())*20), 1);
+    circle->storePatches();
+
+    for(int i = 0; i < circle->patches.size(); i++)
+    {
+      //drawRect(display->renderer, (patches[circle->patches[i]]->getX())*20, (patches[circle->patches[i]]->getY())*20, 20, 20, 3);
+    }
+
+    if(display->space())
+    {
+      circle->growCircle();
+    }
 
     display->renderPresent();
     display->clearRenderer();
