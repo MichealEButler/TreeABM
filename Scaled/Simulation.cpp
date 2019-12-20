@@ -535,18 +535,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,4));
         //cout << "New Alder = " << recruitment->getNumAlder() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -557,18 +558,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,5));
         //cout << "New Hazel = " << recruitment->getNumHazel() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -579,18 +581,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,6));
         //cout << "New Ash = " << recruitment->getNumAsh() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -601,18 +604,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,7));
         //cout << "New Lime = " << recruitment->getNumLime() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -623,18 +627,19 @@ void Simulation::renderSimulation()
         trees.push_back(new Tree(startID, 0,0,8));
         //cout << "New Birch = " << recruitment->getNumBirch() << endl;
 
-        if(treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] == true)
+        if(treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] == true)
         {
-          trees[vectorSize-1]->setCMortality();
+          trees[vectorSize]->setCMortality();
+          trees.erase(trees.begin() + vectorSize);
+          startID++;
         }
         else
         {
-          treeHere[trees[vectorSize-1]->getX()][trees[vectorSize-1]->getY()] = 1;
+          treeHere[trees[vectorSize]->getX()][trees[vectorSize]->getY()] = 1;
+          vectorSize++;
+          startID++;
+          newTrees++;
         }
-
-        vectorSize++;
-        startID++;
-        newTrees++;
       }
     }
 
@@ -846,7 +851,7 @@ void Simulation::renderSimulation()
     birchAge = ((birchAge / birchSum) * 100) / 120;
 
     //removal mechanic
-
+/*
     if(ctick % manage1->getTicks() == 0 && ctick > 200)
     {
       manageArray.clear();
@@ -872,7 +877,7 @@ void Simulation::renderSimulation()
 
       cout << "Managed landscape. " << endl;
     }
-
+*/
     for(int i = 0; i < 10000; i++)
     {
       if(patches[i]->getNumCover() == 0)
@@ -884,8 +889,8 @@ void Simulation::renderSimulation()
     cout << "Opened Patches = " << openPatches << endl;
 
     //output->closeFile();
-    output->openessOutput(ctick, openPatches);
-    //output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge);
+    //output->openessOutput(ctick, openPatches);
+    output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge, openPatches);
   }
   output->closeFile();
 }
