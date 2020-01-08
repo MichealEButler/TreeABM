@@ -171,7 +171,10 @@ void Tree::storePatches()
 
 }
 
-
+void Tree::setPProduction()
+{
+  // amount of pollen is the product of the crown diameter of tree and species specific productivity attribute
+}
 
 void Tree::getNeighbors(vector<Tree*> cTrees)
 {
