@@ -17,6 +17,8 @@ public:
   void setY(int y);
   void setID(int id);
   void setTreeCover(vector<Tree*> trees);
+  void setTreeCoverTwo(int treeID); // adds to vector
+  void clearTreeIDs();
   void setNeighbors();
   void outNeighbors();
 
@@ -34,6 +36,7 @@ private:
   int _hTree; // highest tree id
   int neighbors[8]; // array of neighbors
   int neighbors4[4]; // von neumann neighbors
+  vector <int> treeIDs; //vector of trees covering this patch
 };
 
 #endif

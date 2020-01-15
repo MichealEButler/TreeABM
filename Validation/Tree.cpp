@@ -230,36 +230,39 @@ void Tree::storePatches()
   int orig, topR, topL, botR, botL;
 
   int castR = round(_radius);
-  cout << "Actual radius = " << _radius << endl;
-  cout << "Rounded radius = " << castR << endl;
+
+  _npatches.clear();
+  //cout << "Actual radius = " << _radius << endl;
+  //cout << "Rounded radius = " << castR << endl;
 
   int crD = castR + castR;int getHTree();
   int sqr = castR * castR;
+  int left = ((castR + 1) * 14);
+  int right = ((castR - 1) * 14);
 
-  orig = (_x * 14) + (_y + 1);
-  topL = orig - ((castR * 14) - castR);
-  topR = orig + ((castR * 14) - castR);
-  botL = orig - ((castR * 14) + castR);
-  botR = orig + ((castR * 14) + castR);
+  orig = (_x * 14) + _y;
+  topL = orig - (left + castR);
+  topR = orig + (right - castR);
+  botL = orig - (left - castR);
+  botR = orig + (right + castR);
 
-  for(int i = 1; i < (crD+1); i++)
+  if (castR == 0)
+  {
+    _npatches.push_back(orig);
+  }
+
+  for(int i = 0; i < (crD+1); i++)
   {
     for(int j = 0; j < crD; j++)
     {
-      _npatches.push_back((topL+(i*14))+j);
+      int value = (topL+(i*14))+j;
+
+      if(value >= 0 && value < 196)
+      {
+        _npatches.push_back(value);
+      }
     }
   }
-
-  cout << "Tree at " << _x << " " << _y << endl;
-  cout << "Patches = ";
-
-  for (int i = 0; i < _npatches.size(); i++)
-  {
-    cout << _npatches[i] << " ";
-  }
-  cout << endl << endl;
-
-  _npatches.clear();
 }
 
 void Tree::getNeighbors(vector<Tree*> cTrees)
