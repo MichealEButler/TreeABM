@@ -65,7 +65,7 @@ void Output::populations(int year, int elmNo, int pineNo, int oakNo, int alderNo
   file << pftNo << " " << endl;
 }
 
-void Output::runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk, bool dominant, float elevation)
+void Output::runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius)
 {
   //cout << "agentID = " << agentID << endl;
   file << agentID << ", ";
@@ -81,11 +81,7 @@ void Output::runOutput(int agentID, int species, int age, int x, int y, float DB
   //cout << "Height = " << height << endl;
   file << height << ", ";
   //cout << "Radius = " << radius << endl;
-  file << radius << ", ";
-  file << biomass << ", ";
-  file << chunk << ", ";
-  file << dominant << ", " << endl;
-  file << elevation << " " << endl;
+  file << radius << " " << endl;
 }
 
 void Output::blenderOutput(int agentID, int species, int x, int y,float DBH, float height, float radius, float elevation)

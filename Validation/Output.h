@@ -18,7 +18,7 @@ public:
   void createDirectories();
   void outPatches(int array[14][14], string filename);
   void populations(int year, int elmNo, int pineNo, int oakNo, int alderNo, int hazelNo, int ashNo, int limeNo, int birchNo, int hornNo, int larchNo, int beechNo, int willowNo, int mapleNo, int pftNo);
-  void runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius, float biomass, int chunk, bool dominant, float elevation);
+  void runOutput(int agentID, int species, int age, int x, int y, float DBH, float height, float radius);
   void blenderOutput(int agentID, int species, int x, int y,float DBH, float height, float radius, float elevation);
   void chunkOutput(int agentID, int species, int x, int y, int chunk, float DBH, float height, float radius, float elevation);
   void closeFile();

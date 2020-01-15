@@ -1040,7 +1040,7 @@ void Simulation::renderSimulation()
     for(int i=0; i<vectorSize; i++)
     {
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
-      //output2->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
+      output2->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(), trees[i]->getRadius());
       //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
 
