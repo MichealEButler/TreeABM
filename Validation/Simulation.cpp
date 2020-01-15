@@ -201,6 +201,7 @@ void Simulation::initSimulation()
   //manageSpecies.push_back(5);
 
   output = new Output();
+  output2 = new Output();
   environment = new Environment();
   manage = new Manage();
 
@@ -595,6 +596,7 @@ void Simulation::renderSimulation()
   const string part4 = ".txt";
 
   const string pop = "Output/" + to_string(_plot) + "-" + to_string(_iteration) + ".txt";
+  const string pop2 = "Output/" + to_string(_plot) + "-" + to_string(_iteration) + "-tick";
   output->openFile(pop);
 
   resetDEGD = 14;
@@ -610,10 +612,11 @@ void Simulation::renderSimulation()
     }
 
     int vectorSize = trees.size();
+    const string all = ((pop2 + to_string(ctick))+ part2);
     //const string all = ((part1 + to_string(ctick))+ part2);
     //const string all2 = ((part3 + to_string(ctick))+ part4);
 
-    //output->openFile(all);
+    output2->openFile(all);
     //output->outPatches(treeHere, all2);
 
     if(_SDL)
@@ -1037,7 +1040,7 @@ void Simulation::renderSimulation()
     for(int i=0; i<vectorSize; i++)
     {
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
-      //output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
+      //output2->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
       //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
 
@@ -1164,6 +1167,7 @@ void Simulation::renderSimulation()
     _pftNo = pftSum;
 
     //output->closeFile();
+    output2->closeFile();
     output->populations(ctick, elmSum, pineSum, oakSum, alderSum, hazelSum, ashSum, limeSum, birchSum, hornSum, larchSum, beechSum, willowSum, mapleSum, pftSum);
 
   }
@@ -1212,6 +1216,7 @@ void Simulation::cleanSimulation()
   delete world;
   delete treeFunctions;
   delete output;
+  delete output2;
   delete recruitment;
   delete environment;
   delete manage;

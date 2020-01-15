@@ -52,6 +52,7 @@ private:
   vector<Tree*> trees; // = vector<Tree*>(10);
   //Tree ** trees;
   Output * output;
+  Output * output2;
   Chunk ** chunks;
 
   int _worldState; // determines which raster asset to display
