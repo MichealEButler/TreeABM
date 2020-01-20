@@ -389,7 +389,8 @@ void Simulation::initSimulation()
   cout << input->getChange();
   cout << endl << "Simulation class agents created " << endl;
 
-  environment->loadDEGD("Input/DEGD.txt", _change);
+  //environment->loadDEGD("Input/DEGD.txt", _change);
+  environment->palaeoDEGD("Input/pDEGD.txt", 10);
   environment->loadRain("Input/rain.txt");
   //create world
 }
@@ -424,10 +425,12 @@ void Simulation::renderSimulation()
     ctick++;
     resetDEGD++;
 
+    /*
     if(ctick % 100 == 0)
     {
       resetDEGD = 1;
     }
+    */
 
     int vectorSize = trees.size();
     const string all = ((part1 + to_string(ctick))+ part2);
@@ -444,7 +447,8 @@ void Simulation::renderSimulation()
     }
 
     //recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
-    recruitment->speciesProbability(environment->constantDEGD(ctick), 100);
+    //recruitment->speciesProbability(environment->constantDEGD(ctick), 100);
+    recruitment->speciesProbability(environment->_DEGD[ctick], 100);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -656,9 +660,10 @@ void Simulation::renderSimulation()
       trees[i]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
+      trees[i]->setTEffect(environment->_DEGD[ctick]);
       //trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
       //trees[i]->setTEffect(environment->constantDEGD(ctick));
-      trees[i]->setTEffect(2000);
+      //trees[i]->setTEffect(2000);
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
       //cout << "Made to pre-patch allocation for tree " << trees[i]->getID() << endl;
       trees[i]->storePatches();

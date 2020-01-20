@@ -52,7 +52,7 @@ void Environment::loadRain(string filename)
   file.close();
 }
 
-void Environment::palaeoDEGD(string filename)
+void Environment::palaeoDEGD(string filename, int res)
 {
   int a;
   float b;
@@ -62,8 +62,11 @@ void Environment::palaeoDEGD(string filename)
 
   while(file >> a >> b)
   {
-    _pYear.push_back(a);
-    _DEGD.push_back(b);
+    for(int i = 0; i < res; i++)
+    {
+      _pYear.push_back(a);
+      _DEGD.push_back(b);
+    }
   }
 
   for(int i = 0;i < _pYear.size(); i++)

@@ -16,7 +16,7 @@ public:
   ~Environment();
   void loadDEGD(string filename, float change); // contemporary dataset
   void loadRain(string filename); // contemporary dataset
-  void palaeoDEGD(string filename); // palaeo dataset for entire holocene
+  void palaeoDEGD(string filename, int res); // palaeo dataset for entire holocene
   void palaeoRain(string filename); // palaeo dataset for entire holocene
   void closeFile(string filename);
   void readDEGD(string filename);
