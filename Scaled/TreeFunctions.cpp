@@ -316,7 +316,8 @@ float TreeFunctions::growth(float DBH, float tEffect, float lClimate)
 
   // optimal growth
   _optimalG = part7 / part10;
-  float envirn = ((tEffect + lClimate) / 2);
+  //float envirn = ((tEffect + lClimate) / 2);
+  float envirn = tEffect; // light climate removed to be replaced by shade intolerence values
   _realG = (part7 / part10) * envirn;
 
   float currentDBH = _dbh + _realG;
@@ -377,7 +378,9 @@ void TreeFunctions::mortality()
     {
       _mortality = true;
     }
-  } else {
+    else
+    {
     _mortality = false;
+    }
   }
 }

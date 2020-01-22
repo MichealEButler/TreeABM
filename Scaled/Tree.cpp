@@ -300,11 +300,12 @@ void Tree::setTEffect(float DEGD)
 
 float Tree::getTEffect()
 {
+  /*
   if(_dominance == true)
   {
     _tEffect = 1.0;
   }
-
+  */
   return _tEffect;
 }
 
