@@ -68,7 +68,7 @@ void TreeFunctions::setConstants(int species)
       _s = 1.2;
       _g = 200;
       _crate = 0.1;
-      _DDmin = 1100;
+      _DDmin = 670;
       _DDmax = 4890;
       _bio0 = 0.3;
       _bio1 = 2.22;
