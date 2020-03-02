@@ -48,7 +48,7 @@ void Output::createDirectories()
 }
 
 void Output::populations(int &year, int &elmNo, float &elmAge, int &pineNo, float &pineAge, int &oakNo, float &oakAge, int &alderNo, float &alderAge,
-                          int &hazelNo, float &hazelAge, int &ashNo, float &ashAge, int &limeNo, float &limeAge, int &birchNo, float &birchAge, int &openPatches, float &biomass)
+                          int &hazelNo, float &hazelAge, int &ashNo, float &ashAge, int &limeNo, float &limeAge, int &birchNo, float &birchAge, int &openPatches, float &biomass, float &diameter)
 {
   file << year << ", ";
   file << elmNo << ", ";
@@ -68,7 +68,8 @@ void Output::populations(int &year, int &elmNo, float &elmAge, int &pineNo, floa
   file << birchNo << ", ";
   file << birchAge << ", ";
   file << openPatches << ", ";
-  file << biomass << " " << endl;
+  file << biomass << ", ";
+  file << diameter << " " << endl;
 }
 
 void Output::openessOutput(int year, int openPatches)

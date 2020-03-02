@@ -754,15 +754,19 @@ void Simulation::renderSimulation()
     }
 
     float biomass = 0;
+    float totalDiameter = 0;
+    float avgDiameter = 0;
 
     for(int i=0; i<vectorSize; i++)
     {
       biomass = biomass + trees[i]->getBiomass();
+      totalDiameter = totalDiameter + trees[i]->getDBH();
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
       //output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
         //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
     }
 
+    avgDiameter = totalDiameter / vectorSize;
     int recruit = agentNo+((newAgents*ctick)-agentNo); // for id's
 
     // call function from recruitment for size of newAgents array
@@ -899,7 +903,7 @@ void Simulation::renderSimulation()
 
     //output->closeFile();
     //output->openessOutput(ctick, openPatches);
-    output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge, openPatches, biomass);
+    output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge, openPatches, biomass, avgDiameter);
   }
   output->closeFile();
 }
