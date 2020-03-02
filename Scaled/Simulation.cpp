@@ -447,8 +447,8 @@ void Simulation::renderSimulation()
     }
 
     //recruitment->speciesProbability(environment->_DEGD[resetDEGD-1], 100);
-    //recruitment->speciesProbability(environment->constantDEGD(ctick), 100);
-    recruitment->speciesProbability(environment->_DEGD[ctick], 100);
+    recruitment->speciesProbability(environment->constantDEGD(ctick), 100);
+    //recruitment->speciesProbability(environment->_DEGD[ctick], 100);
 
     //stores vector of trees within chunks
     for(int i = 0; i < 1; i++)
@@ -660,9 +660,9 @@ void Simulation::renderSimulation()
       trees[i]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
       trees[i]->resetPatches();
       trees[i]->getNeighbors(chunks[(trees[i]->getChunk()-1)]->chunkTrees);
-      trees[i]->setTEffect(environment->_DEGD[ctick]);
+      //trees[i]->setTEffect(environment->_DEGD[ctick]);
       //trees[i]->setTEffect(environment->_DEGD[resetDEGD-1]);
-      //trees[i]->setTEffect(environment->constantDEGD(ctick));
+      trees[i]->setTEffect(environment->constantDEGD(ctick));
       //trees[i]->setTEffect(2000);
       trees[i]->update(trees[i]->getDBH(), trees[i]->getTEffect(), trees[i]->getLEffect());
       //cout << "Made to pre-patch allocation for tree " << trees[i]->getID() << endl;
@@ -753,8 +753,11 @@ void Simulation::renderSimulation()
       //camps[i]->drawCamp(Display::renderer);
     }
 
+    float biomass = 0;
+
     for(int i=0; i<vectorSize; i++)
     {
+      biomass = biomass + trees[i]->getBiomass();
       //output->blenderOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),trees[i]->getRadius(), trees[i]->getElevation());
       //output->runOutput(trees[i]->getID(),trees[i]->getSpecies(),trees[i]->getAge(),trees[i]->getX(),trees[i]->getY(),trees[i]->getDBH(),trees[i]->getHeight(),
         //trees[i]->getRadius(),trees[i]->getBiomass(),trees[i]->getChunk(), trees[i]->getDominance(), trees[i]->getElevation());
@@ -892,10 +895,11 @@ void Simulation::renderSimulation()
     }
 
     cout << "Opened Patches = " << openPatches << endl;
+    cout << "Biomass = " << biomass << endl;
 
     //output->closeFile();
     //output->openessOutput(ctick, openPatches);
-    output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge, openPatches);
+    output->populations(ctick, elmSum, elmAge, pineSum, pineAge, oakSum, oakAge, alderSum, alderAge, hazelSum, hazelAge, ashSum, ashAge, limeSum, limeAge, birchSum, birchAge, openPatches, biomass);
   }
   output->closeFile();
 }

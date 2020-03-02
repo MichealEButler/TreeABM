@@ -106,7 +106,9 @@ void Environment::closeFile(string filename)
 
 float Environment::constantDEGD(int tick)
 {
-  if(tick < 200)
+
+  return 2000;
+/*  if(tick < 200)
   {
     return 2000;
   }
@@ -146,4 +148,5 @@ float Environment::constantDEGD(int tick)
   {
     return 1500;
   }
+  */
 }

@@ -21,7 +21,7 @@ public:
   float crownArea(float cradius);
   void updateGeometry(float DBH);
   float tempEffect(float DEGD);
-  float biomass(float DEGD);
+  float biomass(float DBH);
   void slopeEffect();
   void mortality();
 

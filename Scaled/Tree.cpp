@@ -8,6 +8,7 @@ Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
   // currently this runs everytime an individual is created, the initial recruits
   // need randomizing in a different way when constructing the starting stand
   _age = 0;
+  _biomass = 0;
   _DBH = 1.0;
   x = _x;
   y = _y;
@@ -74,7 +75,7 @@ void Tree::setupAge()
   {
     float age = 1 / (tf->getDMAX() / _DBH);
     age = tf->getAgeMax() * age;
-    _age = (int)age - 20;
+    _age = (int)age;
   }
 }
 
