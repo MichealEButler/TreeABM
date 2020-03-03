@@ -38,6 +38,7 @@ public:
   void referencePatches(int num);
   void storePatches(); // generates an array of id's based on location and size of individuals crown
   void setPProduction(); // sets the amount of pollen distributed by this individual
+  void setStartDBH(float DBH);
 
   void getNeighbors(vector<Tree*> cTrees);
 
@@ -55,7 +56,7 @@ public:
   float getSlope();
   float getLEffect();
   int getMyPatches();
-  int getPProduction(); // returns the amount of pollen produced by this individual 
+  int getPProduction(); // returns the amount of pollen produced by this individual
 
   void setTEffect(float DEGD);
   void lightEffect();

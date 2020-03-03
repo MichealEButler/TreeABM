@@ -1,6 +1,6 @@
-Ticks = 1000
-Elm = 100
-Pine = 0
+Ticks = 200
+Elm = 0
+Pine = 100
 Oak = 0
 Alder = 0
 Hazel = 0

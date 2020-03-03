@@ -39,6 +39,11 @@ void Tree::randomDBH()
   _DBH = (rand() % maxDiameter) + 1;
 }
 
+void Tree::setStartDBH(float DBH)
+{
+  _DBH = DBH;
+}
+
 void Tree::update(float DBH, float tEffect, float lClimate)
 {
   _height = tf->getHeight(DBH);

@@ -180,7 +180,8 @@ void Simulation::initSimulation()
     for(int i=0; i<_elmNo; i++)
     {
       trees[i] = new Tree(i,0,0,1);
-      trees[i]->randomDBH();
+      //trees[i]->randomDBH();
+      trees[i]->setStartDBH(50);
       trees[i]->setupAge();
       trees[i]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
       trees[i]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
@@ -204,7 +205,8 @@ void Simulation::initSimulation()
       int j = accNo;
 
       trees[j] = new Tree(j,0,0,2);
-      trees[j]->randomDBH();
+      //trees[j]->randomDBH();
+      trees[i]->setStartDBH(50);
       trees[j]->setupAge();
       trees[j]->setElevation(world->getElevation(trees[i]->getX(), trees[i]->getY()));
       trees[j]->setSlope(world->getSlope(trees[i]->getX(), trees[i]->getY()));
