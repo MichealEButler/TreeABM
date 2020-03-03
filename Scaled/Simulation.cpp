@@ -679,7 +679,6 @@ void Simulation::renderSimulation()
       patches[i]->clearTreeIDs();
       patches[i]->setTreeCover(trees);
       //cout << "Patch " << patches[i]->getX() << " " << patches[i]->getY() << " tree cover = " << patches[i]->getHTree() << endl;
-
     }
 
     for(int i = 0; i < vectorSize; i++)
@@ -710,10 +709,11 @@ void Simulation::renderSimulation()
 
         trees[i]->setTCover(); // to be removed
         trees[i]->referencePatches(patches[trees[i]->_npatches[j]]->getNumCover());
-        trees[i]->lightEffect();
         //}
 
       }
+
+      trees[i]->lightEffect();
 /*
       if(trees[i]->removeTree() == true || trees[i]->ageMortality() == true || (trees[i]->getMyPatches() == 0 && trees[i]->getPDominance() == false))
       {
