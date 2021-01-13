@@ -172,7 +172,7 @@ void Simulation::initSimulation()
   chunks = new Chunk*[1];
   camps = new Camp*[campNo];
 
-//  vector<Tree*> trees(agentNo/agentNoSplit);
+  //vector<Tree*> trees(agentNo/agentNoSplit);
   trees = vector<Tree*>(agentNo/agentNoSplit);
 
   if(_isElm)
