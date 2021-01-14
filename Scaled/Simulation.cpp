@@ -781,6 +781,10 @@ void Simulation::renderSimulation()
     {
       display->updateDisplay();
       display->renderPresent();
+      if(ctick == 20)
+      {
+        display->saveImage(display->renderer);
+      }
     }
 
     cout << "Tick = " << ctick << endl;

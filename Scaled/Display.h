@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include "Agent.h"
 
 class Display
@@ -20,6 +21,8 @@ public:
   void renderPresent();
   void clearRenderer();
   void cleanDisplay();
+
+  void saveImage(SDL_Renderer* renderer);
 
   bool running();
   bool cPressed();

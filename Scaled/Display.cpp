@@ -146,6 +146,19 @@ void Display::cleanDisplay()
   cout << "Display cleaned . . . " << endl << endl;
 }
 
+void Display::saveImage(SDL_Renderer* renderer)
+{
+  const Uint32 format = SDL_PIXELFORMAT_ARGB8888;
+  const int width = 800;
+  const int height = 800;
+
+  //SDL_Surface* surface = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, format);
+  SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, 32,0,0,0,0);
+  SDL_RenderReadPixels(renderer, NULL, format, surface->pixels, surface->pitch);
+  SDL_SaveBMP(surface, "Screenshot.bmp");
+  SDL_FreeSurface(surface);
+}
+
 bool Display::running()
 {
   return isRunning;
