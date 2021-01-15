@@ -52,6 +52,10 @@ public:
   float getBiomass();
   bool getMortality();
 
+  float getOptG();
+  float getRealG();
+  float getGVigor(); //returns percentage of what the optimal growth should be
+
 private:
   const float PI = 3.14159265358979f;
 
@@ -76,6 +80,7 @@ private:
   float _optimalG;
   float _realG;
   float _currentDBH;
+  float _gVigor;
 
   bool _mortality;
   int tick;

@@ -4,6 +4,10 @@ TreeFunctions::TreeFunctions()
 {
 
   _mortality = false;
+  _optimalG = 0.0f;
+  _realG = 0.0f;
+  _currentDBH = 0.0f;
+  _gVigor = 0.0f;
 }
 
 TreeFunctions::~TreeFunctions()
@@ -285,6 +289,22 @@ float TreeFunctions::getHeight(float DBH)
   float currentHeight = 137 + ((_b2 * _dbh) - (_b3 * (_dbh * _dbh)));
 
   return currentHeight;
+}
+
+float TreeFunctions::getOptG()
+{
+  return _optimalG;
+}
+
+float TreeFunctions::getRealG()
+{
+  return _realG;
+}
+
+float TreeFunctions::getGVigor()
+{
+  _gVigor = (_realG * 100) / _optimalG;
+  return _gVigor;
 }
 
 float TreeFunctions::expHeight(float DBH)

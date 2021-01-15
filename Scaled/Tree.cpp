@@ -9,6 +9,7 @@ Tree::Tree(int _id, int x, int y, int species) : Agent(_id, x, y)
   // need randomizing in a different way when constructing the starting stand
   _age = 0;
   _biomass = 0;
+  _gVigor = 0.0f;
   _DBH = 1.0;
   x = _x;
   y = _y;
@@ -52,6 +53,7 @@ void Tree::update(float DBH, float tEffect, float lClimate)
   _biomass = (tf->biomass(DBH));
   tf->mortality();
   _age++;
+  _gVigor = tf->getGVigor();
 }
 
 void Tree::draw(SDL_Renderer * renderer)
@@ -329,6 +331,11 @@ void Tree::isAlive(bool alive)
     alive = false;
     cout << "Tree " << getID() << " has died! " << endl;
   }
+}
+
+float Tree::getGVigor()
+{
+  return _gVigor;
 }
 
 bool Tree::removeTree()

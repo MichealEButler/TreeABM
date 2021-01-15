@@ -55,6 +55,7 @@ public:
   float getElevation();
   float getSlope();
   float getLEffect();
+  float getGVigor();
   int getMyPatches();
   int getPProduction(); // returns the amount of pollen produced by this individual
 
@@ -96,6 +97,7 @@ private:
   bool _aMortality;
   bool _pDominace;
   float _lEffect;
+  float _gVigor;
 
   int _tCover;
   int _myPatches;
