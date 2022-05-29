@@ -1,0 +1,10 @@
+Ticks = 1000
+Elm = 10
+Pine = 10
+Oak = 10
+Alder = 10
+Hazel = 20
+Ash = 10
+Lime = 10
+Birch = 20
+Change = 0
